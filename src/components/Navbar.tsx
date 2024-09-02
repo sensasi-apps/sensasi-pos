@@ -10,6 +10,7 @@ import {
   // Button,
 } from '@nextui-org/react'
 import NextLink from 'next/link'
+import ThemeSwitcher from './theme-switcher'
 // import { AcmeLogo } from "./AcmeLogo.jsx";
 
 export default function Navbar() {
@@ -56,6 +57,7 @@ export default function Navbar() {
 						Sign Up
 					</Button>
 				</NavbarItem> */}
+        <ThemeSwitcher />
       </NavbarContent>
     </VendorNavbar>
   )
