@@ -1,6 +1,6 @@
-import { Button } from "@nextui-org/react";
-import { Github, TriangleAlert } from "lucide-react";
-import Link from "next/link";
+import { Button } from '@nextui-org/react'
+import { Github, TriangleAlert } from 'lucide-react'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -12,16 +12,19 @@ export default function Home() {
           Aplikasi masih dalam tahap pengembangan
         </p>
         <p>
-          Sensasi POS adalah aplikasi Point of Sale (POS) berbasis web yang dirancang untuk membantu Anda mengelola transaksi bisnis dengan mudah dan
-          efisien.
+          Sensasi POS adalah aplikasi Point of Sale (POS) berbasis web yang
+          dirancang untuk membantu Anda mengelola transaksi bisnis dengan mudah
+          dan efisien.
         </p>
         <Button variant="light" color="primary">
-          <Link href="https://github.com/sensasi-apps/sensasi-pos" className="flex flex-row justify-center items-center">
+          <Link
+            href="https://github.com/sensasi-apps/sensasi-pos"
+            className="flex flex-row justify-center items-center">
             <Github className="mr-2" />
             Github
           </Link>
         </Button>
       </div>
     </div>
-  );
+  )
 }

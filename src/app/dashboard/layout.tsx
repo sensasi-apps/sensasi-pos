@@ -1,15 +1,15 @@
-import Navbar from "@/components/Navbar";
+import Navbar from '@/components/Navbar'
 
 export default function Layout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode
 }>) {
-	return (
-		<>
-			<Navbar />
+  return (
+    <>
+      <Navbar />
 
-			<main className="container mx-auto p-6">{children}</main>
-		</>
-	);
+      <main className="container mx-auto p-6">{children}</main>
+    </>
+  )
 }

@@ -1,19 +1,19 @@
-import { Providers } from "@/providers/next-ui";
-import type { Metadata } from "next";
-import { roboto } from "./font";
-import "./globals.css";
-import { cn } from "@/lib/utils";
-import { PageIndicator } from "@/components/page-indicator";
+import { Providers } from '@/providers/next-ui'
+import type { Metadata } from 'next'
+import { roboto } from './font'
+import './globals.css'
+import { cn } from '@/lib/utils'
+import { PageIndicator } from '@/components/page-indicator'
 
 export const metadata: Metadata = {
-  title: "Sensasi POS",
-  description: "Sensasi POS adalah aplikasi kasir yang mudah digunakan.",
-};
+  title: 'Sensasi POS',
+  description: 'Sensasi POS adalah aplikasi kasir yang mudah digunakan.',
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en">
@@ -28,5 +28,5 @@ export default function RootLayout({
         </Providers>
       </body>
     </html>
-  );
+  )
 }
