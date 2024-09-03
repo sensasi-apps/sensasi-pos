@@ -40,13 +40,14 @@ export default function ProductCard({
             <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 w-full">
               <div className="col-span-6 md:col-span-8 border-r-2 max-md:border-none">
                 <h2 className="text-lg mb-1">{name}</h2>
-                <p className="text-sm font-medium flex gap-2 items-center">
+
+                <div className="text-sm font-medium flex gap-2 items-center">
                   <Chip size="sm">{category}</Chip>
                   <span>•</span>
                   <span>
                     {formatNumber(qty)} {qty_unit}
                   </span>
-                </p>
+                </div>
               </div>
 
               <div className="flex flex-col justify-center col-span-3 md:col-span-2">
