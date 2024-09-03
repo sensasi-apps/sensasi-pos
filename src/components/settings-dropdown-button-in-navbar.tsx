@@ -1,0 +1,85 @@
+import {
+  Button,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownSection,
+  DropdownTrigger,
+} from '@nextui-org/react'
+import {
+  DatabaseBackupIcon,
+  PackageIcon,
+  PowerCircleIcon,
+  SettingsIcon,
+  UserCogIcon,
+} from 'lucide-react'
+import ThemeSwitcher from './theme-switcher'
+import { useTheme } from 'next-themes'
+import Link from 'next/link'
+
+export default function SettingsDropdownButtonInNavbar() {
+  const { theme, setTheme } = useTheme()
+
+  return (
+    <Dropdown>
+      <DropdownTrigger>
+        <Button color="primary" variant="light" isIconOnly size="sm">
+          <SettingsIcon />
+        </Button>
+      </DropdownTrigger>
+
+      <DropdownMenu aria-label="Pengaturan">
+        <DropdownItem
+          startContent={<ThemeSwitcher />}
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+          Mode Gelap
+        </DropdownItem>
+
+        <DropdownItem
+          as={Link}
+          href={PageUrl.PRODUCTS}
+          startContent={<SettingsIcon className="mr-1" />}>
+          Pengaturan
+        </DropdownItem>
+
+        <DropdownSection title="Master Data" showDivider>
+          <DropdownItem
+            as={Link}
+            href={PageUrl.PRODUCTS}
+            startContent={<PackageIcon className="mr-1" />}>
+            Produk
+          </DropdownItem>
+
+          <DropdownItem
+            as={Link}
+            href={PageUrl.USERS}
+            startContent={<UserCogIcon className="mr-1" />}>
+            Pengguna
+          </DropdownItem>
+
+          <DropdownItem
+            as={Link}
+            href={PageUrl.BACKUPs}
+            startContent={<DatabaseBackupIcon className="mr-1" />}>
+            Pencadangan
+          </DropdownItem>
+        </DropdownSection>
+
+        <DropdownItem
+          className="text-danger"
+          color="danger"
+          startContent={<PowerCircleIcon className="mr-1" />}>
+          Log Keluar
+        </DropdownItem>
+      </DropdownMenu>
+    </Dropdown>
+  )
+}
+
+const BASE_URL = '/dashboard/settings'
+
+enum PageUrl {
+  PRODUCTS = BASE_URL + '/products',
+  USERS = BASE_URL + '/users',
+  BACKUPs = BASE_URL + '/backups',
+}

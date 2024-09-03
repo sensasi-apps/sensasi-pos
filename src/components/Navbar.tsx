@@ -1,63 +1,60 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
 import {
   Navbar as VendorNavbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
   Link,
-  // Button,
+  Button,
 } from '@nextui-org/react'
 import NextLink from 'next/link'
+import { ComputerIcon, FileSpreadsheetIcon } from 'lucide-react'
 import ThemeSwitcher from './theme-switcher'
-// import { AcmeLogo } from "./AcmeLogo.jsx";
+import SettingsDropdownButtonInNavbar from './settings-dropdown-button-in-navbar'
 
+/**
+ *
+ * @todo Implementasi render kondisi terautentikasi
+ */
 export default function Navbar() {
-  const pathname = usePathname()
-
   return (
-    <VendorNavbar className="">
-      <NavbarBrand as={NextLink} href="/">
-        {/* <AcmeLogo /> */}
-        <p className="font-bold text-inherit">Sensasi POS</p>
+    <VendorNavbar>
+      <NavbarBrand
+        as={NextLink}
+        href="/"
+        className="flex items-end text-end hover:text-primary-300 duration-150">
+        <ComputerIcon size={24} className="text-primary-300" />
+        <p className="font-bold text-inherit ml-2 leading-4">Sensasi POS</p>
       </NavbarBrand>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem isActive={pathname === '/dashboard/products'}>
-          <Link
-            color={
-              pathname === '/dashboard/products' ? 'primary' : 'foreground'
-            }
-            href="/dashboard/products"
-            as={NextLink}>
-            Produk
-          </Link>
-        </NavbarItem>
-        {/* <NavbarItem isActive>
-					<Link href="#" aria-current="page">
-						Customers
-					</Link>
-				</NavbarItem>
-				<NavbarItem>
-					<Link color="foreground" href="#">
-						Integrations
-					</Link>
-				</NavbarItem> */}
-      </NavbarContent>
-
       <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex" isActive={pathname === '/login'}>
+        {/* guest */}
+        <NavbarItem>
           <Link href="/login" as={NextLink}>
             Login
           </Link>
         </NavbarItem>
-        {/* <NavbarItem>
-					<Button as={Link} color="primary" href="#" variant="flat">
-						Sign Up
-					</Button>
-				</NavbarItem> */}
-        <ThemeSwitcher />
+
+        <NavbarItem>
+          <ThemeSwitcher />
+        </NavbarItem>
+
+        {/* auth */}
+        <NavbarItem>
+          <Button
+            href="/dashboard/reports"
+            as={NextLink}
+            variant="shadow"
+            color="primary"
+            startContent={<FileSpreadsheetIcon />}>
+            Laporan
+          </Button>
+        </NavbarItem>
+
+        <NavbarItem>
+          <SettingsDropdownButtonInNavbar />
+        </NavbarItem>
       </NavbarContent>
     </VendorNavbar>
   )
