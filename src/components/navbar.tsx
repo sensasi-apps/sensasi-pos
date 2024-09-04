@@ -19,7 +19,7 @@ import SettingsDropdownButtonInNavbar from './settings-dropdown-button-in-navbar
  */
 export default function Navbar() {
   return (
-    <VendorNavbar>
+    <VendorNavbar className="transition-[background-color] duration-1000 ease-in-out">
       <NavbarBrand
         as={NextLink}
         href="/"
