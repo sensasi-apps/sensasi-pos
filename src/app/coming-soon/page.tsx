@@ -1,17 +1,8 @@
-'use client'
-
-import { Button } from '@nextui-org/react'
 import { Github, TriangleAlert } from 'lucide-react'
+import { Button } from '@nextui-org/react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 
-export default function Home() {
-  const router = useRouter()
-
-  if (process.env.NODE_ENV === 'production') {
-    router.push('/coming-soon')
-  }
-
+export default function Component() {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
       <div className="flex flex-col justify-center items-center max-w-xl gap-6">
