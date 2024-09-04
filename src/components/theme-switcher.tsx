@@ -1,9 +1,11 @@
+'use client'
+
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import { Switch } from '@nextui-org/switch'
 import { MoonStar, Sun } from 'lucide-react'
 
-const ThemeSwitcher = () => {
+export default function ThemeSwitcher() {
   const { resolvedTheme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
@@ -25,5 +27,3 @@ const ThemeSwitcher = () => {
     />
   )
 }
-
-export default ThemeSwitcher
