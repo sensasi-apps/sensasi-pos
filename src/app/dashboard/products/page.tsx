@@ -1,6 +1,8 @@
-import type Product from '@/@types/data/product'
+'use client'
 
+import type Product from '@/@types/data/product'
 import ProductCard from '@/components/product-card'
+import PageUrlEnum from '@/enums/page-url'
 import {
   Button,
   ButtonGroup,
@@ -78,7 +80,7 @@ const dummyProducts: Product[] = [
   },
 ]
 
-export default function ProductsPage() {
+export default function ProductListPage() {
   return (
     <>
       <div className="grid grid-cols-12 gap-4">
@@ -119,7 +121,7 @@ export default function ProductsPage() {
             color="success"
             startContent={<PlusCircle />}
             as={Link}
-            href="">
+            href={PageUrlEnum.PRODUCT_CREATE}>
             Tambah Produk
           </Button>
         </div>

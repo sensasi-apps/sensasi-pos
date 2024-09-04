@@ -1,11 +1,29 @@
 'use client'
 
 import type Product from '@/@types/data/product'
+import PageUrlEnum from '@/enums/page-url'
 import formatNumber from '@/lib/utils/format-number'
-import { Card, CardBody, Image, CardProps, Chip } from '@nextui-org/react'
+import {
+  Card,
+  CardBody,
+  Image,
+  CardProps,
+  Chip,
+  Button,
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+} from '@nextui-org/react'
+import { EditIcon, MoreVerticalIcon, TrashIcon } from 'lucide-react'
+import Link from 'next/link'
 
+/**
+ *
+ * @todo implement NextImage for optimization
+ */
 export default function ProductCard({
-  data: { name, base_cost, default_price, qty_unit, qty, category },
+  data: { id, name, base_cost, default_price, qty_unit, qty, category },
   className,
   as,
 }: {
@@ -25,9 +43,10 @@ export default function ProductCard({
       }
       shadow="sm">
       <CardBody>
-        <div className="flex">
+        <div className="flex gap-6 items-center max-md:items-start">
           <div className="flex-none">
             <Image
+              // TODO: use NextImage for optimization
               alt="Album cover"
               className="object-cover"
               width={64}
@@ -36,7 +55,7 @@ export default function ProductCard({
             />
           </div>
 
-          <div className="flex flex-1 ml-6 items-center">
+          <div className="flex flex-1 items-center">
             <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 w-full">
               <div className="col-span-6 md:col-span-8 border-r-2 max-md:border-none">
                 <h2 className="text-lg mb-1">{name}</h2>
@@ -60,6 +79,33 @@ export default function ProductCard({
                 <p className="text-xl">{formatNumber(default_price)}</p>
               </div>
             </div>
+          </div>
+
+          <div className="flex-none">
+            <Dropdown>
+              <DropdownTrigger>
+                <Button isIconOnly size="sm">
+                  <MoreVerticalIcon />
+                </Button>
+              </DropdownTrigger>
+
+              <DropdownMenu>
+                <DropdownItem
+                  startContent={<EditIcon className="text-slate-600" />}
+                  href={PageUrlEnum.PRODUCT_EDIT.replace(':id', id.toString())}
+                  className="text-slate-600"
+                  as={Link}>
+                  Sunting
+                </DropdownItem>
+
+                <DropdownItem
+                  startContent={<TrashIcon />}
+                  color="danger"
+                  className="text-danger">
+                  Hapus
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
           </div>
         </div>
       </CardBody>
