@@ -4,7 +4,7 @@ import React from 'react'
 import { NextUIProvider } from '@nextui-org/react'
 import { ThemeProvider as NextThemeProvider } from 'next-themes'
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export default function Providers({ children }: { children: React.ReactNode }) {
   // prevent hydration error
   const [mounted, setMounted] = React.useState(false)
 
