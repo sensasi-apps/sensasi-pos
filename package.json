@@ -20,6 +20,8 @@
     "next": "14.2.7",
     "next-themes": "^0.3.0",
     "react": "^18",
+    "react-barcode-reader": "^0.0.2",
+    "react-barcode-scanner": "^2.1.0",
     "react-dom": "^18",
     "tailwind-merge": "^2.5.2"
   },
