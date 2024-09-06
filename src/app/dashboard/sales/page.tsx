@@ -1,6 +1,6 @@
 import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
+import { Image } from '@nextui-org/react'
+// import NextImage from 'next/image'
 
 const dummyProducts = [
   {
@@ -65,38 +65,43 @@ const dummyProducts = [
   },
 ]
 
-const page = () => {
+/**
+ * @todo Implement NextImage component
+ */
+const Page = () => {
   return (
     <div className="grid grid-cols-3 gap-12 justify-between items-center py-12 ">
       {dummyProducts.map(data => {
         return (
-          <>
-            <span
-              key={data.id}
-              className="border border-b-2 border-l-2 rounded-md dark:border-white mx-auto">
-              <div className="ml-12 mr-12 items-center justify-center">
-                <Link href="#">
-                  <Image width="480" height="480" src="/dominos.png" alt="" />
-                </Link>
+          <span
+            key={data.id}
+            className="border border-b-2 border-l-2 rounded-md dark:border-white mx-auto">
+            <div className="ml-12 mr-12 items-center justify-center">
+              <Image
+                // as={NextImage}
+                width="480"
+                height="480"
+                src="https://nextui.org/images/album-cover.png"
+                alt=""
+              />
+            </div>
+            <div className="text-ellipsis overflow-hidden ml-4 font-bold text-center items-start">
+              {data.name}
+              <p className="pt-1 text-left font-light text-sm text-slate-400">
+                {data.description}
+              </p>
+              <div className="flex mt-2 justify-between text-lg text-slate-400">
+                <span className="md:text-sm text-lg text-slate-200">
+                  {data.default_price} IDR
+                </span>
               </div>
-              <div className="text-ellipsis overflow-hidden ml-4 font-bold text-center items-start">
-                {data.name}
-                <p className="pt-1 text-left font-light text-sm text-slate-400">
-                  {data.description}
-                </p>
-                <div className="flex mt-2 justify-between text-lg text-slate-400">
-                  <span className="md:text-sm text-lg text-slate-200">
-                    {data.default_price} IDR
-                  </span>
-                </div>
-                <p className="mt-4"></p>
-              </div>
-            </span>
-          </>
+              <p className="mt-4"></p>
+            </div>
+          </span>
         )
       })}
     </div>
   )
 }
 
-export default page
+export default Page
