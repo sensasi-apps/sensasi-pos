@@ -2,8 +2,8 @@ import Providers from '@/providers'
 import type { Metadata } from 'next'
 import { roboto } from './font'
 import './globals.css'
-import { cn } from '@/lib/utils'
 import { PageIndicator } from '@/components/page-indicator'
+import { cn } from '@/functions/merge-class'
 
 export const metadata: Metadata = {
   title: 'Sensasi POS',

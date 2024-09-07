@@ -2,7 +2,7 @@
 
 import type Product from '@/@types/data/product'
 import PageUrlEnum from '@/enums/page-url'
-import formatNumber from '@/lib/utils/format-number'
+import formatNumber from '@/functions/format-number'
 import {
   Card,
   CardBody,
