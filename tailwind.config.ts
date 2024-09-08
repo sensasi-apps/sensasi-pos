@@ -20,6 +20,11 @@ const config: Config = {
             background: '#f8f8f8',
           },
         },
+        dark: {
+          colors: {
+            background: '#111111',
+          },
+        },
       },
     }),
   ],
