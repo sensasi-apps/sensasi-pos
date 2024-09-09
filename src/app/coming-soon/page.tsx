@@ -1,11 +1,9 @@
-import {
-  ArrowUpRightIcon,
-  ComputerIcon,
-  Github,
-  TriangleAlertIcon,
-} from 'lucide-react'
-import { Button, Card, CardBody } from '@nextui-org/react'
+'use client'
+
+import { ArrowUpRightIcon, ComputerIcon, Github } from 'lucide-react'
+import { Button } from '@nextui-org/react'
 import ThemeSwitcher from '@/components/theme-switcher'
+import NextuiAlert from 'nextui-alert'
 
 export default function Component() {
   return (
@@ -33,7 +31,10 @@ export default function Component() {
           </p>
         </div>
 
-        <WarningCard />
+        <NextuiAlert className="text-center">
+          <p>Aplikasi masih dalam tahap pembangunan.</p>
+          <p>Silakan kunjungi lagi nanti.</p>
+        </NextuiAlert>
 
         <div className="flex gap-4">
           <ThemeSwitcher />
@@ -51,25 +52,5 @@ export default function Component() {
         </div>
       </div>
     </div>
-  )
-}
-
-function WarningCard() {
-  return (
-    <Card
-      shadow="none"
-      className="border-none bg-warning/25 dark:bg-warning/25">
-      <CardBody className="px-5">
-        <div className="flex gap-4 items-center">
-          <TriangleAlertIcon className="text-warning" />
-
-          <div className="flex-1 text-warning-800 text-center">
-            <p>Aplikasi masih dalam tahap pembangunan.</p>
-
-            <p>Silakan kunjungi lagi nanti.</p>
-          </div>
-        </div>
-      </CardBody>
-    </Card>
   )
 }
