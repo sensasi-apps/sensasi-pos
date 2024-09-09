@@ -9,6 +9,11 @@ interface DataPenjualan {
   total_keuntungan: number
 }
 
+/**
+ * Data dummy untuk pengembangan UI
+ *
+ * @todo Hapus data dummy ini ketika sudah terhubung dengan API
+ */
 export const dataPenjualan: DataPenjualan[] = [
   {
     id: 1,
