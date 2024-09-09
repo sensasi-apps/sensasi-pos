@@ -18,6 +18,7 @@ import {
 import 'react-barcode-scanner/polyfill'
 import BarcodeScannerCameraModal from './barcode-scanner-camera-modal'
 import BarcodeReader from 'react-barcode-reader'
+import ImageInput from './image-input/image-input'
 
 /**
  *
@@ -142,6 +143,8 @@ export default function ProductForm({
           handleChanges('default_price', parseFloat(value))
         }
       />
+
+      <ImageInput label="Gambar" />
 
       <Input
         label="Gambar"

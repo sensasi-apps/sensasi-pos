@@ -3,8 +3,6 @@
 import { BarcodeScanner, type DetectedBarcode } from 'react-barcode-scanner'
 import {
   Button,
-  Card,
-  CardBody,
   Checkbox,
   CheckboxGroup,
   Modal,
@@ -14,6 +12,7 @@ import {
 } from '@nextui-org/react'
 import { InfoIcon, SettingsIcon, XIcon } from 'lucide-react'
 import { useState } from 'react'
+import NextuiAlert from 'nextui-alert'
 
 /**
  * List of barcode types that can be detected by the camera
@@ -126,7 +125,9 @@ export default function BarcodeScannerCameraModal({
             closeButton: 'z-10',
           }}>
           <ModalContent>
-            <WarningCard />
+            <NextuiAlert startContent={<InfoIcon />}>
+              {EAN_13_WARNING_TEXT}
+            </NextuiAlert>
 
             <div className="p-4">
               <CheckboxGroup
@@ -162,23 +163,5 @@ export default function BarcodeScannerCameraModal({
         </Modal>
       </ModalContent>
     </Modal>
-  )
-}
-
-function WarningCard() {
-  return (
-    <Card
-      shadow="none"
-      className="border-none bg-warning/25 dark:bg-warning/25 rounded-none">
-      <CardBody className="px-5">
-        <div className="flex gap-4 items-center">
-          <InfoIcon className="text-warning" />
-
-          <div className="flex-1 text-warning-800 text-center">
-            <p>{EAN_13_WARNING_TEXT}</p>
-          </div>
-        </div>
-      </CardBody>
-    </Card>
   )
 }

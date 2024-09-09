@@ -2,8 +2,8 @@ import Providers from '@/providers'
 import type { Metadata } from 'next'
 import { roboto } from './font'
 import './globals.css'
-import { cn } from '@/lib/utils'
 import { PageIndicator } from '@/components/page-indicator'
+import mergeClass from '@/functions/merge-class'
 
 export const metadata: Metadata = {
   title: 'Sensasi POS',
@@ -23,7 +23,7 @@ export default function RootLayout({
         <meta charSet="UTF-8" />
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </head>
-      <body className={cn(roboto.className)}>
+      <body className={mergeClass(roboto.className)}>
         <Providers>
           {children}
           <PageIndicator />
