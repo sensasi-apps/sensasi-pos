@@ -25,6 +25,7 @@
     "react-barcode-scanner": "^2.1.0",
     "react-dom": "^18",
     "react-image-file-resizer": "^0.4.8",
+    "recharts": "^2.13.0-alpha.5",
     "tailwind-merge": "^2.5.2"
   },
   "devDependencies": {
