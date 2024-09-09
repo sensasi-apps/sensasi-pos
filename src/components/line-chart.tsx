@@ -12,34 +12,21 @@ import {
   Label,
 } from 'recharts'
 
-import { cn } from '@/lib/utils'
+// TODO: Hapus data dummy ini ketika sudah terhubung dengan API
 import { dataPenjualan } from '@/data/penjualan'
-
-interface CustomizeLabelProps {
-  x: number
-  y: number
-  stroke: string
-  value: string | number
-}
 
 interface LineChartProps {
   day?: number | string
 }
 
 const LineChart = ({ day }: LineChartProps) => {
-  const { theme } = useTheme()
-  const CustomizedLabel = ({ x, y, stroke, value }: CustomizeLabelProps) => (
-    <text x={x} y={y} dy={-4} fill={stroke} fontSize={10} textAnchor="middle">
-      {value}
-    </text>
-  )
-
-  // TODOS: Data penjualan menggunakan data dummy
+  const { resolvedTheme } = useTheme()
 
   return (
     <ResponsiveContainer width="100%" height={300} className={''}>
       <Chart
         className="dark:text-black bg-transparent"
+        // TODO: Hapus data dummy ini ketika sudah terhubung dengan API
         data={dataPenjualan.slice(
           0,
           typeof day === 'number' ? day : Number(day),
@@ -48,26 +35,32 @@ const LineChart = ({ day }: LineChartProps) => {
         <Line
           type="monotone"
           dataKey="kopi"
-          stroke={cn(theme === 'dark' ? '#8884d8' : '#373387')}
+          stroke={resolvedTheme === 'dark' ? '#8884d8' : '#373387'}
           label={
             <CustomizedLabel x={0} y={0} stroke={'#000'} value={'Ini Label'} />
           }
         />
+
         <Line
           type="monotone"
           dataKey="gorengan"
-          stroke={cn(theme === 'dark' ? '#82ca9d' : '#2ab85f')}
+          stroke={resolvedTheme === 'dark' ? '#82ca9d' : '#2ab85f'}
         />
+
         <Line
           type="monotone"
           dataKey="roti"
-          stroke={cn(theme === 'dark' ? '#fa5555' : '#ff0000')}
+          stroke={resolvedTheme === 'dark' ? '#fa5555' : '#ff0000'}
         />
+
         <CartesianGrid stroke="#ccc" strokeDasharray="1 1" />
+
         <XAxis dataKey="tanggal">
           <Label value="Hari" offset={0} position="bottom" />
         </XAxis>
+
         <Legend verticalAlign="top" height={36} />
+
         <YAxis
           label={{
             value: 'Total Penjualan',
@@ -76,6 +69,7 @@ const LineChart = ({ day }: LineChartProps) => {
             offset: 0,
           }}
         />
+
         <Tooltip />
       </Chart>
     </ResponsiveContainer>
@@ -83,3 +77,16 @@ const LineChart = ({ day }: LineChartProps) => {
 }
 
 export default LineChart
+
+interface CustomizeLabelProps {
+  x: number
+  y: number
+  stroke: string
+  value: string | number
+}
+
+const CustomizedLabel = ({ x, y, stroke, value }: CustomizeLabelProps) => (
+  <text x={x} y={y} dy={-4} fill={stroke} fontSize={10} textAnchor="middle">
+    {value}
+  </text>
+)
