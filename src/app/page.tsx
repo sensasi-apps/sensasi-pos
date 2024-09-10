@@ -1,6 +1,5 @@
 'use client'
 
-import Navbar from '@/components/navbar'
 import { useRouter } from 'next/navigation'
 
 export default function Home() {
@@ -8,7 +7,7 @@ export default function Home() {
 
   if (process.env.NODE_ENV === 'production') {
     router.push('/coming-soon')
+  } else {
+    router.push('/dashboard')
   }
-
-  return <Navbar />
 }

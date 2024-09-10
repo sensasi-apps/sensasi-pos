@@ -13,10 +13,10 @@ import {
   SettingsIcon,
   UserCogIcon,
 } from 'lucide-react'
-import ThemeSwitcher from './theme-switcher'
-import { useTheme } from 'next-themes'
-import Link from 'next/link'
+import ThemeSwitcher from '@/components/theme-switcher'
 import PageUrlEnum from '@/enums/page-url'
+import Link from 'next/link'
+import { useTheme } from 'next-themes'
 
 export default function SettingsDropdownButtonInNavbar() {
   const { theme, setTheme } = useTheme()

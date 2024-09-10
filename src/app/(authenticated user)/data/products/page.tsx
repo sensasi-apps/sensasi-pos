@@ -1,8 +1,6 @@
 'use client'
 
-import ProductCard from '@/components/product-card'
-import PageUrlEnum from '@/enums/page-url'
-import db from '@/models/db'
+// vendors
 import {
   Button,
   // ButtonGroup,
@@ -14,9 +12,6 @@ import {
   Select,
   SelectItem,
 } from '@nextui-org/react'
-
-import { useLiveQuery } from 'dexie-react-hooks'
-
 import {
   Barcode,
   // LayoutGridIcon, List,
@@ -25,15 +20,20 @@ import {
 } from 'lucide-react'
 import NextLink from 'next/link'
 import NextuiAlert from 'nextui-alert'
-// import { useEffect, useState } from 'react'
+// components
+import PageUrlEnum from '@/enums/page-url'
+// sub-components
+import { useHook } from './_hook'
+import { ProductCard } from '@/app/(authenticated user)/data/products/_components/product-card'
 
+/**
+ *
+ * @todo Filter produk berdasarkan kategori.
+ * @todo Tambahkan fitur pencarian produk.
+ * @todo Tambahkan fitur pindai kode batang.
+ */
 export default function ProductListPage() {
-  const products = useLiveQuery(() => db.products.toArray())
-  const nProducts = products?.length ?? 0
-  const categories =
-    products
-      ?.map(product => product.category)
-      .filter((v, i, a) => v && a.indexOf(v) === i) ?? []
+  const { categories, nProducts, products } = useHook()
 
   return (
     <>
