@@ -15,6 +15,9 @@
   "dependencies": {
     "@nextui-org/react": "^2.4.6",
     "clsx": "^2.1.1",
+    "dayjs": "^1.11.13",
+    "dexie": "^4.0.8",
+    "dexie-react-hooks": "^1.1.7",
     "framer-motion": "^11.3.31",
     "lucide-react": "^0.439.0",
     "next": "14.2.7",

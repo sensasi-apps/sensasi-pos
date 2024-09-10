@@ -1,3 +1,5 @@
+import type Base64Blob from '@/@types/base-64-blob'
+
 interface Product {
   id: number
   code?: string
@@ -13,7 +15,11 @@ interface Product {
   base_cost: number
   default_price: number
 
-  image_file?: File
+  image_file?: Base64Blob
+
+  created_at: string
+  updated_at: string
+  deleted_at?: string
 }
 
 export default Product

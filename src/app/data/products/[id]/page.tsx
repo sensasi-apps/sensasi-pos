@@ -1,6 +1,8 @@
 'use client'
 
 import ProductForm from '@/components/product-form'
+import db from '@/models/db'
+import Product from '@/models/table-types/product'
 import {
   Button,
   Card,
@@ -8,40 +10,54 @@ import {
   CardFooter,
   CardHeader,
 } from '@nextui-org/react'
+import dayjs from 'dayjs'
 import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
-const dummyProduct = {
-  id: 1,
-  barcode_reg_id: '1234567890',
-  code: '1234567890',
-  name: 'Product Name',
-  description: 'Product Description',
-  base_cost: 10000,
-  default_price: 15000,
-  qty: 10,
-  qty_unit: 'pcs',
-  category: 'Category',
-}
-
-// {params: {id}}:{ params: { id: number } }
-export default function ProductEditPage() {
+export default function ProductEditPage({
+  params: { id },
+}: {
+  params: { id: number }
+}) {
   const router = useRouter()
+  const [product, setProduct] = useState<Product>()
+
+  useEffect(() => {
+    db.products.get(Number(id)).then(setProduct).catch(console.error)
+  }, [id])
 
   return (
     <div className="flex justify-center">
       <Card className="max-w-md" fullWidth>
         <CardHeader className="font-bold">
-          Perbaharui Data Produk {dummyProduct.name}
+          Perbaharui Data Produk {product?.name}
         </CardHeader>
+
         <CardBody>
-          <ProductForm id="product-create-form" data={dummyProduct} />
+          {product && (
+            <ProductForm
+              id="product-update-form"
+              data={product}
+              onSubmit={values => {
+                db.products
+                  .update(Number(id), {
+                    ...values,
+                    updated_at: dayjs().toISOString(),
+                  })
+                  .then(() => {
+                    router.push('/data/products')
+                  })
+              }}
+            />
+          )}
         </CardBody>
+
         <CardFooter className="flex justify-end">
           <Button onClick={() => router.back()} variant="light" color="primary">
             Batal
           </Button>
 
-          <Button type="submit" form="product-create-form" color="primary">
+          <Button type="submit" form="product-update-form" color="primary">
             Simpan
           </Button>
         </CardFooter>
