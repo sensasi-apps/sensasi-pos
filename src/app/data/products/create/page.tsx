@@ -26,22 +26,30 @@ export default function ProductCreatePage() {
           <ProductForm
             id="product-create-form"
             data={{}}
-            onSubmit={async values => {
-              const newProductId = await db.products
+            onSubmit={values => {
+              db.products
                 .add({
                   ...values,
                   created_at: dayjs().toISOString(),
                   updated_at: dayjs().toISOString(),
                 } as Product)
-                .catch(console.error)
-
-              if (!values.code && newProductId) {
-                await db.products.update(newProductId, {
-                  code: newProductId.toString(),
+                .then(newProductId => {
+                  if (!values.code && newProductId) {
+                    db.products
+                      .update(newProductId, {
+                        code: newProductId.toString(),
+                      })
+                      .then(() => router.push(PageUrlEnum.PRODUCT_LIST))
+                      .catch(err => {
+                        throw err
+                      })
+                  } else {
+                    router.push(PageUrlEnum.PRODUCT_LIST)
+                  }
                 })
-              }
-
-              router.push(PageUrlEnum.PRODUCT_LIST)
+                .catch(err => {
+                  throw err
+                })
             }}
           />
         </CardBody>

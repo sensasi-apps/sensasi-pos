@@ -125,11 +125,14 @@ export default function ProductCard({
       <ConfirmationModal
         isOpen={isDeleteModalOpen}
         onReject={() => setIsDeleteModalOpen(false)}
-        onAccept={() =>
+        onAccept={() => {
           db.products
             .update(Number(id), { deleted_at: dayjs().toISOString() })
             .then(() => setIsDeleteModalOpen(false))
-        }>
+            .catch(err => {
+              throw err
+            })
+        }}>
         <p>Apakah Anda yakin ingin menghapus produk ini?</p>
       </ConfirmationModal>
     </Card>

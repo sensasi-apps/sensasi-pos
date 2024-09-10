@@ -23,7 +23,12 @@ export default function ProductEditPage({
   const [product, setProduct] = useState<Product>()
 
   useEffect(() => {
-    db.products.get(Number(id)).then(setProduct).catch(console.error)
+    db.products
+      .get(Number(id))
+      .then(setProduct)
+      .catch(err => {
+        throw err
+      })
   }, [id])
 
   return (
@@ -46,6 +51,9 @@ export default function ProductEditPage({
                   })
                   .then(() => {
                     router.push('/data/products')
+                  })
+                  .catch(err => {
+                    throw err
                   })
               }}
             />

@@ -14,7 +14,6 @@ import 'react-barcode-scanner/polyfill'
 import BarcodeScannerCameraModal from './barcode-scanner-camera-modal'
 import BarcodeReader from 'react-barcode-reader'
 import ImageInput from './image-input/image-input'
-import dayjs from 'dayjs'
 
 export default function ProductForm({
   id: formId,

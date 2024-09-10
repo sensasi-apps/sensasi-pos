@@ -76,5 +76,3 @@ export default function SettingsDropdownButtonInNavbar() {
     </Dropdown>
   )
 }
-
-const BASE_URL = '/dashboard/settings'

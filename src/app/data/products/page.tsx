@@ -35,8 +35,6 @@ export default function ProductListPage() {
       ?.map(product => product.category)
       .filter((v, i, a) => v && a.indexOf(v) === i) ?? []
 
-  console.log(categories)
-
   return (
     <>
       <div className="grid grid-cols-12 gap-4">
