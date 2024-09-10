@@ -1,6 +1,5 @@
 'use client'
 
-import Navbar from '@/components/navbar'
 import { useRouter } from 'next/navigation'
 
 export default function Home() {
@@ -10,5 +9,5 @@ export default function Home() {
     router.push('/coming-soon')
   }
 
-  return <Navbar />
+  return ''
 }

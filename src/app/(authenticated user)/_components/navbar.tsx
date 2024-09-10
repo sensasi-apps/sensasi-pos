@@ -10,8 +10,8 @@ import {
 } from '@nextui-org/react'
 import NextLink from 'next/link'
 import { ComputerIcon, FileSpreadsheetIcon } from 'lucide-react'
-import ThemeSwitcher from './theme-switcher'
-import SettingsDropdownButtonInNavbar from './settings-dropdown-button-in-navbar'
+import ThemeSwitcher from '../../../components/theme-switcher'
+import SettingsDropdownButtonInNavbar from './navbar/settings-dropdown-button'
 
 /**
  *

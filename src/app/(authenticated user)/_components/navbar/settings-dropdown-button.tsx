@@ -13,7 +13,7 @@ import {
   SettingsIcon,
   UserCogIcon,
 } from 'lucide-react'
-import ThemeSwitcher from './theme-switcher'
+import ThemeSwitcher from '../../../../components/theme-switcher'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import PageUrlEnum from '@/enums/page-url'

@@ -1,6 +1,6 @@
 'use client'
 
-import ProductForm from '@/components/product-form'
+import ProductForm from '@/app/(authenticated user)/data/products/_components/product-form'
 import PageUrlEnum from '@/enums/page-url'
 import db from '@/models/db'
 import Product from '@/models/table-types/product'

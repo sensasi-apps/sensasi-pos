@@ -18,7 +18,7 @@ import {
 import { EditIcon, MoreVerticalIcon, TrashIcon } from 'lucide-react'
 import { useState } from 'react'
 import Link from 'next/link'
-import ConfirmationModal from './confirmation-modal'
+import ConfirmationModal from '../../../../../components/confirmation-modal'
 import db from '@/models/db'
 import dayjs from 'dayjs'
 

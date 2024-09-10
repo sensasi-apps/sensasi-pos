@@ -1,6 +1,6 @@
 'use client'
 
-import ProductCard from '@/components/product-card'
+import ProductCard from '@/app/(authenticated user)/data/products/_components/product-card'
 import PageUrlEnum from '@/enums/page-url'
 import db from '@/models/db'
 import {

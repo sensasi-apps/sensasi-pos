@@ -11,9 +11,9 @@ import {
 import { CameraIcon, InfoIcon, LucideProps } from 'lucide-react'
 import { ForwardRefExoticComponent, RefAttributes, useState } from 'react'
 import 'react-barcode-scanner/polyfill'
-import BarcodeScannerCameraModal from './barcode-scanner-camera-modal'
+import BarcodeScannerCameraModal from '../../../../../components/barcode-scanner-camera-modal'
 import BarcodeReader from 'react-barcode-reader'
-import ImageInput from './image-input/image-input'
+import ImageInput from '../../../../../components/image-input/image-input'
 
 export default function ProductForm({
   id: formId,
