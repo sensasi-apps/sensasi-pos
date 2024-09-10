@@ -1,13 +1,15 @@
-import Navbar from '@/app/(authenticated user)/_components/navbar'
+import type { ReactNode } from 'react'
 
 export default function Layout({
   children,
+  navbar,
 }: Readonly<{
-  children: React.ReactNode
+  children: ReactNode
+  navbar: ReactNode
 }>) {
   return (
     <>
-      <Navbar />
+      {navbar}
 
       <main className="container mx-auto p-6">{children}</main>
     </>

@@ -7,7 +7,7 @@ export default function Home() {
 
   if (process.env.NODE_ENV === 'production') {
     router.push('/coming-soon')
+  } else {
+    router.push('/dashboard')
   }
-
-  return ''
 }

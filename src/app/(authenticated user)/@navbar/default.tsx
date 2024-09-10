@@ -1,5 +1,6 @@
 'use client'
 
+// vendors
 import {
   Navbar as VendorNavbar,
   NavbarBrand,
@@ -10,14 +11,16 @@ import {
 } from '@nextui-org/react'
 import NextLink from 'next/link'
 import { ComputerIcon, FileSpreadsheetIcon } from 'lucide-react'
-import ThemeSwitcher from '../../../components/theme-switcher'
-import SettingsDropdownButtonInNavbar from './navbar/settings-dropdown-button'
+// components
+import ThemeSwitcher from '@/components/theme-switcher'
+// sub-components
+import SettingsDropdownButtonInNavbar from './settings-dropdown-button'
 
 /**
  *
  * @todo Implementasi render kondisi terautentikasi
  */
-export default function Navbar() {
+export default function NavbarSlot() {
   return (
     <VendorNavbar className="transition-[background-color] duration-1000 ease-in-out">
       <NavbarBrand

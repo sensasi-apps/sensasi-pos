@@ -1,8 +1,6 @@
 'use client'
 
-import ProductForm from '@/app/(authenticated user)/data/products/_components/product-form'
-import db from '@/models/db'
-import Product from '@/models/table-types/product'
+// vendors
 import {
   Button,
   Card,
@@ -10,62 +8,42 @@ import {
   CardFooter,
   CardHeader,
 } from '@nextui-org/react'
-import dayjs from 'dayjs'
-import { useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+// sub-components
+import { ProductForm } from '@/app/(authenticated user)/data/products/_components/product-form'
+import { useHook } from './_hook'
 
-export default function ProductEditPage({
+export default function ProductFormPage({
   params: { id },
 }: {
-  params: { id: number }
+  params: { id: string }
 }) {
-  const router = useRouter()
-  const [product, setProduct] = useState<Product>()
-
-  useEffect(() => {
-    db.products
-      .get(Number(id))
-      .then(setProduct)
-      .catch(err => {
-        throw err
-      })
-  }, [id])
+  const { product, handleSubmit, handleCancel } = useHook(id)
 
   return (
     <div className="flex justify-center">
       <Card className="max-w-md" fullWidth>
         <CardHeader className="font-bold">
-          Perbaharui Data Produk {product?.name}
+          {product?.name
+            ? `Perbaharui Data — ${product.name}`
+            : 'Masukkan Data Produk'}
         </CardHeader>
 
         <CardBody>
           {product && (
             <ProductForm
-              id="product-update-form"
+              id="product-form"
               data={product}
-              onSubmit={values => {
-                db.products
-                  .update(Number(id), {
-                    ...values,
-                    updated_at: dayjs().toISOString(),
-                  })
-                  .then(() => {
-                    router.push('/data/products')
-                  })
-                  .catch(err => {
-                    throw err
-                  })
-              }}
+              onSubmit={handleSubmit}
             />
           )}
         </CardBody>
 
-        <CardFooter className="flex justify-end">
-          <Button onClick={() => router.back()} variant="light" color="primary">
+        <CardFooter className="flex justify-end gap-2">
+          <Button onClick={handleCancel} variant="light" color="primary">
             Batal
           </Button>
 
-          <Button type="submit" form="product-update-form" color="primary">
+          <Button type="submit" form="product-form" color="primary">
             Simpan
           </Button>
         </CardFooter>

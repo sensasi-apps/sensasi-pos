@@ -1,8 +1,8 @@
 'use client'
 
+// types
 import type Product from '@/models/table-types/product'
-import PageUrlEnum from '@/enums/page-url'
-import formatNumber from '@/functions/format-number'
+// vendors
 import {
   Card,
   CardBody,
@@ -16,13 +16,13 @@ import {
   DropdownItem,
 } from '@nextui-org/react'
 import { EditIcon, MoreVerticalIcon, TrashIcon } from 'lucide-react'
-import { useState } from 'react'
 import Link from 'next/link'
-import ConfirmationModal from '../../../../../components/confirmation-modal'
-import db from '@/models/db'
-import dayjs from 'dayjs'
+// etc
+import formatNumber from '@/functions/format-number'
+import PageUrlEnum from '@/enums/page-url'
+import { useHook } from './_hook'
 
-export default function ProductCard({
+export function ProductCard({
   data: {
     id,
     name,
@@ -41,7 +41,7 @@ export default function ProductCard({
   as?: CardProps['as']
   className?: CardProps['className']
 }) {
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
+  const { handleOpenDeleteModal, deleteConfirmationModal } = useHook(id)
 
   return (
     <Card
@@ -113,28 +113,16 @@ export default function ProductCard({
                   startContent={<TrashIcon className="mr-2" />}
                   color="danger"
                   className="text-danger"
-                  onClick={() => setIsDeleteModalOpen(true)}>
+                  onClick={handleOpenDeleteModal}>
                   Hapus
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>
           </div>
         </div>
-      </CardBody>
 
-      <ConfirmationModal
-        isOpen={isDeleteModalOpen}
-        onReject={() => setIsDeleteModalOpen(false)}
-        onAccept={() => {
-          db.products
-            .update(Number(id), { deleted_at: dayjs().toISOString() })
-            .then(() => setIsDeleteModalOpen(false))
-            .catch(err => {
-              throw err
-            })
-        }}>
-        <p>Apakah Anda yakin ingin menghapus produk ini?</p>
-      </ConfirmationModal>
+        {deleteConfirmationModal}
+      </CardBody>
     </Card>
   )
 }
