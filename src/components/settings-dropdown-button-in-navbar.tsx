@@ -16,6 +16,7 @@ import {
 import ThemeSwitcher from './theme-switcher'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
+import PageUrlEnum from '@/enums/page-url'
 
 export default function SettingsDropdownButtonInNavbar() {
   const { theme, setTheme } = useTheme()
@@ -37,7 +38,7 @@ export default function SettingsDropdownButtonInNavbar() {
 
         <DropdownItem
           as={Link}
-          href={PageUrl.PRODUCTS}
+          href={PageUrlEnum.APP_SETTING_PAGE_URL}
           startContent={<SettingsIcon className="mr-1" />}>
           Pengaturan
         </DropdownItem>
@@ -45,21 +46,21 @@ export default function SettingsDropdownButtonInNavbar() {
         <DropdownSection title="Master Data" showDivider>
           <DropdownItem
             as={Link}
-            href={PageUrl.PRODUCTS}
+            href={PageUrlEnum.PRODUCT_LIST}
             startContent={<PackageIcon className="mr-1" />}>
             Produk
           </DropdownItem>
 
           <DropdownItem
             as={Link}
-            href={PageUrl.USERS}
+            href={PageUrlEnum.USER_LIST}
             startContent={<UserCogIcon className="mr-1" />}>
             Pengguna
           </DropdownItem>
 
           <DropdownItem
             as={Link}
-            href={PageUrl.BACKUPs}
+            href={PageUrlEnum.BACKUPS}
             startContent={<DatabaseBackupIcon className="mr-1" />}>
             Pencadangan
           </DropdownItem>
@@ -74,12 +75,4 @@ export default function SettingsDropdownButtonInNavbar() {
       </DropdownMenu>
     </Dropdown>
   )
-}
-
-const BASE_URL = '/dashboard/settings'
-
-enum PageUrl {
-  PRODUCTS = BASE_URL + '/products',
-  USERS = BASE_URL + '/users',
-  BACKUPs = BASE_URL + '/backups',
 }

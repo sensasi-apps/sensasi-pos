@@ -1,6 +1,6 @@
 'use client'
 
-import type Product from '@/@types/data/product'
+import type Product from '@/models/table-types/product'
 import PageUrlEnum from '@/enums/page-url'
 import formatNumber from '@/functions/format-number'
 import {
@@ -16,14 +16,23 @@ import {
   DropdownItem,
 } from '@nextui-org/react'
 import { EditIcon, MoreVerticalIcon, TrashIcon } from 'lucide-react'
+import { useState } from 'react'
 import Link from 'next/link'
+import ConfirmationModal from './confirmation-modal'
+import db from '@/models/db'
+import dayjs from 'dayjs'
 
-/**
- *
- * @todo implement NextImage for optimization
- */
 export default function ProductCard({
-  data: { id, name, base_cost, default_price, qty_unit, qty, category },
+  data: {
+    id,
+    name,
+    base_cost,
+    default_price,
+    qty_unit,
+    qty,
+    category,
+    image_file,
+  },
   className,
   as,
 }: {
@@ -32,11 +41,11 @@ export default function ProductCard({
   as?: CardProps['as']
   className?: CardProps['className']
 }) {
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
+
   return (
     <Card
       as={as}
-      isPressable
-      isBlurred
       className={
         'light:border-none bg-background/60 dark:bg-default-100/50 w-full' +
         (className ? ` ${className}` : '')
@@ -44,16 +53,19 @@ export default function ProductCard({
       shadow="sm">
       <CardBody>
         <div className="flex gap-6 items-center max-md:items-start">
-          <div className="flex-none">
+          {image_file && (
             <Image
-              // TODO: use NextImage for optimization
-              alt="Album cover"
-              className="object-cover"
+              alt="Gambar Produk"
+              classNames={{
+                img: 'object-cover',
+                wrapper: 'flex-none',
+              }}
+              height={64}
               width={64}
               shadow="md"
-              src="https://nextui.org/images/album-cover.png"
+              src={image_file}
             />
-          </div>
+          )}
 
           <div className="flex flex-1 items-center">
             <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 w-full">
@@ -61,7 +73,7 @@ export default function ProductCard({
                 <h2 className="text-lg mb-1">{name}</h2>
 
                 <div className="text-sm font-medium flex gap-2 items-center">
-                  <Chip size="sm">{category}</Chip>
+                  <Chip size="sm">{category ?? 'Tanpa Kategori'}</Chip>
                   <span>•</span>
                   <span>
                     {formatNumber(qty)} {qty_unit}
@@ -91,17 +103,17 @@ export default function ProductCard({
 
               <DropdownMenu>
                 <DropdownItem
-                  startContent={<EditIcon className="text-slate-600" />}
+                  startContent={<EditIcon className="mr-2" />}
                   href={PageUrlEnum.PRODUCT_EDIT.replace(':id', id.toString())}
-                  className="text-slate-600"
                   as={Link}>
                   Sunting
                 </DropdownItem>
 
                 <DropdownItem
-                  startContent={<TrashIcon />}
+                  startContent={<TrashIcon className="mr-2" />}
                   color="danger"
-                  className="text-danger">
+                  className="text-danger"
+                  onClick={() => setIsDeleteModalOpen(true)}>
                   Hapus
                 </DropdownItem>
               </DropdownMenu>
@@ -109,6 +121,20 @@ export default function ProductCard({
           </div>
         </div>
       </CardBody>
+
+      <ConfirmationModal
+        isOpen={isDeleteModalOpen}
+        onReject={() => setIsDeleteModalOpen(false)}
+        onAccept={() => {
+          db.products
+            .update(Number(id), { deleted_at: dayjs().toISOString() })
+            .then(() => setIsDeleteModalOpen(false))
+            .catch(err => {
+              throw err
+            })
+        }}>
+        <p>Apakah Anda yakin ingin menghapus produk ini?</p>
+      </ConfirmationModal>
     </Card>
   )
 }
