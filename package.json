@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@nextui-org/react": "^2.4.6",
+    "@sentry/nextjs": "^8.30.0",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
     "dexie": "^4.0.8",
