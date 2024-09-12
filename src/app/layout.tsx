@@ -5,6 +5,8 @@ import './globals.css'
 import { PageIndicator } from '@/components/page-indicator'
 import mergeClass from '@/functions/merge-class'
 
+import './_components/firebase'
+
 export const metadata: Metadata = {
   title: 'Sensasi POS',
   description: 'Sensasi POS adalah aplikasi kasir yang mudah digunakan.',
