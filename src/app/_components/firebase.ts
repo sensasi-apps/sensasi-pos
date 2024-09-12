@@ -3,7 +3,7 @@ import { type Analytics, getAnalytics } from 'firebase/analytics'
 
 let analytics: Analytics
 
-if (!process.env.SKIP_3RD_PARTY_INIT && process.env.NODE_ENV === 'production') {
+if (process.env.VERCEL_ENV === 'production' && typeof window !== 'undefined') {
   if (!process.env.FIREBASE_API_KEY) {
     throw new Error('FIREBASE_API_KEY is not set')
   }
