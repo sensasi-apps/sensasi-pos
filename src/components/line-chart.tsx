@@ -55,7 +55,9 @@ const LineChart = ({ day }: LineChartProps) => {
 
         <CartesianGrid stroke="#ccc" strokeDasharray="1 1" />
 
-        <XAxis dataKey="tanggal">
+        <XAxis
+          dataKey="tanggal"
+          stroke={resolvedTheme === 'dark' ? '#eee' : '#111'}>
           <Label value="Hari" offset={0} position="bottom" />
         </XAxis>
 
@@ -68,6 +70,7 @@ const LineChart = ({ day }: LineChartProps) => {
             position: 'insideLeft',
             offset: 0,
           }}
+          stroke={resolvedTheme === 'dark' ? '#eee' : '#111'}
         />
 
         <Tooltip />
