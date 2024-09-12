@@ -2,21 +2,15 @@ import './_components/firebase'
 import './_components/main.css'
 
 import type { Metadata } from 'next'
-import { Roboto } from 'next/font/google'
-import { Providers } from '@/app/_components/providers'
-import { PageIndicator } from '@/app/_components/page-indicator'
+import { Providers } from './_components/providers'
+import { PageIndicator } from './_components/page-indicator'
+import { roboto } from './_components/font'
 
 export const metadata: Metadata = {
   title: 'Sensasi POS',
   description:
     'Aplikasi Point of Sale sederhana yang dirancang untuk membantu pencatatan penjualan barang pada Warung / Toko / UMKM / Stan / Gerai / Swalayan.',
 }
-
-const BODY_CLASSNAME = Roboto({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['300', '400', '500', '700'],
-}).className
 
 export default function RootLayout({
   children,
@@ -32,7 +26,7 @@ export default function RootLayout({
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </head>
 
-      <body className={BODY_CLASSNAME}>
+      <body className={roboto.className}>
         <Providers>
           {children}
 
