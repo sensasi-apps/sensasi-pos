@@ -21,5 +21,3 @@ jobs:
 
       - name: Build
         run: npm run build
-        env:
-          SKIP_3RD_PARTY_INIT: TRUE

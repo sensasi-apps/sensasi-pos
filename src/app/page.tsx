@@ -1,13 +1,9 @@
-'use client'
-
-import { useRouter } from 'next/navigation'
+import { redirect } from 'next/navigation'
 
 export default function Home() {
-  const router = useRouter()
-
   if (process.env.NODE_ENV === 'production') {
-    router.push('/coming-soon')
+    redirect('/coming-soon')
   } else {
-    router.push('/dashboard')
+    redirect('/dashboard')
   }
 }
