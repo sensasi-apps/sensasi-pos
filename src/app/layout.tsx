@@ -1,7 +1,8 @@
-import './_components/firebase'
-import './_components/main.css'
-
+// vendors
 import type { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/react'
+// local modules
+import './_components/main.css'
 import { Providers } from './_components/providers'
 import { PageIndicator } from './_components/page-indicator'
 import { roboto } from './_components/font'
@@ -32,6 +33,8 @@ export default function RootLayout({
 
           <PageIndicator />
         </Providers>
+
+        <Analytics mode="production" debug={false} />
       </body>
     </html>
   )
