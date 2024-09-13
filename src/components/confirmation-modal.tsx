@@ -9,9 +9,15 @@ import {
   ModalProps,
 } from '@nextui-org/react'
 
-type ColorType = 'primary' | 'success' | 'warning' | 'danger' | 'secondary'
+type ColorType =
+  | 'primary'
+  | 'success'
+  | 'warning'
+  | 'danger'
+  | 'secondary'
+  | 'default'
 
-export default function ConfirmationModal({
+export function ConfirmationModal({
   title = 'Konfirmasi Tindakan Anda',
   color = 'warning',
   rejectText = 'Batal',
@@ -29,15 +35,17 @@ export default function ConfirmationModal({
   color?: ColorType
 }) {
   const bgColorClass = getBgColorClass(color)
-  const textColor2Class = getTextColor2Class(color)
+  const textColorClass = getTextColorClass(color)
+  const buttonColor = color === 'default' ? 'primary' : color
 
   return (
     <Modal
       placement="center"
       backdrop="blur"
+      hideCloseButton
+      isDismissable={false}
       className={mergeClass(bgColorClass, className)}
       onClose={onReject}
-      closeButton={false}
       {...restProps}>
       <ModalContent>
         <ModalHeader className="flex flex-col gap-1">{title}</ModalHeader>
@@ -45,11 +53,14 @@ export default function ConfirmationModal({
         <ModalBody>{children}</ModalBody>
 
         <ModalFooter>
-          <Button variant="light" onPress={onReject} color={color}>
+          <Button variant="light" onPress={onReject} color={buttonColor}>
             {rejectText}
           </Button>
 
-          <Button color={color} onPress={onAccept} className={textColor2Class}>
+          <Button
+            color={buttonColor}
+            onPress={onAccept}
+            className={textColorClass}>
             {acceptText}
           </Button>
         </ModalFooter>
@@ -70,11 +81,11 @@ function getBgColorClass(color: ColorType) {
       return 'bg-danger-100'
 
     default:
-      return 'bg-warning-100'
+      return 'bg-default-100'
   }
 }
 
-function getTextColor2Class(color: ColorType) {
+function getTextColorClass(color: ColorType) {
   switch (color) {
     case 'primary':
       return 'text-primary-100'
@@ -86,6 +97,6 @@ function getTextColor2Class(color: ColorType) {
       return 'text-danger-100'
 
     default:
-      return 'text-warning-100'
+      return 'text-default-100'
   }
 }
