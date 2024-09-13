@@ -1,6 +1,6 @@
 'use client'
 
-import Base64Blob from '@/@types/base-64-blob'
+import { Base64Blob } from '@/@types/base-64-blob'
 import resizeImage from '@/components/image-input/functions/resize-image'
 import { Button, Image, Tooltip } from '@nextui-org/react'
 import {
