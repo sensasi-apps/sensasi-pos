@@ -61,10 +61,10 @@ Adapun alur kerja yang diterapkan untuk berkontribusi adalah sebagai berikut:
    git checkout -b nama-fitur-anda
    ```
 
-2. **Tulis kode** yang diperlukan untuk menyelesaiakan fitur atau memperbaiki _bug_ yang Anda kerjakan. Jangan lupa untuk menambahkan tes jika diperlukan.
+2. **Tulis kode** yang diperlukan untuk menyelesaikan fitur atau memperbaiki _bug_ yang Anda kerjakan. Jangan lupa untuk menambahkan tes jika diperlukan.
 
-   > [!IMPORTANT]
-   > Kami menggunakan **ESLint** dan **Prettier** untuk menjaga kualitas kode. Sebelum membuat _commit_, pastikan kode Anda telah lolos aturan _lint_ dengan menjalankan perintah `npm run lint`. Jika _lint_ menunjukkan kesalahan, harap perbaiki sebelum mengajukan _pull request_.
+> [!IMPORTANT]
+> Kami menggunakan **ESLint** dan **Prettier** untuk menjaga kualitas kode. Sebelum membuat _commit_, pastikan kode Anda telah lolos aturan _lint_ dengan menjalankan perintah `npm run lint`. Jika _lint_ menunjukkan kesalahan, harap perbaiki sebelum mengajukan _pull request_.
 
 3. Setelah perubahan selesai, **_commit_ perubahan** Anda menggunakan pesan yang jelas dan deskriptif menggunakan kalimat berbentuk imperatif:
 
@@ -80,6 +80,12 @@ Adapun alur kerja yang diterapkan untuk berkontribusi adalah sebagai berikut:
    ```
 
 5. Setelah semua langkah di atas selesai, **ajukan _pull request_ (PR)** dari cabang Anda ke cabang `main` repositori ini dengan deskripsi yang jelas terkait perubahan yang Anda buat. Jangan lupa untuk menyertakan _issue_ yang relevan jika ada.
+
+> [!TIP]
+> Lakukanlah sinkronisasi pada repositori _fork_ Anda secara berkala untuk meminimalisir konflik kode yang dapat terjadi selama masa pengembangan.
+> 
+> [<img src="https://github.com/user-attachments/assets/2b6c0ad5-cf28-4661-9cd8-2f2246378a9a" width="350" alt="Contoh repositori fork yang telah sinkron" />](https://github.com/user-attachments/assets/2b6c0ad5-cf28-4661-9cd8-2f2246378a9a)
+
 
 <!-- ## 🧪 Menjalankan Tes
 
