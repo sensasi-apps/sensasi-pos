@@ -35,16 +35,17 @@ interface BaseProductMovement {
 interface PurchaseType {
   type: 'purchase'
 
-  purchase_detail: {
-    received_at: ISODate
-    paid_at: ISODate
+  additional_info: {
+    received_at?: ISODate
+    paid_at?: ISODate
+    due_at?: ISODate
   }
 }
 
 interface SaleType {
   type: 'sale'
 
-  sale_detail: {
+  additional_info: {
     receipt_no: number
   }
 }
