@@ -1,19 +1,18 @@
-import type { UUID } from 'crypto'
 import type { Warehouse } from './warehouse'
 import type { Product } from './product'
 import type { Base64Blob } from '@/@types/base-64-blob'
 import type { ISODate } from '@/@types/iso-date'
 
-export interface ProductMovement {
-  uuid: Readonly<UUID>
-
+interface BaseProductMovement {
+  id: Readonly<number>
   at: ISODate
-  type: 'sale' | 'purchase' | 'return' | 'adjustment'
   note?: string
+
+  ref: string
 
   warehouse_state: Readonly<Warehouse>
 
-  details: {
+  items: {
     product_state: Readonly<Product>
 
     qty: number
@@ -33,3 +32,26 @@ export interface ProductMovement {
     description?: string
   }[]
 }
+interface PurchaseType {
+  type: 'purchase'
+
+  purchase_detail: {
+    received_at: ISODate
+    paid_at: ISODate
+  }
+}
+
+interface SaleType {
+  type: 'sale'
+
+  sale_detail: {
+    receipt_no: number
+  }
+}
+
+interface OtherType {
+  type: 'return' | 'refund' | 'adjustment'
+}
+
+export type ProductMovement = BaseProductMovement &
+  (PurchaseType | SaleType | OtherType)
