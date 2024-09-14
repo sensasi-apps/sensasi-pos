@@ -1,7 +1,7 @@
 'use client'
 
 // types
-import type Product from '@/models/table-types/product'
+import type { Product } from '@/models/table-types/product'
 // vendors
 import {
   Card,
@@ -23,16 +23,7 @@ import PageUrlEnum from '@/enums/page-url'
 import { useHook } from './_hook'
 
 export function ProductCard({
-  data: {
-    id,
-    name,
-    base_cost,
-    default_price,
-    qty_unit,
-    qty,
-    category,
-    image_file,
-  },
+  data: { id, name, default_price, qty_unit, category, image_file, stocks },
   className,
   as,
 }: {
@@ -42,6 +33,12 @@ export function ProductCard({
   className?: CardProps['className']
 }) {
   const { handleOpenDeleteModal, deleteConfirmationModal } = useHook(id)
+
+  const totalStock = stocks.reduce((acc, { qty }) => acc + qty, 0)
+  const cost =
+    totalStock === 0
+      ? 0
+      : stocks.reduce((acc, { qty, cost }) => acc + cost * qty, 0) / totalStock
 
   return (
     <Card
@@ -76,14 +73,15 @@ export function ProductCard({
                   <Chip size="sm">{category ?? 'Tanpa Kategori'}</Chip>
                   <span>•</span>
                   <span>
-                    {formatNumber(qty)} {qty_unit}
+                    {formatNumber(totalStock)}
+                    {qty_unit}
                   </span>
                 </div>
               </div>
 
               <div className="flex flex-col justify-center col-span-3 md:col-span-2">
                 <h3 className="text-sm">HPP</h3>
-                <p className="text-xl">{formatNumber(base_cost)}</p>
+                <p className="text-xl">{formatNumber(cost)}</p>
               </div>
 
               <div className="flex flex-col justify-center items-center col-span-3 md:col-span-2">

@@ -1,4 +1,4 @@
-import type Product from '@/models/table-types/product'
+import type { Product } from '@/models/table-types/product'
 import { type FormEvent, useState } from 'react'
 import type { ProductFormProps } from './_props'
 import { useDebouncedCallback } from 'use-debounce'
@@ -51,14 +51,6 @@ export function useHook(
 
       if (!formValues.code && formValues.id) {
         formValues.code = formValues.id.toString()
-      }
-
-      if (!formValues.base_cost) {
-        formValues.base_cost = 0
-      }
-
-      if (!formValues.qty) {
-        formValues.qty = 0
       }
 
       onSubmit?.(formValues)

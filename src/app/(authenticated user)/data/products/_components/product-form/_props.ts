@@ -1,4 +1,4 @@
-import type Product from '@/models/table-types/product'
+import type { Product } from '@/models/table-types/product'
 
 export interface ProductFormProps {
   id: HTMLFormElement['id']

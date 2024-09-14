@@ -8,13 +8,19 @@ import {
   NavbarItem,
   Link,
   Button,
+  Tooltip,
 } from '@nextui-org/react'
 import NextLink from 'next/link'
-import { ComputerIcon, FileSpreadsheetIcon } from 'lucide-react'
+import {
+  ComputerIcon,
+  FileSpreadsheetIcon,
+  ShoppingCartIcon,
+} from 'lucide-react'
 // components
 import ThemeSwitcher from '@/components/theme-switcher'
 // sub-components
 import SettingsDropdownButtonInNavbar from './settings-dropdown-button'
+import PageUrlEnum from '@/enums/page-url'
 
 /**
  *
@@ -55,7 +61,18 @@ export default function NavbarSlot() {
           </Button>
         </NavbarItem>
 
-        <NavbarItem>
+        <NavbarItem className="flex gap-2">
+          <Tooltip content="Pengadaan" color="primary" showArrow size="lg">
+            <Button
+              isIconOnly
+              href={PageUrlEnum.PURCHASE_LIST}
+              as={NextLink}
+              variant="light"
+              color="primary">
+              <ShoppingCartIcon />
+            </Button>
+          </Tooltip>
+
           <SettingsDropdownButtonInNavbar />
         </NavbarItem>
       </NavbarContent>

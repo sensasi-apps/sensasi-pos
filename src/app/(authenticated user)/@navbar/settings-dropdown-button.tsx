@@ -24,7 +24,7 @@ export default function SettingsDropdownButtonInNavbar() {
   return (
     <Dropdown>
       <DropdownTrigger>
-        <Button color="primary" variant="light" isIconOnly size="sm">
+        <Button color="primary" variant="light" isIconOnly>
           <SettingsIcon />
         </Button>
       </DropdownTrigger>

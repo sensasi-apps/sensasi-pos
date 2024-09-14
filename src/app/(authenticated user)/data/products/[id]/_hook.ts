@@ -1,5 +1,5 @@
 // types
-import type Product from '@/models/table-types/product'
+import type { Product } from '@/models/table-types/product'
 import type { ProductFormProps } from '../_components/product-form/_props'
 // vendors
 import { useRouter } from 'next/navigation'

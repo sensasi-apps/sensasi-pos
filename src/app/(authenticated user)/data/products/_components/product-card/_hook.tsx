@@ -2,7 +2,7 @@
 import dayjs from 'dayjs'
 import { useState } from 'react'
 // components
-import ConfirmationModal from '@/components/confirmation-modal'
+import { ConfirmationModal } from '@/components/confirmation-modal'
 // models
 import db from '@/models/db'
 
