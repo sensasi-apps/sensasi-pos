@@ -6,18 +6,23 @@ import './_components/main.css'
 import { Providers } from './_components/providers'
 import { PageIndicator } from './_components/page-indicator'
 import { roboto } from './_components/font'
+import { Card, CardBody } from '@nextui-org/react'
 
 export const metadata: Metadata = {
-  title: 'Sensasi POS',
+  title: 'Sensasi POS — Aplikasi Point of Sale Sederhana',
   description:
     'Aplikasi Point of Sale sederhana yang dirancang untuk membantu pencatatan penjualan barang pada Warung / Toko / UMKM / Stan / Gerai / Swalayan.',
 }
 
 export default function RootLayout({
   children,
+  navbar,
 }: Readonly<{
   children: React.ReactNode
+  navbar: React.ReactNode
 }>) {
+  const isProduction = process.env.NODE_ENV === 'production'
+
   return (
     <html
       lang="en"
@@ -29,12 +34,29 @@ export default function RootLayout({
 
       <body className={roboto.className}>
         <Providers>
+          {navbar}
+
+          {isProduction && (
+            <Card
+              fullWidth
+              className="sticky top-0 z-10 bg-amber-500 text-zinc-800 tracking-wide"
+              classNames={{
+                base: 'rounded-none border-none',
+                body: 'text-center',
+              }}>
+              <CardBody>
+                ⓘ Aplikasi masih dalam tahap pengembangan. Silakan kunjungi lagi
+                nanti.
+              </CardBody>
+            </Card>
+          )}
+
           {children}
 
           <PageIndicator />
         </Providers>
 
-        <Analytics mode="production" debug={false} />
+        {isProduction && <Analytics mode="production" debug={false} />}
       </body>
     </html>
   )
