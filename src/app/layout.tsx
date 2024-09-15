@@ -1,12 +1,12 @@
 // vendors
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/react'
-// local modules
-import './_components/main.css'
-import { Providers } from './_components/providers'
-import { PageIndicator } from './_components/page-indicator'
-import { roboto } from './_components/font'
 import { Card, CardBody } from '@nextui-org/react'
+// local modules
+import './_layout-components/main.css'
+import { Providers } from './_layout-components/providers'
+import { PageIndicator } from './_layout-components/page-indicator'
+import { roboto } from './_layout-components/font'
 
 export const metadata: Metadata = {
   title: 'Sensasi POS — Aplikasi Point of Sale Sederhana',
