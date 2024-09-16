@@ -34,11 +34,11 @@ export function ProductCard({
 }) {
   const { handleOpenDeleteModal, deleteConfirmationModal } = useHook(id)
 
-  const totalStock = stocks.reduce((acc, { qty }) => acc + qty, 0)
+  const totalStock = stocks?.reduce((acc, { qty }) => acc + qty, 0)
   const cost =
     totalStock === 0
       ? 0
-      : stocks.reduce((acc, { qty, cost }) => acc + cost * qty, 0) / totalStock
+      : stocks?.reduce((acc, { qty, cost }) => acc + cost * qty, 0) / totalStock
 
   return (
     <Card
