@@ -1,8 +1,15 @@
+'use client'
+
+// vendors
 import { Button, Tooltip } from '@nextui-org/react'
 import { ComputerIcon } from 'lucide-react'
+import { useState } from 'react'
+// locals
 import mergeClass from '@/functions/merge-class'
 
 export function Hero() {
+  const [isTooltipOpen, setIsTooltipOpen] = useState(false)
+
   return (
     <section className={mergeClass('bg-blue-600 text-white p-16')}>
       <div
@@ -23,6 +30,10 @@ export function Hero() {
           </p>
 
           <Tooltip
+            isOpen={isTooltipOpen}
+            onOpenChange={open => setIsTooltipOpen(open)}
+            onTouchStart={() => setIsTooltipOpen(true)}
+            onTouchCancel={() => setIsTooltipOpen(false)}
             content="ⓘ Aplikasi masih dalam tahap pengembangan. Silakan kunjungi lagi nanti."
             showArrow
             color="warning"
