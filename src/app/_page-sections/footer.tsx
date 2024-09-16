@@ -17,14 +17,14 @@ export function Footer() {
             Sensasi POS bersifat <i>open-source</i> dan dapat dikembangkan oleh
             siapa saja termasuk Anda. Jika Anda tertarik, Silakan lihat{' '}
             <Link
-              size="sm"
+              className="text-sm"
               href="https://github.com/sensasi-apps/sensasi-pos/blob/main/CONTRIBUTING.md"
               target="_blank">
               tata cara kontribusi <ArrowUpRightIcon className="max-w-[1rem]" />
             </Link>{' '}
             pada{' '}
             <Link
-              size="sm"
+              className="text-sm"
               href="https://github.com/sensasi-apps/sensasi-pos"
               target="_blank">
               halaman GitHub kami <ArrowUpRightIcon className="max-w-[1rem]" />
@@ -35,7 +35,10 @@ export function Footer() {
 
         <p>
           Masih memiliki pertanyaan? silahkan mengirimkannya melalui surel ke:{' '}
-          <Link size="sm" href="mailto:sensasi.apps@gmail.com" target="_blank">
+          <Link
+            className="text-sm"
+            href="mailto:sensasi.apps@gmail.com"
+            target="_blank">
             sensasi.apps@gmail.com <ArrowUpRightIcon className="max-w-[1rem]" />
           </Link>
         </p>
@@ -62,7 +65,7 @@ export function Footer() {
 
         <div className="max-md:hidden">•</div>
 
-        <div>
+        <div className="max-md:mt-4">
           Panjang umur untuk semua pengembang <i>open-source</i> di seluruh
           dunia 🌍
         </div>
