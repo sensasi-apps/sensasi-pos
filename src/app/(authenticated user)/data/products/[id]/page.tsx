@@ -12,6 +12,10 @@ import {
 import { ProductForm } from '@/app/(authenticated user)/data/products/_components/product-form'
 import { useHook } from './_hook'
 
+/**
+ *
+ * @todo Change id parameter type to UUID
+ */
 export default function ProductFormPage({
   params: { id },
 }: {

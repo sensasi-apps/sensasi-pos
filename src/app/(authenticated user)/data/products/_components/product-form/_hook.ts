@@ -54,10 +54,6 @@ export function useHook(
         return
       }
 
-      if (!formValues.code && formValues.id) {
-        formValues.code = formValues.id.toString()
-      }
-
       onSubmit?.(formValues)
     },
   }
