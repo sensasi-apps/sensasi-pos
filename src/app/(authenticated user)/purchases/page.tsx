@@ -19,7 +19,7 @@ export default function PurchaseListPage() {
 
       <ul>
         {productMovements?.map(movement => (
-          <li key={movement.id}>{movement.id}</li>
+          <li key={movement.uuid}>{movement.uuid}</li>
         ))}
       </ul>
     </>

@@ -1,58 +1,123 @@
-import type { Warehouse } from './warehouse'
-import type { Product } from './product'
-import type { Base64Blob } from '@/@types/base-64-blob'
+// vendor
+import type { UUID } from 'crypto'
+// app types
+import type { File } from '@/@types/file'
 import type { ISODate } from '@/@types/iso-date'
+// other models
+import type { Warehouse } from './warehouse'
+import type { User } from './user'
+// local types
+import type { ProductMovementItem } from './product-movement/item'
+import type { ProductMovementAdditionalCost } from './product-movement/additional-cost'
+import type { ProductMovementPurchaseAdditionalInfo } from './product-movement/purchase-additional-info'
+import type { ProductMovementSaleAdditionalInfo } from './product-movement/sale-additional-info'
 
+/**
+ * Interface representing the base structure for product movement.
+ */
 interface BaseProductMovement {
-  id: Readonly<number>
+  /**
+   * Unique identifier for the product movement.
+   * @readonly
+   */
+  uuid: Readonly<UUID>
+
+  /**
+   * The date and time when the product movement occurred.
+   */
   at: ISODate
+
+  /**
+   * User who initiated the product movement.
+   * @readonly
+   */
+  by_user_state: Readonly<User>
+
+  /**
+   * Optional note associated with the product movement.
+   */
   note?: string
 
-  ref: string
+  /**
+   * Optional reference identifier for the product movement.
+   */
+  ref?: string
 
+  /**
+   * The state of the warehouse at the time of the product movement.
+   * @readonly
+   */
   warehouse_state: Readonly<Warehouse>
 
-  items: {
-    product_state: Readonly<Product>
+  /**
+   * List of items involved in the product movement.
+   */
+  items: ProductMovementItem[]
 
-    qty: number
-    price: number
-  }[]
+  /**
+   * Additional costs associated with the product movement.
+   */
+  additional_costs: ProductMovementAdditionalCost[]
 
-  additional_costs: {
-    name: string
-    value: number
-  }[]
+  /**
+   * List of files associated with the product movement.
+   */
+  files: File[]
 
-  created_at: ISODate
+  /**
+   * The date and time when the product movement was created.
+   * @readonly
+   */
+  created_at: Readonly<ISODate>
+
+  /**
+   * The date and time when the product movement was last updated.
+   */
   updated_at: ISODate
-
-  files: {
-    blob: Base64Blob
-    description?: string
-  }[]
 }
-interface PurchaseType {
+
+/**
+ * Additional information for a product movement purchase.
+ */
+
+interface WithPurchaseAdditionalInfoProps {
+  /**
+   * Type of the product movement.
+   */
   type: 'purchase'
 
-  additional_info: {
-    received_at?: ISODate
-    paid_at?: ISODate
-    due_at?: ISODate
-  }
+  /**
+   * Additional information for the product movement.
+   */
+  additional_info: ProductMovementPurchaseAdditionalInfo
 }
 
-interface SaleType {
+/**
+ * Additional information for a product movement sale.
+ */
+interface WithSaleAdditionalInfoProps {
+  /**
+   * Type of the product movement.
+   */
   type: 'sale'
 
-  additional_info: {
-    receipt_no: number
-  }
+  /**
+   * Additional information for the product movement.
+   */
+  additional_info: ProductMovementSaleAdditionalInfo
 }
 
-interface OtherType {
-  type: 'return' | 'refund' | 'adjustment'
-}
-
+/**
+ * Interface representing a product movement.
+ */
 export type ProductMovement = BaseProductMovement &
-  (PurchaseType | SaleType | OtherType)
+  (WithPurchaseAdditionalInfoProps | WithSaleAdditionalInfoProps)
+
+/**
+ * This is a type definition for the `OtherType` model.
+ *
+ * @note Is this really necessary to implement?
+ */
+// interface OtherType {
+//   type: 'return' | 'refund' | 'adjustment'
+// }

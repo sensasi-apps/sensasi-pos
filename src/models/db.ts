@@ -6,7 +6,7 @@ import type { ProductMovement } from './table-types/product-movement'
 interface Tables {
   warehouses: EntityTable<Warehouse, 'id'>
   products: EntityTable<Product, 'id'>
-  productMovements: EntityTable<ProductMovement, 'id'>
+  productMovements: EntityTable<ProductMovement, 'uuid'>
 }
 
 const db = new Dexie('sensasi-pos-db') as Dexie & Tables
@@ -19,7 +19,7 @@ db.version(1).stores({
   products:
     '++id, &code, &barcode_reg_id, &name, description, category, created_at',
   productMovements:
-    '++id, at, type, note, warehouse_state, details.product_state, created_at',
+    '&uuid, at, type, note, warehouse_state, details.product_state, created_at',
 })
 
 export default db
