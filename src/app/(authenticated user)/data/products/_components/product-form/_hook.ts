@@ -8,7 +8,7 @@ export function useHook(
   onSubmit?: ProductFormProps['onSubmit'],
 ) {
   const [formValues, setFormValues] = useState<ProductFormProps['data']>(data)
-  const [errors, setErrors] = useState<Record<string, string>>({})
+  const [errors, setErrors] = useState<Record<string, string | undefined>>({})
   const [isBarcodeScannerModalOpen, setIsBarcodeScannerModalOpen] =
     useState(false)
 
@@ -19,12 +19,17 @@ export function useHook(
     formValues,
     isBarcodeScannerModalOpen,
 
-    handleBarcodeReaderError: (_: string, message: string) =>
-      setErrors({ barcode_reg_id: message }),
+    handleBarcodeReaderError: (_: string, message: string) => {
+      setErrors({ barcode_reg_id: message })
+    },
 
-    handleOpenBarcodeScannerModal: () => setIsBarcodeScannerModalOpen(true),
+    handleOpenBarcodeScannerModal: () => {
+      setIsBarcodeScannerModalOpen(true)
+    },
 
-    handleCloseBarcodeScannerModal: () => setIsBarcodeScannerModalOpen(false),
+    handleCloseBarcodeScannerModal: () => {
+      setIsBarcodeScannerModalOpen(false)
+    },
 
     handleValueChange: (key: keyof Product, value: Product[keyof Product]) => {
       debouncedSetFormValues(prev => ({
@@ -34,7 +39,7 @@ export function useHook(
 
       if (errors[key]) {
         setErrors(prev => {
-          delete prev[key]
+          prev[key] = undefined
           return prev
         })
       }

@@ -29,9 +29,9 @@ const ReportPage = () => {
                 size="sm"
                 selectedKeys={[value.toString()]}
                 defaultSelectedKeys={['7']}
-                onSelectionChange={({ currentKey }) =>
+                onSelectionChange={({ currentKey }) => {
                   setValue(Number(currentKey))
-                }
+                }}
                 isRequired>
                 {nDayses.map(nDays => (
                   <SelectItem key={nDays} textValue={`${nDays} hari terakhir`}>
@@ -58,9 +58,9 @@ const ReportPage = () => {
                 size="sm"
                 selectedKeys={[value.toString()]}
                 defaultSelectedKeys={['7']}
-                onSelectionChange={({ currentKey }) =>
+                onSelectionChange={({ currentKey }) => {
                   setValue(Number(currentKey))
-                }
+                }}
                 isRequired>
                 {nDayses.map(nDays => (
                   <SelectItem key={nDays} textValue={`${nDays} hari terakhir`}>

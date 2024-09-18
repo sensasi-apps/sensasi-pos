@@ -48,15 +48,17 @@ export function ProductForm({ id: formId, data, onSubmit }: ProductFormProps) {
               />
             </div>
           }
-          onChange={({ target: { value } }) => handleValueChange('code', value)}
+          onChange={({ target: { value } }) => {
+            handleValueChange('code', value)
+          }}
         />
 
         <Input
           label="Kategori"
           defaultValue={category ?? ''}
-          onChange={({ target: { value } }) =>
+          onChange={({ target: { value } }) => {
             handleValueChange('category', value)
-          }
+          }}
         />
       </div>
 
@@ -77,16 +79,18 @@ export function ProductForm({ id: formId, data, onSubmit }: ProductFormProps) {
             />
           </div>
         }
-        onChange={({ target: { value } }) =>
+        onChange={({ target: { value } }) => {
           handleValueChange('barcode_reg_id', value)
-        }
+        }}
         color={errors.barcode_reg_id ? 'danger' : undefined}
         errorMessage={errors.barcode_reg_id}
       />
 
       <BarcodeReader
         onError={handleBarcodeReaderError}
-        onScan={barcode => handleValueChange('barcode_reg_id', barcode)}
+        onScan={barcode => {
+          handleValueChange('barcode_reg_id', barcode)
+        }}
       />
 
       <BarcodeScannerCameraModal
@@ -102,7 +106,9 @@ export function ProductForm({ id: formId, data, onSubmit }: ProductFormProps) {
         label="Nama"
         isRequired
         defaultValue={name}
-        onChange={({ target: { value } }) => handleValueChange('name', value)}
+        onChange={({ target: { value } }) => {
+          handleValueChange('name', value)
+        }}
         errorMessage={errors.name}
         isInvalid={!!errors.name}
       />
@@ -113,18 +119,18 @@ export function ProductForm({ id: formId, data, onSubmit }: ProductFormProps) {
           defaultValue={description ?? ''}
           isMultiline
           minRows={1}
-          onChange={({ target: { value } }) =>
+          onChange={({ target: { value } }) => {
             handleValueChange('description', value)
-          }></Textarea>
+          }}></Textarea>
 
         <Input
           label="Satuan Jual"
           isRequired
           className="w-1/2"
           defaultValue={qty_unit ?? ''}
-          onChange={({ target: { value } }) =>
+          onChange={({ target: { value } }) => {
             handleValueChange('qty_unit', value)
-          }
+          }}
           errorMessage={errors.qty_unit}
           isInvalid={!!errors.qty_unit}
         />
@@ -134,9 +140,9 @@ export function ProductForm({ id: formId, data, onSubmit }: ProductFormProps) {
         type="number"
         isRequired
         defaultValue={default_price?.toString() ?? ''}
-        onChange={({ target: { value } }) =>
+        onChange={({ target: { value } }) => {
           handleValueChange('default_price', parseFloat(value))
-        }
+        }}
         errorMessage={errors.default_price}
         isInvalid={!!errors.default_price}
       />
@@ -144,9 +150,9 @@ export function ProductForm({ id: formId, data, onSubmit }: ProductFormProps) {
       <ImageInput
         label="Gambar"
         value={image_file}
-        onValueChange={value =>
+        onValueChange={value => {
           handleValueChange('image_file', value ?? undefined)
-        }
+        }}
       />
     </form>
   )

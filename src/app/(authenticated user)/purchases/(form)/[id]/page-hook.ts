@@ -33,7 +33,9 @@ export function usePageHook(idParam: string) {
   return {
     formValues,
 
-    handleCancel: () => router.back(),
+    handleCancel: () => {
+      router.back()
+    },
 
     handleSubmit: () => {
       if (!formValues) return
@@ -54,7 +56,9 @@ export function usePageHook(idParam: string) {
             updateStocksOnReceived(validated)
           }
         })
-        .then(() => router.back())
+        .then(() => {
+          router.back()
+        })
         .catch(error => {
           throw error
         })

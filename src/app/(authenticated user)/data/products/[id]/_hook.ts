@@ -38,7 +38,9 @@ export function useHook(idParam: string) {
   return {
     product,
 
-    handleCancel: () => router.back(),
+    handleCancel: () => {
+      router.back()
+    },
 
     handleSubmit: (values: ProductFormProps['data']) => {
       if (values.id) {

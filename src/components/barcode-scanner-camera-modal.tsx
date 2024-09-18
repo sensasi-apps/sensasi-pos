@@ -101,7 +101,9 @@ export default function BarcodeScannerCameraModal({
             <Button
               variant="light"
               isIconOnly
-              onClick={() => setIsOpened(true)}>
+              onClick={() => {
+                setIsOpened(true)
+              }}>
               <SettingsIcon className="text-slate-500" />
             </Button>
           </Tooltip>
@@ -119,7 +121,9 @@ export default function BarcodeScannerCameraModal({
 
         <Modal
           isOpen={isOpened}
-          onClose={() => setIsOpened(false)}
+          onClose={() => {
+            setIsOpened(false)
+          }}
           size="xs"
           classNames={{
             closeButton: 'z-10',

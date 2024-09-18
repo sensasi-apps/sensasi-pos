@@ -9,7 +9,9 @@ export default function ThemeSwitcher() {
   const { resolvedTheme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
-  useEffect(() => setMounted(true), [])
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   if (!mounted) return null
 
@@ -19,7 +21,9 @@ export default function ThemeSwitcher() {
         wrapper: 'm-0',
       }}
       defaultSelected={resolvedTheme === 'dark'}
-      onChange={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+      onChange={() => {
+        setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
+      }}
       size="sm"
       color="primary"
       startContent={<Sun />}

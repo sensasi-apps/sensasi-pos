@@ -10,16 +10,22 @@ export function useHook(productId: number) {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
 
   return {
-    handleOpenDeleteModal: () => setIsDeleteModalOpen(true),
+    handleOpenDeleteModal: () => {
+      setIsDeleteModalOpen(true)
+    },
 
     deleteConfirmationModal: (
       <ConfirmationModal
         isOpen={isDeleteModalOpen}
-        onReject={() => setIsDeleteModalOpen(false)}
+        onReject={() => {
+          setIsDeleteModalOpen(false)
+        }}
         onAccept={() => {
           db.products
             .update(productId, { deleted_at: dayjs().toISOString() })
-            .then(() => setIsDeleteModalOpen(false))
+            .then(() => {
+              setIsDeleteModalOpen(false)
+            })
             .catch(err => {
               throw err
             })
