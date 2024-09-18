@@ -14,33 +14,33 @@ enum PageUrlEnum {
   // PRODUCT
   PRODUCT_LIST = '/data/products',
   PRODUCT_CREATE = '/data/products/create',
-  PRODUCT_EDIT = '/data/products/:id',
-  PRODUCT_DELETE = '/data/products/:id/delete',
+  PRODUCT_EDIT = '/data/products/:uuid',
+  PRODUCT_DELETE = '/data/products/:uuid/delete',
 
   // USER
   USER_LIST = '/data/users',
   USER_CREATE = '/data/users/create',
-  USER_EDIT = '/data/users/:id',
-  USER_DELETE = '/data/users/:id/delete',
+  USER_EDIT = '/data/users/:uuid',
+  USER_DELETE = '/data/users/:uuid/delete',
 
   // WARAHOUSE
   WAREHOUSE_LIST = '/data/warehouses',
   WAREHOUSE_CREATE = '/data/warehouses/create',
-  WAREHOUSE_EDIT = '/data/warehouses/:id',
-  WAREHOUSE_DELETE = '/data/warehouses/:id/delete',
+  WAREHOUSE_EDIT = '/data/warehouses/:uuid',
+  WAREHOUSE_DELETE = '/data/warehouses/:uuid/delete',
 
   // ############# TRANSACTIONAL DATA #############
   // PURCHASE
   PURCHASE_LIST = '/purchases',
   PURCHASE_CREATE = '/purchases/create',
-  PURCHASE_EDIT = '/purchases/:id',
-  PURCHASE_DELETE = '/purchases/:id/delete',
+  PURCHASE_EDIT = '/purchases/:uuid',
+  PURCHASE_DELETE = '/purchases/:uuid/delete',
 
   // SALE
   SALE_LIST = '/sales',
   SALE_CREATE = '/sales/create',
-  SALE_EDIT = '/sales/:id',
-  SALE_DELETE = '/sales/:id/delete',
+  SALE_EDIT = '/sales/:uuid',
+  SALE_DELETE = '/sales/:uuid/delete',
 
   // DATABASE
   DATABASE_ACTION_LIST = '/database',

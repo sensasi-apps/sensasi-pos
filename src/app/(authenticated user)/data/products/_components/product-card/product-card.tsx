@@ -102,7 +102,7 @@ export function ProductCard({
               <DropdownMenu>
                 <DropdownItem
                   startContent={<EditIcon className="mr-2" />}
-                  href={PageUrlEnum.PRODUCT_EDIT.replace(':id', uuid)}
+                  href={PageUrlEnum.PRODUCT_EDIT.replace(':uuid', uuid)}
                   as={Link}>
                   Sunting
                 </DropdownItem>
