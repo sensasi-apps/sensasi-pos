@@ -24,7 +24,6 @@ export default function ThemeSwitcher() {
       onChange={() => {
         setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
       }}
-      size="sm"
       color="primary"
       startContent={<Sun />}
       endContent={<MoonStar />}

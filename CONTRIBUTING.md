@@ -83,9 +83,8 @@ Adapun alur kerja yang diterapkan untuk berkontribusi adalah sebagai berikut:
 
 > [!TIP]
 > Lakukanlah sinkronisasi pada repositori _fork_ Anda secara berkala untuk meminimalisir konflik kode yang dapat terjadi selama masa pengembangan.
-> 
+>
 > [<img src="https://github.com/user-attachments/assets/2b6c0ad5-cf28-4661-9cd8-2f2246378a9a" width="350" alt="Contoh repositori fork yang telah sinkron" />](https://github.com/user-attachments/assets/2b6c0ad5-cf28-4661-9cd8-2f2246378a9a)
-
 
 <!-- ## 🧪 Menjalankan Tes
 

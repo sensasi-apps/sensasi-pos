@@ -4,7 +4,7 @@ import packageJson from '@/../package.json'
 
 export function Footer() {
   return (
-    <footer className="p-10 bg-gray-800 text-gray-400 text-sm text-balance">
+    <footer className="container py-10 mt-10 border-t dark:border-zinc-800 text-gray-400 text-sm text-balance">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <p>
           Sensasi POS adalah aplikasi Point of Sale sederhana yang dirancang

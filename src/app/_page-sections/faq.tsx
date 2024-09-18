@@ -4,10 +4,10 @@ import { Accordion, AccordionItem } from '@nextui-org/react'
 
 export function Faq() {
   return (
-    <section className="py-16 px-8">
-      <h2 className="text-3xl font-bold text-center mb-16">Pertanyaan Umum</h2>
+    <section className="py-28 px-8 container">
+      <h2 className="text-5xl font-bold text-center mb-16">Pertanyaan Umum</h2>
 
-      <Accordion variant="shadow" className="mx-auto max-w-3xl">
+      <Accordion variant="bordered" className="mx-auto max-w-3xl border">
         <AccordionItem title="Apa itu Sensasi POS?">
           Sensasi POS adalah aplikasi Point of Sale sederhana yang dirancang
           untuk membantu pencatatan penjualan barang pada Warung / Toko / UMKM /
