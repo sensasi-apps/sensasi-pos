@@ -1,25 +1,28 @@
 'use client'
 
+// types
 import type { ProductMovement } from '@/models/table-types/product-movement'
 import type { FormValues } from '../_types/form-values'
-
-import db from '@/models/db'
+// vendors
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { validate as validateUuid } from 'uuid'
+// globals
+import db from '@/models/db'
 import { updateStocksOnReceived } from '../_functions/update-stocks-on-received'
 import { validateFormValues } from '../_functions/validate-form-values'
 
-export function usePageHook(idParam: string) {
+export function usePageHook(uuidPageParam: string) {
   const router = useRouter()
 
   const [formValues, setFormValues] = useState<FormValues>()
 
   useEffect(() => {
-    if (isNaN(parseInt(idParam))) {
-      throw new Error('Invalid ID')
+    if (!validateUuid(uuidPageParam)) {
+      throw new Error('Invalid UUID')
     }
 
-    getData(parseInt(idParam))
+    getData(uuidPageParam as ProductMovement['uuid'])
       .then(setFormValues)
       .catch(error => {
         throw error
@@ -28,33 +31,37 @@ export function usePageHook(idParam: string) {
     return () => {
       setFormValues(undefined)
     }
-  }, [idParam])
+  }, [uuidPageParam])
 
   return {
     formValues,
 
-    handleCancel: () => router.back(),
+    handleCancel: () => {
+      router.back()
+    },
 
     handleSubmit: () => {
       if (!formValues) return
 
       const validated = validateFormValues(formValues)
 
+      if (validated.type !== 'purchase') {
+        throw new Error('Invalid type')
+      }
+
       db.productMovements
-        .update(validated.id, {
+        .update(validated.uuid, {
           ...validated,
           updated_at: new Date().toISOString(),
         })
         .then(() => {
-          if (validated.type !== 'purchase') {
-            throw new Error('Invalid type')
-          }
-
           if (validated.additional_info.received_at) {
             updateStocksOnReceived(validated)
           }
         })
-        .then(() => router.back())
+        .then(() => {
+          router.back()
+        })
         .catch(error => {
           throw error
         })
@@ -62,10 +69,10 @@ export function usePageHook(idParam: string) {
   }
 }
 
-async function getData(id: number) {
+async function getData(uuid: ProductMovement['uuid']) {
   return new Promise<ProductMovement>((resolve, reject) => {
     db.productMovements
-      .get(id)
+      .get(uuid)
       .then(data => {
         if (!data) {
           reject(new Error('not found'))

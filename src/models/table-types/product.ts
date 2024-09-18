@@ -1,34 +1,115 @@
-import type { Base64Blob } from '@/@types/base-64-blob'
+// vendors
+import type { UUID } from 'crypto'
+// globals
+import type { File } from '@/@types/file'
 import type { ISODate } from '@/@types/iso-date'
+// models
 import type { Warehouse } from './warehouse'
 
+/**
+ * Represents the product information.
+ */
 export interface Product {
-  id: Readonly<number>
+  /**
+   * Unique identifier for the product.
+   */
+  uuid: Readonly<UUID>
 
+  /**
+   * Unique identifier for the product.
+   */
   code?: string
+
+  /**
+   * Barcode registration identifier for the product.
+   */
   barcode_reg_id?: string
 
+  /**
+   * Name of the product.
+   */
   name: string
+
+  /**
+   * Description of the product.
+   */
   description?: string
+
+  /**
+   * Category of the product.
+   */
   category?: string
 
-  image_file?: Base64Blob
+  /**
+   * Image file of the product.
+   */
+  image_file?: File['blob']
 
-  created_at: ISODate
+  /**
+   * The date and time when the product was created.
+   */
+  created_at: Readonly<ISODate>
+
+  /**
+   * The date and time when the product was last updated.
+   */
   updated_at: ISODate
+
+  /**
+   * The date and time when the product was deleted.
+   */
   deleted_at?: ISODate
 
+  /**
+   * The unit of measurement for the product.
+   * @example 'pcs', 'kg', 'm', 'l'
+   */
   qty_unit: string
-  default_price: number // per unit
 
+  /**
+   * The default price/unit of the product.
+   */
+  default_price: number
+
+  /**
+   * The threshold quantity of the product.
+   */
   low_qty_threshold?: number
 
-  stocks: {
-    warehouse_id: Warehouse['id']
+  /**
+   * The current stock of the product in all warehouses.
+   */
+  stocks: ProductStock[]
+}
 
-    qty: number
-    cost: number // per unit
-    default_price?: number // use parent product.default_price_per_unit if not set
-    low_qty_threshold?: number // use parent product.low_qty_threshold if not set
-  }[]
+/**
+ * Represents the stock information for a product in a specific warehouse.
+ */
+interface ProductStock {
+  /**
+   * The unique identifier of the warehouse where the product is stored.
+   */
+  warehouse_uuid: Warehouse['uuid']
+
+  /**
+   * The quantity of the product available in the warehouse.
+   */
+  qty: number
+
+  /**
+   * The cost/unit of the product.
+   */
+  cost: number
+
+  /**
+   * The default price of the product.
+   * @default Product.default_price
+   */
+  default_price?: number
+
+  /**
+   * The threshold quantity of the product.
+   * @default Product.low_qty_threshold
+   */
+  low_qty_threshold?: number
 }

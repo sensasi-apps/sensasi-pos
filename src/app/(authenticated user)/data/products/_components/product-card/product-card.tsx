@@ -23,7 +23,7 @@ import PageUrlEnum from '@/enums/page-url'
 import { useHook } from './_hook'
 
 export function ProductCard({
-  data: { id, name, default_price, qty_unit, category, image_file, stocks },
+  data: { uuid, name, default_price, qty_unit, category, image_file, stocks },
   className,
   as,
 }: {
@@ -32,7 +32,7 @@ export function ProductCard({
   as?: CardProps['as']
   className?: CardProps['className']
 }) {
-  const { handleOpenDeleteModal, deleteConfirmationModal } = useHook(id)
+  const { handleOpenDeleteModal, deleteConfirmationModal } = useHook(uuid)
 
   const totalStock = stocks.reduce((acc, { qty }) => acc + qty, 0)
   const cost =
@@ -102,7 +102,7 @@ export function ProductCard({
               <DropdownMenu>
                 <DropdownItem
                   startContent={<EditIcon className="mr-2" />}
-                  href={PageUrlEnum.PRODUCT_EDIT.replace(':id', id.toString())}
+                  href={PageUrlEnum.PRODUCT_EDIT.replace(':uuid', uuid)}
                   as={Link}>
                   Sunting
                 </DropdownItem>

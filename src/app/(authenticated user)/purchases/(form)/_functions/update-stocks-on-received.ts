@@ -1,15 +1,16 @@
+import type { ProductMovement } from '@/models/table-types/product-movement'
 import db from '@/models/db'
-import { ProductMovement } from '@/models/table-types/product-movement'
 
 export function updateStocksOnReceived(productMovement: ProductMovement) {
   productMovement.items.forEach(item => {
     db.products
-      .update(item.product_state.id, product => {
+      .update(item.product_state.uuid, product => {
         const inQty = item.qty
         const inWorth = item.qty * item.price
 
         const existsStock = product.stocks.find(
-          stock => stock.warehouse_id === productMovement.warehouse_state.id,
+          stock =>
+            stock.warehouse_uuid === productMovement.warehouse_state.uuid,
         )
 
         const existsQty = existsStock?.qty ?? 0
@@ -24,7 +25,7 @@ export function updateStocksOnReceived(productMovement: ProductMovement) {
           existsStock.cost = newCost
         } else {
           product.stocks.push({
-            warehouse_id: productMovement.warehouse_state.id,
+            warehouse_uuid: productMovement.warehouse_state.uuid,
             qty: newQty,
             cost: newCost,
           })

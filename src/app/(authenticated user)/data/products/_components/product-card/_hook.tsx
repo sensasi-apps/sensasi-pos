@@ -1,3 +1,5 @@
+// types
+import type { Product } from '@/models/table-types/product'
 // vendors
 import dayjs from 'dayjs'
 import { useState } from 'react'
@@ -6,20 +8,26 @@ import { ConfirmationModal } from '@/components/confirmation-modal'
 // models
 import db from '@/models/db'
 
-export function useHook(productId: number) {
+export function useHook(productUuid: Product['uuid']) {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
 
   return {
-    handleOpenDeleteModal: () => setIsDeleteModalOpen(true),
+    handleOpenDeleteModal: () => {
+      setIsDeleteModalOpen(true)
+    },
 
     deleteConfirmationModal: (
       <ConfirmationModal
         isOpen={isDeleteModalOpen}
-        onReject={() => setIsDeleteModalOpen(false)}
+        onReject={() => {
+          setIsDeleteModalOpen(false)
+        }}
         onAccept={() => {
           db.products
-            .update(productId, { deleted_at: dayjs().toISOString() })
-            .then(() => setIsDeleteModalOpen(false))
+            .update(productUuid, { deleted_at: dayjs().toISOString() })
+            .then(() => {
+              setIsDeleteModalOpen(false)
+            })
             .catch(err => {
               throw err
             })

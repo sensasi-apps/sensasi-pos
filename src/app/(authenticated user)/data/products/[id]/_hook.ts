@@ -4,32 +4,39 @@ import type { ProductFormProps } from '../_components/product-form/_props'
 // vendors
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { validate as validateUuid } from 'uuid'
 // models
 import db from '@/models/db'
 import dayjs from 'dayjs'
 import PageUrlEnum from '@/enums/page-url'
+import { generateOrderedUuid } from '@/functions/generate-ordered-uuid'
 
-export function useHook(idParam: string) {
+/**
+ *
+ * @todo split the 'create' handling into a separate hook
+ */
+export function useHook(uuidFromPageParam: string) {
   const router = useRouter()
   const [product, setProduct] = useState<ProductFormProps['data']>()
 
   useEffect(() => {
-    if (idParam !== 'create' && isNaN(parseInt(idParam))) {
-      handleFailure(new Error('Invalid ID'))
+    if (uuidFromPageParam !== 'create' && !validateUuid(uuidFromPageParam)) {
+      handleFailure(new Error('Invalid UUID'))
     }
 
-    if (idParam === 'create') {
+    if (uuidFromPageParam === 'create') {
       setProduct({})
-    }
-
-    if (!isNaN(parseInt(idParam))) {
-      db.products.get(parseInt(idParam)).then(setProduct).catch(handleFailure)
+    } else {
+      db.products
+        .get(uuidFromPageParam as Product['uuid'])
+        .then(setProduct)
+        .catch(handleFailure)
     }
 
     return () => {
       setProduct(undefined)
     }
-  }, [idParam])
+  }, [uuidFromPageParam])
 
   function handleSuccess() {
     router.push(PageUrlEnum.PRODUCT_LIST)
@@ -38,12 +45,14 @@ export function useHook(idParam: string) {
   return {
     product,
 
-    handleCancel: () => router.back(),
+    handleCancel: () => {
+      router.back()
+    },
 
     handleSubmit: (values: ProductFormProps['data']) => {
-      if (values.id) {
+      if (values.uuid) {
         db.products
-          .update(values.id, {
+          .update(values.uuid, {
             ...values,
             updated_at: dayjs().toISOString(),
           })
@@ -53,21 +62,12 @@ export function useHook(idParam: string) {
         db.products
           .add({
             ...values,
+            uuid: generateOrderedUuid(),
+            stocks: [],
             created_at: dayjs().toISOString(),
             updated_at: dayjs().toISOString(),
           } as Product)
-          .then(newProductId => {
-            if (!values.code && newProductId) {
-              db.products
-                .update(newProductId, {
-                  code: newProductId.toString(),
-                })
-                .then(handleSuccess)
-                .catch(handleFailure)
-            } else {
-              handleSuccess()
-            }
-          })
+          .then(handleSuccess)
           .catch(handleFailure)
       }
     },

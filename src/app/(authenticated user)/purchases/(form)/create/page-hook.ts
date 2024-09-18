@@ -1,8 +1,12 @@
 'use client'
 
+// types
 import type { ProductMovement } from '@/models/table-types/product-movement'
-import db from '@/models/db'
+// vendors
 import { useEffect, useState } from 'react'
+// globals
+import db from '@/models/db'
+import { generateOrderedUuid } from '@/functions/generate-ordered-uuid'
 import { useRouter } from 'next/navigation'
 import { updateStocksOnReceived } from '../_functions/update-stocks-on-received'
 
@@ -24,30 +28,35 @@ export function usePageHook() {
   return {
     formValues,
 
-    handleCancel: () => router.back(),
+    handleCancel: () => {
+      router.back()
+    },
 
     handleSubmit: () => {
       if (!formValues) return
 
       const validated = validateFormValues(formValues)
 
-      if (validated.type !== 'purchase') {
-        throw new Error('Invalid type')
-      }
-
       db.productMovements
         .add({
           ...validated,
+          uuid: generateOrderedUuid(),
           type: 'purchase',
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString(),
         })
         .then(() => {
+          if (validated.type !== 'purchase') {
+            throw new Error('Invalid type')
+          }
+
           if (validated.additional_info.received_at) {
             updateStocksOnReceived(validated)
           }
         })
-        .then(() => router.back())
+        .then(() => {
+          router.back()
+        })
         .catch(error => {
           throw error
         })

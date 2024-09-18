@@ -32,7 +32,9 @@ export default function SettingsDropdownButtonInNavbar() {
       <DropdownMenu aria-label="Pengaturan">
         <DropdownItem
           startContent={<ThemeSwitcher />}
-          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+          onClick={() => {
+            setTheme(theme === 'dark' ? 'light' : 'dark')
+          }}>
           Mode Gelap
         </DropdownItem>
 
@@ -60,7 +62,7 @@ export default function SettingsDropdownButtonInNavbar() {
 
           <DropdownItem
             as={Link}
-            href={PageUrlEnum.BACKUPS}
+            href={PageUrlEnum.DATABASE_ACTION_LIST}
             startContent={<DatabaseBackupIcon className="mr-1" />}>
             Pencadangan
           </DropdownItem>

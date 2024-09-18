@@ -14,9 +14,15 @@ export function Cta() {
 
       <Tooltip
         isOpen={isTooltipOpen}
-        onOpenChange={open => setIsTooltipOpen(open)}
-        onTouchStart={() => setIsTooltipOpen(true)}
-        onTouchCancel={() => setIsTooltipOpen(false)}
+        onOpenChange={open => {
+          setIsTooltipOpen(open)
+        }}
+        onTouchStart={() => {
+          setIsTooltipOpen(true)
+        }}
+        onTouchCancel={() => {
+          setIsTooltipOpen(false)
+        }}
         content="ⓘ Aplikasi masih dalam tahap pengembangan. Silakan kunjungi lagi nanti."
         showArrow
         color="warning">

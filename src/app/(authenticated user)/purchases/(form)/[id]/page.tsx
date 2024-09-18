@@ -9,8 +9,12 @@ import {
 } from '@nextui-org/react'
 import { usePageHook } from './page-hook'
 
-const FORM_ID = 'purchase-form'
+const FORM_ID = 'purchase-update-form'
 
+/**
+ *
+ * @todo Change parameter 'id' to 'uuid'
+ */
 export default function PurchaseFormPage({
   params: { id },
 }: {
@@ -20,7 +24,7 @@ export default function PurchaseFormPage({
 
   return (
     <Card>
-      <CardHeader>Sunting Pembelian — NO. {formValues?.id}</CardHeader>
+      <CardHeader>Sunting Pembelian — NO. {formValues?.uuid}</CardHeader>
 
       <CardBody>
         <form
