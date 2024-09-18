@@ -2,11 +2,13 @@ import { ISODate } from '@/@types/iso-date'
 import { Permission } from '@/enums/permission'
 import { UUID } from 'crypto'
 
+type UserRole = 'owner' | 'manager' | 'cashier' | 'stocker'
+
 export interface User {
   uuid: Readonly<UUID>
   email__encrypted: string
   password__encrypted: string
-  roles: ('owner' | 'manager' | 'cashier' | 'stocker')[]
+  roles: UserRole[]
   permissions: Permission[]
 
   created_at: ISODate
