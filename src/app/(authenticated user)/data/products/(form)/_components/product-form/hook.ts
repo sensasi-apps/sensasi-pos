@@ -1,6 +1,6 @@
 import type { Product } from '@/models/table-types/product'
 import { type FormEvent, useState } from 'react'
-import type { ProductFormProps } from './_props'
+import type { ProductFormProps } from './props'
 import { useDebouncedCallback } from 'use-debounce'
 
 export function useHook(

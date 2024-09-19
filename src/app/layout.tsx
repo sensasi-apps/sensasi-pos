@@ -1,7 +1,6 @@
 // vendors
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/react'
-import { Card, CardBody } from '@nextui-org/react'
 // local modules
 import './_layout-components/main.css'
 import { Providers } from './_layout-components/providers'
@@ -36,20 +35,10 @@ export default function RootLayout({
         <Providers>
           {navbar}
 
-          {isProduction && (
-            <Card
-              fullWidth
-              className="sticky top-0 z-10 bg-amber-500 text-zinc-800 tracking-wide"
-              classNames={{
-                base: 'rounded-none border-none',
-                body: 'text-center',
-              }}>
-              <CardBody>
-                ⓘ Aplikasi masih dalam tahap pengembangan. Silakan kunjungi lagi
-                nanti.
-              </CardBody>
-            </Card>
-          )}
+          <div className="w-full p-2.5 text-center sticky top-0 z-10 bg-amber-500/90 text-zinc-800 tracking-wide">
+            ⓘ Aplikasi masih dalam tahap pengembangan. Silakan kunjungi lagi
+            nanti.
+          </div>
 
           {children}
 
