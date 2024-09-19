@@ -7,7 +7,6 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "format": "prettier --write .",
     "lint": "tsc && next lint",
     "lint:fix": "tsc && next lint --fix",
     "check:update": "ncu",
