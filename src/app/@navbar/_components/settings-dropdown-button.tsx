@@ -34,7 +34,7 @@ export default function SettingsDropdownButtonInNavbar() {
         <Button
           color="primary"
           variant="light"
-          className="min-w-[50px] px-0 gap-0"
+          className="min-w-[50px] gap-0 px-0"
           endContent={<ChevronDown size={16} />}>
           <SettingsIcon />
         </Button>

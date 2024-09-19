@@ -70,12 +70,12 @@ const dummyProducts = [
  */
 const Page = () => {
   return (
-    <div className="grid grid-cols-3 gap-12 justify-between items-center py-12 ">
+    <div className="grid grid-cols-3 items-center justify-between gap-12 py-12">
       {dummyProducts.map(data => {
         return (
           <span
             key={data.id}
-            className="border border-b-2 border-l-2 rounded-md dark:border-white mx-auto">
+            className="mx-auto rounded-md border border-b-2 border-l-2 dark:border-white">
             <div className="ml-12 mr-12 items-center justify-center">
               <Image
                 // as={NextImage}
@@ -85,13 +85,13 @@ const Page = () => {
                 alt=""
               />
             </div>
-            <div className="text-ellipsis overflow-hidden ml-4 font-bold text-center items-start">
+            <div className="ml-4 items-start overflow-hidden text-ellipsis text-center font-bold">
               {data.name}
-              <p className="pt-1 text-left font-light text-sm text-slate-400">
+              <p className="pt-1 text-left text-sm font-light text-slate-400">
                 {data.description}
               </p>
-              <div className="flex mt-2 justify-between text-lg text-slate-400">
-                <span className="md:text-sm text-lg text-slate-200">
+              <div className="mt-2 flex justify-between text-lg text-slate-400">
+                <span className="text-lg text-slate-200 md:text-sm">
                   {data.default_price} IDR
                 </span>
               </div>

@@ -87,7 +87,7 @@ export default function BarcodeScannerCameraModal({
           placement="left"
           showArrow>
           <Button
-            className="absolute top-4 right-4 rounded-full"
+            className="absolute right-4 top-4 rounded-full"
             color="danger"
             variant="flat"
             isIconOnly
@@ -108,7 +108,7 @@ export default function BarcodeScannerCameraModal({
             </Button>
           </Tooltip>
 
-          <div className="p-2 mt-2">
+          <div className="mt-2 p-2">
             <Tooltip
               content={EAN_13_WARNING_TEXT}
               placement="right"
@@ -158,7 +158,7 @@ export default function BarcodeScannerCameraModal({
                 ))}
               </CheckboxGroup>
 
-              <p className="text-sm mt-4">
+              <p className="mt-4 text-sm">
                 *EAN-13 merupakan jenis kode bar yang umumnya terdapat pada
                 kemasan produk
               </p>

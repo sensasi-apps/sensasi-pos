@@ -37,22 +37,22 @@ const FEATURES: FeatureItem[] = [
 
 export function Hero() {
   return (
-    <section className={'min-h-dvh grid place-items-center relative py-28'}>
+    <section className={'relative grid min-h-dvh place-items-center py-28'}>
       <GridPattern
         numSquares={30}
         maxOpacity={0.1}
         duration={1}
         className={
-          '[mask-image:radial-gradient(500px_circle_at_center,white,transparent)] inset-0 skew-y-12'
+          'inset-0 skew-y-12 [mask-image:radial-gradient(500px_circle_at_center,white,transparent)]'
         }
       />
       <div className={'container gap-10'}>
-        <div className="max-w-5xl mx-auto text-center">
-          <h1 className="sm:text-6xl text-5xl font-bold my-6">
+        <div className="mx-auto max-w-5xl text-center">
+          <h1 className="my-6 text-5xl font-bold sm:text-6xl">
             Kelola Penjualan dengan Mudah, Kapan Saja
           </h1>
 
-          <p className="text-lg dark:text-gray-400 text-gray-600 max-w-3xl mx-auto">
+          <p className="mx-auto max-w-3xl text-lg text-gray-600 dark:text-gray-400">
             Sistem Point of Sales modern yang dapat diakses bahkan tanpa
             internet. Pantau transaksi, kelola stok, dan buat laporan dengan
             cepat dalam satu platform yang intuitif dan selalu siap digunakan.
@@ -66,7 +66,7 @@ export function Hero() {
             Coba Sekarang
           </Button> */}
 
-          <div className="grid lg:grid-cols-3 sm:grid-cols-2 mx-auto gap-6 mt-12">
+          <div className="mx-auto mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {FEATURES.map((feature, i) => (
               <FeatureItem key={i} data={feature} />
             ))}
@@ -83,15 +83,15 @@ function FeatureItem({
   data: FeatureItem
 }) {
   return (
-    <Card className="p-2 border dark:border-zinc-800" shadow="none" isBlurred>
-      <CardHeader className="flex flex-col text-center items-center">
-        <h4 className="font-bold text-xl">{title}</h4>
+    <Card className="border p-2 dark:border-zinc-800" shadow="none" isBlurred>
+      <CardHeader className="flex flex-col items-center text-center">
+        <h4 className="text-xl font-bold">{title}</h4>
         <p className="text-gray-400">{description}</p>
       </CardHeader>
-      <CardBody className="overflow-visible py-2 justify-end">
+      <CardBody className="justify-end overflow-visible py-2">
         <Image
           alt={title}
-          className="object-cover rounded-xl m-auto aspect-video"
+          className="m-auto aspect-video rounded-xl object-cover"
           src={image}
         />
       </CardBody>

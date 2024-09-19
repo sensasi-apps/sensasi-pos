@@ -35,13 +35,13 @@ export function ProductForm({ id: formId, data, onSubmit }: ProductFormProps) {
   } = useHook(data, onSubmit)
 
   return (
-    <form id={formId} onSubmit={handleSubmit} className="flex gap-3 flex-col">
+    <form id={formId} onSubmit={handleSubmit} className="flex flex-col gap-3">
       <div className="flex gap-3">
         <Input
           label="Kode"
           defaultValue={code ?? ''}
           endContent={
-            <div className="flex items-center h-full">
+            <div className="flex h-full items-center">
               <IconButtonInputContent
                 text="Untuk identifikasi internal yang memudahkan Anda untuk mengenali item produk/barang"
                 icon={InfoIcon}
@@ -66,7 +66,7 @@ export function ProductForm({ id: formId, data, onSubmit }: ProductFormProps) {
         label="Kode Bar"
         defaultValue={barcode_reg_id ?? ''}
         endContent={
-          <div className="flex items-center h-full">
+          <div className="flex h-full items-center">
             <IconButtonInputContent
               text="Pindai menggunakan kamera perangkat Anda"
               icon={CameraIcon}

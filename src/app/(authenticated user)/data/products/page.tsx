@@ -38,14 +38,14 @@ export default function ProductListPage() {
   return (
     <>
       <div className="grid grid-cols-12 gap-4">
-        <div className="col-span-4 max-md:col-span-12 flex items-center mb-4">
+        <div className="col-span-4 mb-4 flex items-center max-md:col-span-12">
           <h1 className="text-2xl font-bold">Produk</h1>
           <Chip className="ml-4" size="sm">
             {nProducts} <i>item</i>
           </Chip>
         </div>
 
-        <div className="col-span-8 flex max-md:col-span-12 items-center mb-4 gap-6">
+        <div className="col-span-8 mb-4 flex items-center gap-6 max-md:col-span-12">
           <Input
             className="flex-1"
             variant="bordered"
@@ -56,7 +56,7 @@ export default function ProductListPage() {
                 isIconOnly
                 aria-label="Pindai kode batang"
                 variant="light">
-                <Barcode className="text-2xl text-primary font-bold pointer-events-none" />
+                <Barcode className="pointer-events-none text-2xl font-bold text-primary" />
               </Button>
             }
           />
@@ -81,7 +81,7 @@ export default function ProductListPage() {
         </div>
       </div>
 
-      <p className="text-default-400 text-xs text-right mb-2">
+      <p className="mb-2 text-right text-xs text-default-400">
         Menampilkan {nProducts} dari {nProducts} <i>item</i>
       </p>
 
@@ -89,7 +89,7 @@ export default function ProductListPage() {
         <div className="col-span-4">
           <Card shadow="sm">
             <CardBody>
-              <h2 className="text-lg font-bold mb-4">Penyaring</h2>
+              <h2 className="mb-4 text-lg font-bold">Penyaring</h2>
 
               <Select
                 label="Kategori"
@@ -112,7 +112,7 @@ export default function ProductListPage() {
         <div className="col-span-8">
           {nProducts === 0 && (
             <div className="flex justify-center">
-              <NextuiAlert className="text-center max-w-96">
+              <NextuiAlert className="max-w-96 text-center">
                 <p>Tidak ada data produk yang ditemukan.</p>
                 <Link
                   className="text-sm"
@@ -124,7 +124,7 @@ export default function ProductListPage() {
             </div>
           )}
 
-          <ul className="list-none flex flex-col gap-4">
+          <ul className="flex list-none flex-col gap-4">
             {products?.map((product, i) => (
               <ProductCard key={i} data={product} as="li" />
             ))}

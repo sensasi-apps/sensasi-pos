@@ -24,7 +24,7 @@ const BarChart = ({ total }: BarChartProps) => {
   return (
     <ResponsiveContainer className={''} width="100%" height={300}>
       <Chart
-        className="dark:text-black bg-transparent"
+        className="bg-transparent dark:text-black"
         margin={{ top: 15, right: 20, bottom: 20, left: 15 }}
         // TODO: Hapus data dummy ini ketika sudah terhubung dengan API
         data={dataPenjualan.slice(
