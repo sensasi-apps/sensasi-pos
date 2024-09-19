@@ -15,6 +15,16 @@ export function hasAnyPermissions(
   /**
    * @todo delete this when #85 is solved
    */
+  permissions
+
+  /**
+   * @todo delete this when #85 is solved
+   */
+  user
+
+  /**
+   * @todo delete this when #85 is solved
+   */
   return process.env.NODE_ENV !== 'production'
 
   // if (!user) {
