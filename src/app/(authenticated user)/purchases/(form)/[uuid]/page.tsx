@@ -11,16 +11,12 @@ import { usePageHook } from './page-hook'
 
 const FORM_ID = 'purchase-update-form'
 
-/**
- *
- * @todo Change parameter 'id' to 'uuid'
- */
 export default function PurchaseFormPage({
-  params: { id },
+  params: { uuid },
 }: {
-  params: { id: string }
+  params: { uuid: string }
 }) {
-  const { handleSubmit, handleCancel, formValues } = usePageHook(id)
+  const { handleSubmit, handleCancel, formValues } = usePageHook(uuid)
 
   return (
     <Card>
