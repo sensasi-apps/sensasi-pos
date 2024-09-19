@@ -40,48 +40,6 @@ export function ProductForm({ id: formId, data, onSubmit }: ProductFormProps) {
     handleSubmit,
   } = useHook(data, onSubmit)
 
-  const smallUnits = [
-    {
-      key: 'pcs',
-      text: 'pcs',
-    },
-    {
-      key: 'kg',
-      text: 'kg',
-    },
-    {
-      key: 'gr',
-      text: 'gr',
-    },
-    {
-      key: 'botol',
-      text: 'botol',
-    },
-    {
-      key: 'gelas',
-      text: 'gelas',
-    },
-  ]
-
-  const bigUnits = [
-    {
-      key: 'lusin',
-      text: 'lusin',
-    },
-    {
-      key: 'krat',
-      text: 'krat',
-    },
-    {
-      key: 'dus',
-      text: 'dus',
-    },
-    {
-      key: 'peti',
-      text: 'peti',
-    },
-  ]
-
   return (
     <form id={formId} onSubmit={handleSubmit} className="flex gap-3 flex-col">
       <div className="flex gap-3">
@@ -181,32 +139,28 @@ export function ProductForm({ id: formId, data, onSubmit }: ProductFormProps) {
           defaultInputValue={qty_unit ?? ''}
           errorMessage={errors.qty_unit}
           isInvalid={!!errors.qty_unit}
-          onChange={({ target: { value } }) => {
+          onInputChange={value => {
             handleValueChange('qty_unit', value)
           }}
           allowsCustomValue>
           <AutocompleteSection
-            title={'Kemasan Kecil'}
+            title="Kemasan Kecil"
             classNames={{
               heading:
                 'flex w-full sticky top-1 z-20 py-1.5 px-2 bg-default-100 shadow-small rounded-small',
             }}>
-            {smallUnits.map(({ key, text }) => (
-              <AutocompleteItem key={key} value={key}>
-                {text}
-              </AutocompleteItem>
+            {SMALL_UNITS.map(value => (
+              <AutocompleteItem key={value}>{value}</AutocompleteItem>
             ))}
           </AutocompleteSection>
           <AutocompleteSection
-            title={'Kemasan Besar'}
+            title="Kemasan Besar"
             classNames={{
               heading:
                 'flex w-full sticky top-1 z-20 py-1.5 px-2 bg-default-100 shadow-small rounded-small',
             }}>
-            {bigUnits.map(({ key, text }) => (
-              <AutocompleteItem key={key} value={key}>
-                {text}
-              </AutocompleteItem>
+            {BIG_UNITS.map(value => (
+              <AutocompleteItem key={value}>{value}</AutocompleteItem>
             ))}
           </AutocompleteSection>
         </Autocomplete>
@@ -233,3 +187,6 @@ export function ProductForm({ id: formId, data, onSubmit }: ProductFormProps) {
     </form>
   )
 }
+
+const SMALL_UNITS = ['pcs', 'kg', 'gr', 'botol', 'gelas']
+const BIG_UNITS = ['lusin', 'krat', 'dus', 'peti']
