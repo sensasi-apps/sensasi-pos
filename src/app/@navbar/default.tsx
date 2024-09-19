@@ -12,6 +12,7 @@ import {
 } from '@nextui-org/react'
 import NextLink from 'next/link'
 import {
+  CalculatorIcon,
   ComputerIcon,
   FileSpreadsheetIcon,
   ShoppingCartIcon,
@@ -21,39 +22,51 @@ import ThemeSwitcher from '@/components/theme-switcher'
 // sub-components
 import SettingsDropdownButtonInNavbar from './_components/settings-dropdown-button'
 import PageUrlEnum from '@/enums/page-url'
+import { hasAnyPermissions } from '@/functions/has-any-permissions'
+import { Permission } from '@/enums/permission'
+import { hasLoggedInUser } from '@/functions/has-logged-in-user'
 
 /**
  *
  * @todo Implementasi render kondisi terautentikasi
  */
 export default function NavbarSlot() {
-  const isProduction = process.env.NODE_ENV === 'production'
-
   return (
     <VendorNavbar
       className="transition-[background-color] duration-1000 ease-in-out"
       position="static">
       <NavbarBrand
         as={NextLink}
-        href="/"
+        href={PageUrlEnum.HOME}
         className="flex items-center hover:text-primary-300 transition-all">
         <ComputerIcon size={24} className="text-primary-300" />
         <p className="font-bold text-inherit ml-2 leading-4">Sensasi POS</p>
       </NavbarBrand>
 
       <NavbarContent justify="end">
-        {/* guest */}
-        {!isProduction && (
+        {!hasLoggedInUser() && (
           <NavbarItem>
-            <Link href="/login" as={NextLink}>
+            <Link href={PageUrlEnum.LOGIN} as={NextLink}>
               Login
             </Link>
           </NavbarItem>
         )}
 
-        {/* auth */}
-        {!isProduction && (
-          <NavbarItem className="flex gap-2">
+        <NavbarItem className="flex gap-2">
+          {hasAnyPermissions([Permission.READ_SALE]) && (
+            <Tooltip content="Kasir" color="primary" showArrow size="lg">
+              <Button
+                isIconOnly
+                href={PageUrlEnum.SALE_LIST}
+                as={NextLink}
+                variant="light"
+                color="primary">
+                <CalculatorIcon />
+              </Button>
+            </Tooltip>
+          )}
+
+          {hasAnyPermissions([Permission.READ_PURCHASE]) && (
             <Tooltip content="Pengadaan" color="primary" showArrow size="lg">
               <Button
                 isIconOnly
@@ -64,19 +77,19 @@ export default function NavbarSlot() {
                 <ShoppingCartIcon />
               </Button>
             </Tooltip>
+          )}
 
-            <SettingsDropdownButtonInNavbar />
-          </NavbarItem>
-        )}
+          <SettingsDropdownButtonInNavbar />
+        </NavbarItem>
 
         <NavbarItem>
           <ThemeSwitcher />
         </NavbarItem>
 
-        {!isProduction && (
+        {hasAnyPermissions([Permission.READ_REPORT]) && (
           <NavbarItem>
             <Button
-              href="/dashboard/reports"
+              href={PageUrlEnum.REPORT_LIST}
               as={NextLink}
               startContent={<FileSpreadsheetIcon size="1rem" />}
               variant="flat"
