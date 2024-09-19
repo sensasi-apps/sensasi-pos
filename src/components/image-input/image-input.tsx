@@ -31,7 +31,7 @@ export default function ImageInput({
 
   return (
     <div className={className}>
-      <div className={classNames?.label ?? 'text-sm mb-1'}>{label}</div>
+      <div className={classNames?.label ?? 'mb-1 text-sm'}>{label}</div>
 
       <div
         className="mb-2 justify-center duration-250"

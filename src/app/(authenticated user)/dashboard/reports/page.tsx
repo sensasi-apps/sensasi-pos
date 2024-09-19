@@ -17,11 +17,11 @@ const ReportPage = () => {
       <div className="my-6 pl-4">
         <h2 className="text-2xl font-semibold">Laporan</h2>
       </div>
-      <div className="flex flex-col md:flex-row gap-8">
+      <div className="flex flex-col gap-8 md:flex-row">
         <Card className="basis-8/12">
           <CardBody>
-            <div className="flex flex-row justify-between items-center px-4">
-              <h3 className="text-lg font-bold ">Total Penjualan</h3>
+            <div className="flex flex-row items-center justify-between px-4">
+              <h3 className="text-lg font-bold">Total Penjualan</h3>
 
               <Select
                 label="Rentang Waktu"
@@ -49,8 +49,8 @@ const ReportPage = () => {
 
         <Card className="basis-4/12">
           <CardBody>
-            <div className="flex flex-row justify-between items-center px-4">
-              <h3 className="text-lg font-bold ">Jumlah Transaksi</h3>
+            <div className="flex flex-row items-center justify-between px-4">
+              <h3 className="text-lg font-bold">Jumlah Transaksi</h3>
 
               <Select
                 label="Rentang Waktu"

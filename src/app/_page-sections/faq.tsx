@@ -4,8 +4,8 @@ import { Accordion, AccordionItem } from '@nextui-org/react'
 
 export function Faq() {
   return (
-    <section className="py-28 px-8 container">
-      <h2 className="text-5xl font-bold text-center mb-16">Pertanyaan Umum</h2>
+    <section className="container px-8 py-28">
+      <h2 className="mb-16 text-center text-5xl font-bold">Pertanyaan Umum</h2>
 
       <Accordion variant="bordered" className="mx-auto max-w-3xl border">
         <AccordionItem title="Apa itu Sensasi POS?">

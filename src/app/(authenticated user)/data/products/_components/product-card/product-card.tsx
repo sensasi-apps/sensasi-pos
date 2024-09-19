@@ -44,12 +44,12 @@ export function ProductCard({
     <Card
       as={as}
       className={
-        'light:border-none bg-background/60 dark:bg-default-100/50 w-full' +
+        'w-full bg-background/60 light:border-none dark:bg-default-100/50' +
         (className ? ` ${className}` : '')
       }
       shadow="sm">
       <CardBody>
-        <div className="flex gap-6 items-center max-md:items-start">
+        <div className="flex items-center gap-6 max-md:items-start">
           {image_file && (
             <Image
               alt="Gambar Produk"
@@ -65,11 +65,11 @@ export function ProductCard({
           )}
 
           <div className="flex flex-1 items-center">
-            <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 w-full">
-              <div className="col-span-6 md:col-span-8 border-r-2 max-md:border-none">
-                <h2 className="text-lg mb-1">{name}</h2>
+            <div className="grid w-full grid-cols-6 gap-6 md:grid-cols-12 md:gap-4">
+              <div className="col-span-6 border-r-2 max-md:border-none md:col-span-8">
+                <h2 className="mb-1 text-lg">{name}</h2>
 
-                <div className="text-sm font-medium flex gap-2 items-center">
+                <div className="flex items-center gap-2 text-sm font-medium">
                   <Chip size="sm">{category ?? 'Tanpa Kategori'}</Chip>
                   <span>•</span>
                   <span>
@@ -79,12 +79,12 @@ export function ProductCard({
                 </div>
               </div>
 
-              <div className="flex flex-col justify-center col-span-3 md:col-span-2">
+              <div className="col-span-3 flex flex-col justify-center md:col-span-2">
                 <h3 className="text-sm">HPP</h3>
                 <p className="text-xl">{formatNumber(cost)}</p>
               </div>
 
-              <div className="flex flex-col justify-center items-center col-span-3 md:col-span-2">
+              <div className="col-span-3 flex flex-col items-center justify-center md:col-span-2">
                 <h3 className="text-sm">Harga Jual</h3>
                 <p className="text-xl">{formatNumber(default_price)}</p>
               </div>

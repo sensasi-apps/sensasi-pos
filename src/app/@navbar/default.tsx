@@ -38,9 +38,9 @@ export default function NavbarSlot() {
       <NavbarBrand
         as={NextLink}
         href={PageUrlEnum.HOME}
-        className="flex items-center hover:text-primary-300 transition-all">
+        className="flex items-center transition-all hover:text-primary-300">
         <ComputerIcon size={24} className="text-primary-300" />
-        <p className="font-bold text-inherit ml-2 leading-4">Sensasi POS</p>
+        <p className="ml-2 font-bold leading-4 text-inherit">Sensasi POS</p>
       </NavbarBrand>
 
       <NavbarContent justify="end">

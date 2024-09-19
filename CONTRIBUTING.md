@@ -31,7 +31,7 @@ Ada banyak cara di mana Anda dapat membantu proyek ini menjadi lebih baik:
 
 > [!TIP]
 > Anda dapat mempelajari cetak biru aplikasi Sensasi POS melalui Figma Jam pada gambar-tautan di bawah atau berdiskusi pada [#119](https://github.com/sensasi-apps/sensasi-pos/discussions/119).
-> 
+>
 > <a href="https://www.figma.com/board/iLD0Lbbac8VpH72KaF9iHC/Cetak-Biru---Sensasi-POS?node-id=0-1&t=mKrQZFZs45r2KC0L-1"><img src="https://github.com/user-attachments/assets/9391214d-f5ac-48d2-895f-239727f93f11" width="350" /></a>
 
 ## 💻 Persiapan Pengembangan

@@ -25,7 +25,7 @@ const LineChart = ({ day }: LineChartProps) => {
   return (
     <ResponsiveContainer width="100%" height={300} className={''}>
       <Chart
-        className="dark:text-black bg-transparent"
+        className="bg-transparent dark:text-black"
         // TODO: Hapus data dummy ini ketika sudah terhubung dengan API
         data={dataPenjualan.slice(
           0,
