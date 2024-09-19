@@ -80,14 +80,14 @@ export default function ImageInput({
 
   return (
     <div className={className}>
-      <div className={classNames?.label ?? 'text-sm mb-1'}>{label}</div>
+      <div className={classNames?.label ?? 'mb-1 text-sm'}>{label}</div>
 
       <Card>
         <CardBody>
           <div
             onDrop={onDrop}
             onDragOver={onDragOver}
-            className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center cursor-pointer transition-colors duration-300 hover:border-primary">
+            className="cursor-pointer rounded-lg border-2 border-dashed border-gray-300 p-4 text-center transition-colors duration-300 hover:border-primary">
             {value === undefined ? (
               <>
                 <p className="mb-2">Drag and drop images here</p>
@@ -131,7 +131,7 @@ export default function ImageInput({
                     src={value}
                   />
                   {hoveredImage && (
-                    <div className="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center rounded-lg z-10">
+                    <div className="absolute inset-0 z-10 flex items-center justify-center rounded-lg bg-black bg-opacity-50">
                       <Button
                         isIconOnly
                         color="danger"
@@ -161,10 +161,10 @@ export default function ImageInput({
                   )}
                 </div>
                 {isMobile ? (
-                  <div className="flex flex-row justify-center gap-4 mt-4">
+                  <div className="mt-4 flex flex-row justify-center gap-4">
                     <Button
                       isIconOnly
-                      className="w-full "
+                      className="w-full"
                       color="primary"
                       variant="bordered"
                       onClick={() => {
@@ -208,11 +208,11 @@ export default function ImageInput({
               <ModalHeader className="flex flex-col gap-1">
                 Image Preview
               </ModalHeader>
-              <ModalBody className="flex justify-center items-center">
+              <ModalBody className="flex items-center justify-center">
                 <Image
                   src={modalImage ?? ''}
                   alt="Large preview"
-                  className="flex justify-center scale-110"
+                  className="flex scale-110 justify-center"
                 />
               </ModalBody>
               <ModalFooter>
