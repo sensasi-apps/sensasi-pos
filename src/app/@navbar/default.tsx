@@ -36,7 +36,7 @@ export default function NavbarSlot() {
       <NavbarBrand
         as={NextLink}
         href="/"
-        className="flex items-end text-end hover:text-primary-300 duration-150">
+        className="flex items-center hover:text-primary-300 transition-all">
         <ComputerIcon size={24} className="text-primary-300" />
         <p className="font-bold text-inherit ml-2 leading-4">Sensasi POS</p>
       </NavbarBrand>
@@ -51,24 +51,7 @@ export default function NavbarSlot() {
           </NavbarItem>
         )}
 
-        <NavbarItem>
-          <ThemeSwitcher />
-        </NavbarItem>
-
         {/* auth */}
-        {!isProduction && (
-          <NavbarItem>
-            <Button
-              href="/dashboard/reports"
-              as={NextLink}
-              variant="shadow"
-              color="primary"
-              startContent={<FileSpreadsheetIcon />}>
-              Laporan
-            </Button>
-          </NavbarItem>
-        )}
-
         {!isProduction && (
           <NavbarItem className="flex gap-2">
             <Tooltip content="Pengadaan" color="primary" showArrow size="lg">
@@ -83,6 +66,23 @@ export default function NavbarSlot() {
             </Tooltip>
 
             <SettingsDropdownButtonInNavbar />
+          </NavbarItem>
+        )}
+
+        <NavbarItem>
+          <ThemeSwitcher />
+        </NavbarItem>
+
+        {!isProduction && (
+          <NavbarItem>
+            <Button
+              href="/dashboard/reports"
+              as={NextLink}
+              startContent={<FileSpreadsheetIcon size="1rem" />}
+              variant="flat"
+              color="primary">
+              Laporan
+            </Button>
           </NavbarItem>
         )}
       </NavbarContent>

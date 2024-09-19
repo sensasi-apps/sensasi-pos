@@ -6,7 +6,7 @@ import { Card, CardBody } from '@nextui-org/react'
 import './_layout-components/main.css'
 import { Providers } from './_layout-components/providers'
 import { PageIndicator } from './_layout-components/page-indicator'
-import { roboto } from './_layout-components/font'
+import { sans } from './_layout-components/font'
 
 export const metadata: Metadata = {
   title: 'Sensasi POS — Aplikasi Point of Sale Sederhana',
@@ -32,7 +32,7 @@ export default function RootLayout({
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </head>
 
-      <body className={roboto.className}>
+      <body className={sans.className}>
         <Providers>
           {navbar}
 
