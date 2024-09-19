@@ -1,7 +1,13 @@
 'use client'
 
 // vendors
-import { Input, Textarea } from '@nextui-org/react'
+import {
+  Autocomplete,
+  AutocompleteItem,
+  AutocompleteSection,
+  Input,
+  Textarea,
+} from '@nextui-org/react'
 import { CameraIcon, InfoIcon } from 'lucide-react'
 import BarcodeReader from 'react-barcode-reader'
 // components
@@ -123,17 +129,41 @@ export function ProductForm({ id: formId, data, onSubmit }: ProductFormProps) {
             handleValueChange('description', value)
           }}></Textarea>
 
-        <Input
+        <Autocomplete
           label="Satuan Jual"
           isRequired
           className="w-1/2"
-          defaultValue={qty_unit ?? ''}
-          onChange={({ target: { value } }) => {
-            handleValueChange('qty_unit', value)
+          scrollShadowProps={{
+            isEnabled: false,
           }}
+          defaultInputValue={qty_unit ?? ''}
           errorMessage={errors.qty_unit}
           isInvalid={!!errors.qty_unit}
-        />
+          onInputChange={value => {
+            handleValueChange('qty_unit', value)
+          }}
+          allowsCustomValue>
+          <AutocompleteSection
+            title="Kemasan Kecil"
+            classNames={{
+              heading:
+                'flex w-full sticky top-1 z-20 py-1.5 px-2 bg-default-100 shadow-small rounded-small',
+            }}>
+            {SMALL_UNITS.map(value => (
+              <AutocompleteItem key={value}>{value}</AutocompleteItem>
+            ))}
+          </AutocompleteSection>
+          <AutocompleteSection
+            title="Kemasan Besar"
+            classNames={{
+              heading:
+                'flex w-full sticky top-1 z-20 py-1.5 px-2 bg-default-100 shadow-small rounded-small',
+            }}>
+            {BIG_UNITS.map(value => (
+              <AutocompleteItem key={value}>{value}</AutocompleteItem>
+            ))}
+          </AutocompleteSection>
+        </Autocomplete>
       </div>
       <Input
         label="Harga Jual Default"
@@ -157,3 +187,6 @@ export function ProductForm({ id: formId, data, onSubmit }: ProductFormProps) {
     </form>
   )
 }
+
+const SMALL_UNITS = ['pcs', 'kg', 'gr', 'botol', 'gelas']
+const BIG_UNITS = ['lusin', 'krat', 'dus', 'peti']
