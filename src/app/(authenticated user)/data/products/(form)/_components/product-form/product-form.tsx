@@ -9,8 +9,8 @@ import BarcodeScannerCameraModal from '@/components/barcode-scanner-camera-modal
 import ImageInput from '@/components/image-input/image-input'
 // sub components
 import { IconButtonInputContent } from './icon-button-input-content'
-import { useHook } from './_hook'
-import { ProductFormProps } from './_props'
+import { useHook } from './hook'
+import { ProductFormProps } from './props'
 
 export function ProductForm({ id: formId, data, onSubmit }: ProductFormProps) {
   const {
