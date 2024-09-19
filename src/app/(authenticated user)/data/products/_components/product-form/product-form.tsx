@@ -1,7 +1,13 @@
 'use client'
 
 // vendors
-import { Input, Textarea } from '@nextui-org/react'
+import {
+  Input,
+  Select,
+  SelectItem,
+  SelectSection,
+  Textarea,
+} from '@nextui-org/react'
 import { CameraIcon, InfoIcon } from 'lucide-react'
 import BarcodeReader from 'react-barcode-reader'
 // components
@@ -33,6 +39,48 @@ export function ProductForm({ id: formId, data, onSubmit }: ProductFormProps) {
     handleValueChange,
     handleSubmit,
   } = useHook(data, onSubmit)
+
+  const smallUnits = [
+    {
+      key: 'pcs',
+      text: 'pcs',
+    },
+    {
+      key: 'kg',
+      text: 'kg',
+    },
+    {
+      key: 'gr',
+      text: 'gr',
+    },
+    {
+      key: 'botol',
+      text: 'botol',
+    },
+    {
+      key: 'gelas',
+      text: 'gelas',
+    },
+  ]
+
+  const bigUnits = [
+    {
+      key: 'lusin',
+      text: 'lusin',
+    },
+    {
+      key: 'krat',
+      text: 'krat',
+    },
+    {
+      key: 'dus',
+      text: 'dus',
+    },
+    {
+      key: 'peti',
+      text: 'peti',
+    },
+  ]
 
   return (
     <form id={formId} onSubmit={handleSubmit} className="flex gap-3 flex-col">
@@ -123,17 +171,44 @@ export function ProductForm({ id: formId, data, onSubmit }: ProductFormProps) {
             handleValueChange('description', value)
           }}></Textarea>
 
-        <Input
+        <Select
           label="Satuan Jual"
           isRequired
           className="w-1/2"
-          defaultValue={qty_unit ?? ''}
-          onChange={({ target: { value } }) => {
-            handleValueChange('qty_unit', value)
+          scrollShadowProps={{
+            isEnabled: false,
           }}
           errorMessage={errors.qty_unit}
+          defaultSelectedKeys={qty_unit ?? ''}
           isInvalid={!!errors.qty_unit}
-        />
+          onChange={({ target: { value } }) => {
+            handleValueChange('qty_unit', value)
+          }}>
+          <SelectSection
+            title={'Kemasan Kecil'}
+            classNames={{
+              heading:
+                'flex w-full sticky top-1 z-20 py-1.5 px-2 bg-default-100 shadow-small rounded-small',
+            }}>
+            {smallUnits.map(({ key, text }) => (
+              <SelectItem key={key} value={key}>
+                {text}
+              </SelectItem>
+            ))}
+          </SelectSection>
+          <SelectSection
+            title={'Kemasan Besar'}
+            classNames={{
+              heading:
+                'flex w-full sticky top-1 z-20 py-1.5 px-2 bg-default-100 shadow-small rounded-small',
+            }}>
+            {bigUnits.map(({ key, text }) => (
+              <SelectItem key={key} value={key}>
+                {text}
+              </SelectItem>
+            ))}
+          </SelectSection>
+        </Select>
       </div>
       <Input
         label="Harga Jual Default"
