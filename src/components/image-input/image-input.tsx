@@ -117,7 +117,7 @@ export default function ImageInput({
             ) : (
               <div className="flex flex-col justify-center duration-250">
                 <div
-                  className="relative"
+                  className="relative mx-auto"
                   onMouseEnter={() => {
                     setHoveredImage(value)
                   }}
@@ -160,7 +160,8 @@ export default function ImageInput({
                     </div>
                   )}
                 </div>
-                {isMobile ? (
+
+                {isMobile && (
                   <div className="mt-4 flex flex-row justify-center gap-4">
                     <Button
                       isIconOnly
@@ -173,6 +174,7 @@ export default function ImageInput({
                       onPress={onOpen}>
                       <Maximize2 size={20} />
                     </Button>
+
                     <Button
                       isIconOnly
                       className="w-full"
@@ -189,7 +191,7 @@ export default function ImageInput({
                       <Trash2 size={20} />
                     </Button>
                   </div>
-                ) : null}
+                )}
               </div>
             )}
           </div>
