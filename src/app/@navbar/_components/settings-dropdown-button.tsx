@@ -1,3 +1,4 @@
+// vendors
 import {
   Button,
   Dropdown,
@@ -7,16 +8,22 @@ import {
   DropdownTrigger,
 } from '@nextui-org/react'
 import {
+  ChevronDown,
   DatabaseBackupIcon,
   PackageIcon,
   PowerCircleIcon,
   SettingsIcon,
   UserCogIcon,
+  WarehouseIcon,
 } from 'lucide-react'
-import ThemeSwitcher from '@/components/theme-switcher'
-import PageUrlEnum from '@/enums/page-url'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
+
+// globals
+import { hasAnyPermissions } from '@/functions/has-any-permissions'
+import { Permission } from '@/enums/permission'
+import ThemeSwitcher from '@/components/theme-switcher'
+import PageUrlEnum from '@/enums/page-url'
 
 export default function SettingsDropdownButtonInNavbar() {
   const { theme, setTheme } = useTheme()
@@ -24,7 +31,11 @@ export default function SettingsDropdownButtonInNavbar() {
   return (
     <Dropdown>
       <DropdownTrigger>
-        <Button color="primary" variant="light" isIconOnly>
+        <Button
+          color="primary"
+          variant="light"
+          className="min-w-[50px] px-0 gap-0"
+          endContent={<ChevronDown size={16} />}>
           <SettingsIcon />
         </Button>
       </DropdownTrigger>
@@ -45,9 +56,26 @@ export default function SettingsDropdownButtonInNavbar() {
           Pengaturan
         </DropdownItem>
 
-        <DropdownSection title="Master Data" showDivider>
+        <DropdownSection
+          title="Data Induk"
+          showDivider
+          className={
+            hasAnyPermissions([
+              Permission.READ_PRODUCT,
+              Permission.READ_WAREHOUSE,
+              Permission.READ_USER,
+              Permission.EXPORT_DB,
+              Permission.WIPE_DB,
+              Permission.SYNC_DB,
+            ])
+              ? ''
+              : 'hidden'
+          }>
           <DropdownItem
             as={Link}
+            className={
+              hasAnyPermissions([Permission.READ_PRODUCT]) ? '' : 'hidden'
+            }
             href={PageUrlEnum.PRODUCT_LIST}
             startContent={<PackageIcon className="mr-1" />}>
             Produk
@@ -55,6 +83,19 @@ export default function SettingsDropdownButtonInNavbar() {
 
           <DropdownItem
             as={Link}
+            className={
+              hasAnyPermissions([Permission.READ_WAREHOUSE]) ? '' : 'hidden'
+            }
+            href={PageUrlEnum.WAREHOUSE_LIST}
+            startContent={<WarehouseIcon className="mr-1" />}>
+            Gudang
+          </DropdownItem>
+
+          <DropdownItem
+            as={Link}
+            className={
+              hasAnyPermissions([Permission.READ_USER]) ? '' : 'hidden'
+            }
             href={PageUrlEnum.USER_LIST}
             startContent={<UserCogIcon className="mr-1" />}>
             Pengguna
@@ -62,6 +103,15 @@ export default function SettingsDropdownButtonInNavbar() {
 
           <DropdownItem
             as={Link}
+            className={
+              hasAnyPermissions([
+                Permission.EXPORT_DB,
+                Permission.WIPE_DB,
+                Permission.SYNC_DB,
+              ])
+                ? ''
+                : 'hidden'
+            }
             href={PageUrlEnum.DATABASE_ACTION_LIST}
             startContent={<DatabaseBackupIcon className="mr-1" />}>
             Pencadangan

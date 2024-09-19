@@ -2,7 +2,6 @@
 
 // vendors
 import { Card, Image, CardHeader, CardBody } from '@nextui-org/react'
-import NextuiAlert from 'nextui-alert'
 // locals
 import GridPattern from '@/components/grid-pattern'
 
@@ -49,13 +48,6 @@ export function Hero() {
       />
       <div className={'container gap-10'}>
         <div className="max-w-5xl mx-auto text-center">
-          <NextuiAlert
-            severity="warning"
-            variant="flat"
-            className="mx-auto max-w-fit">
-            Aplikasi masih dalam tahap pengembangan. Silakan kunjungi lagi
-            nanti.
-          </NextuiAlert>
           <h1 className="sm:text-6xl text-5xl font-bold my-6">
             Kelola Penjualan dengan Mudah, Kapan Saja
           </h1>
@@ -73,6 +65,7 @@ export function Hero() {
             isDisabled>
             Coba Sekarang
           </Button> */}
+
           <div className="grid lg:grid-cols-3 sm:grid-cols-2 mx-auto gap-6 mt-12">
             {FEATURES.map((feature, i) => (
               <FeatureItem key={i} data={feature} />

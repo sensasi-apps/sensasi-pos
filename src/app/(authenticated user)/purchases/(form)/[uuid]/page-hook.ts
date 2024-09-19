@@ -6,9 +6,9 @@ import type { FormValues } from '../_types/form-values'
 // vendors
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { validate as validateUuid } from 'uuid'
 // globals
 import db from '@/models/db'
+import { isUuidString } from '@/functions/is-uuid-string'
 import { updateStocksOnReceived } from '../_functions/update-stocks-on-received'
 import { validateFormValues } from '../_functions/validate-form-values'
 
@@ -18,7 +18,7 @@ export function usePageHook(uuidPageParam: string) {
   const [formValues, setFormValues] = useState<FormValues>()
 
   useEffect(() => {
-    if (!validateUuid(uuidPageParam)) {
+    if (!isUuidString(uuidPageParam)) {
       throw new Error('Invalid UUID')
     }
 

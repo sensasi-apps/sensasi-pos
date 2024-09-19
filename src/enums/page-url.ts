@@ -2,6 +2,7 @@ enum PageUrlEnum {
   HOME = '/',
   DASHBOARD = '/dashboard',
   APP_SETTING_PAGE_URL = '/settings',
+  LOGIN = '/login',
 
   // REPORT
   REPORT_LIST = '/reports',
@@ -23,7 +24,7 @@ enum PageUrlEnum {
   USER_EDIT = '/data/users/:uuid',
   USER_DELETE = '/data/users/:uuid/delete',
 
-  // WARAHOUSE
+  // WAREHOUSE
   WAREHOUSE_LIST = '/data/warehouses',
   WAREHOUSE_CREATE = '/data/warehouses/create',
   WAREHOUSE_EDIT = '/data/warehouses/:uuid',

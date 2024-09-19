@@ -9,28 +9,23 @@ import {
   CardHeader,
 } from '@nextui-org/react'
 // sub-components
-import { ProductForm } from '@/app/(authenticated user)/data/products/_components/product-form'
-import { useHook } from './_hook'
+import { ProductForm } from '@/app/(authenticated user)/data/products/(form)/_components/product-form'
+import { useHook as updateUseHook } from '../[uuid]/_hook'
+import { useHook as createUseHook } from '../create/_hook'
 
-/**
- *
- * @todo Change id parameter type to UUID
- */
-export default function ProductFormPage({
-  params: { id },
-}: {
-  params: { id: string }
-}) {
-  const { product, handleSubmit, handleCancel } = useHook(id)
+export function ProductFormPageTemplate(
+  props: ReturnType<typeof createUseHook> | ReturnType<typeof updateUseHook>,
+) {
+  const { product, handleSubmit, handleCancel } = props
+
+  const cardTitile = product?.name
+    ? `Perbaharui Data — ${product.name}`
+    : 'Masukkan Data Produk'
 
   return (
-    <div className="flex justify-center">
+    <main className="flex justify-center">
       <Card className="max-w-md" fullWidth>
-        <CardHeader className="font-bold">
-          {product?.name
-            ? `Perbaharui Data — ${product.name}`
-            : 'Masukkan Data Produk'}
-        </CardHeader>
+        <CardHeader className="font-bold">{cardTitile}</CardHeader>
 
         <CardBody>
           {product && (
@@ -52,6 +47,6 @@ export default function ProductFormPage({
           </Button>
         </CardFooter>
       </Card>
-    </div>
+    </main>
   )
 }
