@@ -2,10 +2,10 @@
 
 // vendors
 import {
+  Autocomplete,
+  AutocompleteItem,
+  AutocompleteSection,
   Input,
-  Select,
-  SelectItem,
-  SelectSection,
   Textarea,
 } from '@nextui-org/react'
 import { CameraIcon, InfoIcon } from 'lucide-react'
@@ -171,44 +171,45 @@ export function ProductForm({ id: formId, data, onSubmit }: ProductFormProps) {
             handleValueChange('description', value)
           }}></Textarea>
 
-        <Select
+        <Autocomplete
           label="Satuan Jual"
           isRequired
           className="w-1/2"
           scrollShadowProps={{
             isEnabled: false,
           }}
+          defaultInputValue={qty_unit ?? ''}
           errorMessage={errors.qty_unit}
-          defaultSelectedKeys={qty_unit ?? ''}
           isInvalid={!!errors.qty_unit}
           onChange={({ target: { value } }) => {
             handleValueChange('qty_unit', value)
-          }}>
-          <SelectSection
+          }}
+          allowsCustomValue>
+          <AutocompleteSection
             title={'Kemasan Kecil'}
             classNames={{
               heading:
                 'flex w-full sticky top-1 z-20 py-1.5 px-2 bg-default-100 shadow-small rounded-small',
             }}>
             {smallUnits.map(({ key, text }) => (
-              <SelectItem key={key} value={key}>
+              <AutocompleteItem key={key} value={key}>
                 {text}
-              </SelectItem>
+              </AutocompleteItem>
             ))}
-          </SelectSection>
-          <SelectSection
+          </AutocompleteSection>
+          <AutocompleteSection
             title={'Kemasan Besar'}
             classNames={{
               heading:
                 'flex w-full sticky top-1 z-20 py-1.5 px-2 bg-default-100 shadow-small rounded-small',
             }}>
             {bigUnits.map(({ key, text }) => (
-              <SelectItem key={key} value={key}>
+              <AutocompleteItem key={key} value={key}>
                 {text}
-              </SelectItem>
+              </AutocompleteItem>
             ))}
-          </SelectSection>
-        </Select>
+          </AutocompleteSection>
+        </Autocomplete>
       </div>
       <Input
         label="Harga Jual Default"
