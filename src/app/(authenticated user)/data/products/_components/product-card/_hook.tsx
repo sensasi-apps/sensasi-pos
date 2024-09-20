@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { ConfirmationModal } from '@/components/confirmation-modal'
 // models
 import db from '@/models/db'
+import toast from 'react-hot-toast'
 
 export function useHook(productUuid: Product['uuid']) {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
@@ -24,11 +25,14 @@ export function useHook(productUuid: Product['uuid']) {
         }}
         onAccept={() => {
           db.products
+            // .delete(productUuid)
             .update(productUuid, { deleted_at: dayjs().toISOString() })
             .then(() => {
+              toast.success('Produk berhasil dihapus')
               setIsDeleteModalOpen(false)
             })
-            .catch(err => {
+            .catch((err: Error) => {
+              toast.error('Gagal menghapus produk')
               throw err
             })
         }}>
