@@ -4,8 +4,6 @@ import { Base64Blob } from '@/@types/base-64-blob'
 import resizeImage from '@/components/image-input/functions/resize-image'
 import {
   Button,
-  Card,
-  CardBody,
   Image,
   Modal,
   ModalBody,
@@ -82,121 +80,117 @@ export default function ImageInput({
     <div className={className}>
       <div className={classNames?.label ?? 'mb-1 text-sm'}>{label}</div>
 
-      <Card>
-        <CardBody>
-          <div
-            onDrop={onDrop}
-            onDragOver={onDragOver}
-            className="cursor-pointer rounded-lg border-2 border-dashed border-gray-300 p-4 text-center transition-colors duration-300 hover:border-primary">
-            {value === undefined ? (
-              <>
-                <p className="mb-2">Drag and drop images here</p>
-                <p>or</p>
-                <Button as="label" color="primary" className="mt-2">
-                  Select Files
-                  <input
-                    type="file"
-                    accept="image/*"
-                    ref={fileInputRef}
-                    onChange={({ target: { files } }) => {
-                      if (files?.[0]) {
-                        resizeImage(files[0])
-                          .then(uri => {
-                            setValue(uri)
-                            onValueChange?.(uri)
-                          })
-                          .catch(err => {
-                            throw err
-                          })
+      <div
+        onDrop={onDrop}
+        onDragOver={onDragOver}
+        className="cursor-pointer rounded-lg border-2 border-dashed border-gray-300 p-4 text-center transition-colors duration-300 hover:border-primary">
+        {value === undefined ? (
+          <>
+            <p className="mb-2">Drag and drop images here</p>
+            <p>or</p>
+            <Button as="label" color="primary" className="mt-2">
+              Select Files
+              <input
+                type="file"
+                accept="image/*"
+                ref={fileInputRef}
+                onChange={({ target: { files } }) => {
+                  if (files?.[0]) {
+                    resizeImage(files[0])
+                      .then(uri => {
+                        setValue(uri)
+                        onValueChange?.(uri)
+                      })
+                      .catch(err => {
+                        throw err
+                      })
+                  }
+                }}
+                className="hidden"
+              />
+            </Button>
+          </>
+        ) : (
+          <div className="flex flex-col justify-center duration-250">
+            <div
+              className="relative mx-auto"
+              onMouseEnter={() => {
+                setHoveredImage(value)
+              }}
+              onMouseLeave={() => {
+                setHoveredImage(null)
+              }}>
+              <Image
+                shadow="md"
+                alt="image-preview"
+                className={'max-h-72 ' + classNames?.imgPreview}
+                src={value}
+              />
+              {hoveredImage && (
+                <div className="absolute inset-0 z-10 flex items-center justify-center rounded-lg bg-black bg-opacity-50">
+                  <Button
+                    isIconOnly
+                    color="danger"
+                    variant="light"
+                    onClick={() => {
+                      setValue(undefined)
+                      onValueChange?.(null)
+
+                      if (fileInputRef.current) {
+                        fileInputRef.current.value = ''
                       }
                     }}
-                    className="hidden"
-                  />
-                </Button>
-              </>
-            ) : (
-              <div className="flex flex-col justify-center duration-250">
-                <div
-                  className="relative mx-auto"
-                  onMouseEnter={() => {
-                    setHoveredImage(value)
-                  }}
-                  onMouseLeave={() => {
-                    setHoveredImage(null)
-                  }}>
-                  <Image
-                    shadow="md"
-                    alt="image-preview"
-                    className={'max-h-72 ' + classNames?.imgPreview}
-                    src={value}
-                  />
-                  {hoveredImage && (
-                    <div className="absolute inset-0 z-10 flex items-center justify-center rounded-lg bg-black bg-opacity-50">
-                      <Button
-                        isIconOnly
-                        color="danger"
-                        variant="light"
-                        onClick={() => {
-                          setValue(undefined)
-                          onValueChange?.(null)
-
-                          if (fileInputRef.current) {
-                            fileInputRef.current.value = ''
-                          }
-                        }}
-                        className="mr-2">
-                        <Trash2 size={20} />
-                      </Button>
-                      <Button
-                        isIconOnly
-                        color="primary"
-                        variant="light"
-                        onClick={() => {
-                          setModalImage(value)
-                        }}
-                        onPress={onOpen}>
-                        <Maximize2 size={20} />
-                      </Button>
-                    </div>
-                  )}
+                    className="mr-2">
+                    <Trash2 size={20} />
+                  </Button>
+                  <Button
+                    isIconOnly
+                    color="primary"
+                    variant="light"
+                    onClick={() => {
+                      setModalImage(value)
+                    }}
+                    onPress={onOpen}>
+                    <Maximize2 size={20} />
+                  </Button>
                 </div>
+              )}
+            </div>
 
-                {isMobile && (
-                  <div className="mt-4 flex flex-row justify-center gap-4">
-                    <Button
-                      isIconOnly
-                      className="w-full"
-                      color="primary"
-                      variant="bordered"
-                      onClick={() => {
-                        setModalImage(value)
-                      }}
-                      onPress={onOpen}>
-                      <Maximize2 size={20} />
-                    </Button>
+            {isMobile && (
+              <div className="mt-4 flex flex-row justify-center gap-4">
+                <Button
+                  isIconOnly
+                  className="w-full"
+                  color="primary"
+                  variant="bordered"
+                  onClick={() => {
+                    setModalImage(value)
+                  }}
+                  onPress={onOpen}>
+                  <Maximize2 size={20} />
+                </Button>
 
-                    <Button
-                      isIconOnly
-                      className="w-full"
-                      color="danger"
-                      variant="bordered"
-                      onClick={() => {
-                        setValue(undefined)
-                        onValueChange?.(null)
+                <Button
+                  isIconOnly
+                  className="w-full"
+                  color="danger"
+                  variant="bordered"
+                  onClick={() => {
+                    setValue(undefined)
+                    onValueChange?.(null)
 
-                        if (fileInputRef.current) {
-                          fileInputRef.current.value = ''
-                        }
-                      }}>
-                      <Trash2 size={20} />
-                    </Button>
-                  </div>
-                )}
+                    if (fileInputRef.current) {
+                      fileInputRef.current.value = ''
+                    }
+                  }}>
+                  <Trash2 size={20} />
+                </Button>
               </div>
             )}
           </div>
-        </CardBody>
-      </Card>
+        )}
+      </div>
 
       <Modal
         isOpen={isOpen}
