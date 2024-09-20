@@ -19,7 +19,7 @@ import { GuestNavbarItems } from './_components/guest-navbar-items'
  *
  * @todo Implementasi render kondisi terautentikasi
  */
-export default function NavbarSlot() {
+export function Navbar() {
   return (
     <VendorNavbar
       className="transition-[background-color] duration-1000 ease-in-out"
