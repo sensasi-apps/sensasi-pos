@@ -33,9 +33,11 @@ export function FeedbackFormModal({
   return (
     <Modal isOpen={isOpen} hideCloseButton>
       <ModalContent>
-        <ModalHeader>Saran Perbaikan</ModalHeader>
+        <ModalHeader className="bg-primary text-background">
+          Saran Perbaikan
+        </ModalHeader>
 
-        <ModalBody>
+        <ModalBody className="pt-4">
           {isSubmitted ? (
             <NextuiAlert severity="success" title="Saran Anda telah terkirim!">
               Terima kasih atas partisipasi Anda dalam pengembangan{' '}
