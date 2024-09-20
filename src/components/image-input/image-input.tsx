@@ -83,7 +83,8 @@ export default function ImageInput({
       <div
         onDrop={onDrop}
         onDragOver={onDragOver}
-        className="cursor-pointer rounded-lg border-2 border-dashed border-gray-300 p-4 text-center transition-colors duration-300 hover:border-primary">
+        className="cursor-pointer rounded-lg border-2 border-dashed border-gray-300 p-4 text-center transition-colors duration-300 hover:border-primary"
+        onClick={() => fileInputRef.current?.click()}>
         {value === undefined ? (
           <>
             <p className="mb-2">Drag and drop images here</p>
@@ -127,11 +128,12 @@ export default function ImageInput({
                 src={value}
               />
               {hoveredImage && (
-                <div className="absolute inset-0 z-10 flex items-center justify-center rounded-lg bg-black bg-opacity-50">
+                <div className="absolute inset-0 z-10 flex items-center justify-center gap-6 rounded-lg bg-black bg-opacity-50 p-4">
                   <Button
                     isIconOnly
                     color="danger"
                     variant="light"
+                    className="h-full basis-1/2"
                     onClick={() => {
                       setValue(undefined)
                       onValueChange?.(null)
@@ -139,19 +141,19 @@ export default function ImageInput({
                       if (fileInputRef.current) {
                         fileInputRef.current.value = ''
                       }
-                    }}
-                    className="mr-2">
-                    <Trash2 size={20} />
+                    }}>
+                    <Trash2 size={40} />
                   </Button>
                   <Button
                     isIconOnly
                     color="primary"
                     variant="light"
+                    className="h-full basis-1/2"
                     onClick={() => {
                       setModalImage(value)
                     }}
                     onPress={onOpen}>
-                    <Maximize2 size={20} />
+                    <Maximize2 size={40} />
                   </Button>
                 </div>
               )}
