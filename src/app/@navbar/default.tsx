@@ -17,20 +17,24 @@ import {
   FileSpreadsheetIcon,
   ShoppingCartIcon,
 } from 'lucide-react'
-// components
-import ThemeSwitcher from '@/components/theme-switcher'
-// sub-components
-import SettingsDropdownButtonInNavbar from './_components/settings-dropdown-button'
-import PageUrlEnum from '@/enums/page-url'
+import { useState } from 'react'
+// globals
 import { hasAnyPermissions } from '@/functions/has-any-permissions'
 import { Permission } from '@/enums/permission'
 import { hasLoggedInUser } from '@/functions/has-logged-in-user'
+import PageUrlEnum from '@/enums/page-url'
+import ThemeSwitcher from '@/components/theme-switcher'
+// components
+import { FeedbackFormModal } from './_components/feedback-form-modal'
+import SettingsDropdownButtonInNavbar from './_components/settings-dropdown-button'
 
 /**
  *
  * @todo Implementasi render kondisi terautentikasi
  */
 export default function NavbarSlot() {
+  const [isFeedbackFormModalOpen, setIsFeedbackFormModalOpen] = useState(false)
+
   return (
     <VendorNavbar
       className="transition-[background-color] duration-1000 ease-in-out"
@@ -79,7 +83,11 @@ export default function NavbarSlot() {
             </Tooltip>
           )}
 
-          <SettingsDropdownButtonInNavbar />
+          <SettingsDropdownButtonInNavbar
+            onFeedbackFormModalOpen={() => {
+              setIsFeedbackFormModalOpen(true)
+            }}
+          />
         </NavbarItem>
 
         <NavbarItem>
@@ -99,6 +107,13 @@ export default function NavbarSlot() {
           </NavbarItem>
         )}
       </NavbarContent>
+
+      <FeedbackFormModal
+        isOpen={isFeedbackFormModalOpen}
+        onClose={() => {
+          setIsFeedbackFormModalOpen(false)
+        }}
+      />
     </VendorNavbar>
   )
 }
