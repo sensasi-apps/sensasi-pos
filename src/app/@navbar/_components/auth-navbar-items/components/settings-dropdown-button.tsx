@@ -10,6 +10,7 @@ import {
 import {
   ChevronDown,
   DatabaseBackupIcon,
+  MessageSquareTextIcon,
   PackageIcon,
   PowerCircleIcon,
   SettingsIcon,
@@ -25,7 +26,11 @@ import { Permission } from '@/enums/permission'
 import ThemeSwitcher from '@/components/theme-switcher'
 import PageUrlEnum from '@/enums/page-url'
 
-export default function SettingsDropdownButtonInNavbar() {
+export default function SettingsDropdownButtonInNavbar({
+  onFeedbackFormModalOpen,
+}: {
+  onFeedbackFormModalOpen: () => void
+}) {
   const { theme, setTheme } = useTheme()
 
   return (
@@ -54,6 +59,14 @@ export default function SettingsDropdownButtonInNavbar() {
           href={PageUrlEnum.APP_SETTING_PAGE_URL}
           startContent={<SettingsIcon className="mr-1" />}>
           Pengaturan
+        </DropdownItem>
+
+        <DropdownItem
+          className="text-secondary"
+          color="secondary"
+          onClick={onFeedbackFormModalOpen}
+          startContent={<MessageSquareTextIcon className="mr-1" />}>
+          Saran Perbaikan
         </DropdownItem>
 
         <DropdownSection
