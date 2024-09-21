@@ -35,7 +35,7 @@ export default function RootLayout({
         <Providers>
           {navbar}
 
-          <div className="sticky top-0 z-10 w-full bg-amber-500/90 p-2.5 text-center tracking-wide text-zinc-800">
+          <div className="sticky top-0 z-20 w-full bg-amber-500 p-2.5 text-center tracking-wide text-zinc-800">
             ⓘ Aplikasi masih dalam tahap pengembangan. Silakan kunjungi lagi
             nanti.
           </div>

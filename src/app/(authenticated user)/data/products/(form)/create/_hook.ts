@@ -9,6 +9,7 @@ import { generateOrderedUuid } from '@/functions/generate-ordered-uuid'
 import PageUrlEnum from '@/enums/page-url'
 // models
 import db from '@/models/db'
+import { toast } from '@/functions/toast'
 
 /**
  * Custom hook for handling product form creation.
@@ -39,6 +40,7 @@ export function useHook() {
         } as Product)
         .then(() => {
           router.push(PageUrlEnum.PRODUCT_LIST)
+          toast('Produk berhasil ditambahkan')
         })
         .catch(handleFailure)
     },

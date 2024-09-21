@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 import dayjs from 'dayjs'
 // globals
 import { isUuidString } from '@/functions/is-uuid-string'
+import { toast } from '@/functions/toast'
 import PageUrlEnum from '@/enums/page-url'
 // models
 import db from '@/models/db'
@@ -44,6 +45,7 @@ export function useHook(uuidFromPageParam: string) {
 
   function handleSuccess() {
     router.push(PageUrlEnum.PRODUCT_LIST)
+    toast('Produk berhasil diperbarui')
   }
 
   return {
