@@ -2,7 +2,6 @@ import type { Product } from '@/models/table-types/product'
 import { type FormEvent, useState } from 'react'
 import type { ProductFormProps } from './props'
 import { useDebouncedCallback } from 'use-debounce'
-import toast from 'react-hot-toast'
 
 export function useHook(
   data: ProductFormProps['data'],
@@ -50,29 +49,13 @@ export function useHook(
       ev.preventDefault()
 
       const errors = validate(formValues)
+
       if (Object.keys(errors).length) {
         setErrors(errors)
         return
       }
 
-      // onSubmit?.(formValues)
-      const submitPromise = new Promise<void>((resolve, reject) => {
-        try {
-          onSubmit?.(formValues)
-          resolve()
-        } catch (error) {
-          reject(error instanceof Error ? error : new Error(String(error)))
-        }
-      })
-      toast
-        .promise(submitPromise, {
-          loading: 'Menyimpan data...',
-          success: 'Berhasil menyimpan data',
-          error: 'Gagal menyimpan data',
-        })
-        .catch(() => {
-          toast.error('Terjadi kesalahan saat menyimpan data')
-        })
+      onSubmit?.(formValues)
     },
   }
 }
