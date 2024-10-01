@@ -99,6 +99,48 @@ Jika Anda menambahkan fitur baru atau memperbaiki bug, mohon tambahkan tes yang 
 npm test
 ``` -->
 
+## Pertanyaan Umum
+
+<details>
+   <summary>
+      <h3>Teknologi apa yang digunakan untuk <i>back-end</i>❓</h3>
+   </summary>
+   
+   Untuk saat ini, Sensasi POS tidak memisah/memecah basis kode antara _front-end_ dan _back-end_ sehingga tidak ada teknologi khusus yang digunakan untuk _back-end_. Sensasi POS bersandar penuh pada _framework_ NextJS. Walaupun begitu, komunikasi dengan basis data telah diakomodir oleh pustaka Dexie.js sehingga Anda dapat melakukan manipulasi data pada basis data secara langsung pada _event-event_ milik komponen _front-end_ (`onClick`, `onSubmit`, dsb) melalui fungsi/metode milik Dexie.js.
+</details>
+
+<details>
+   <summary>
+      <h3>Apakah semua isu pada <i>tab issues</i> belum dikerjakan❓</h3>
+   </summary>
+   
+   Semua status isu pada _tab_ tersebut diperbaharui secara _real-time_ oleh pengurus repositori sehingga semua status yang tertera pada semua isu bersifat mutakhir dengan kondisi terkini.
+</details>
+
+<details>
+   <summary>
+      <h3>Apakah harus memberitahu pengurus repositori ketika ingin berkontribusi❓</h3>
+   </summary>
+   
+   Untuk menghindari bentrok pada pengerjaan isu, sebaiknya memberitahukan isu mana yang ingin Anda selesaikan melalui kolom komentar pada isu tersebut.
+</details>
+
+<details>
+   <summary>
+      <h3>Apakah harus melakukan <i>fork</i> terlebih dahulu❓</h3>
+   </summary>
+   
+   Untuk berkontribusi, kontributor wajib untuk melakukan _fork_ terhadap repositori utama dengan tujuan untuk meningkatkan mengefisiensi tata kelola proyek dan alur pengerjaan. Penerapan alur pengerjaan seperti yang telah dijelaskan pada subbab [Persiapan Pengembangan](#persiapan-pengembangan) dan [Mulai Koding](#mulai-koding) dapat meminimalisir konflik terhadap _file-file_ yang terdapat di dalam proyek Sensasi POS yang secara beramai-ramai diubah oleh beberapa kontributor.
+</details>
+
+<details>
+   <summary>
+      <h3>Apakah ada <i>tutorial</i>-nya❓</h3>
+   </summary>
+   
+   Tata cara untuk berkontribusi telah dijelaskan pada subbab [Persiapan Pengembangan](#persiapan-pengembangan) dan [Mulai Koding](#mulai-koding). Silahkan membaca tata cara berkontribusi pada subbab tersebut.
+</details>
+
 ## 🤝 Diskusi dan Bantuan
 
 Jika Anda memiliki pertanyaan, ide, atau butuh panduan, jangan sungkan untuk menyampaikannya melalui jalur-jalur komunikasi berikut:
