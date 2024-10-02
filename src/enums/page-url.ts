@@ -3,6 +3,9 @@ enum PageUrlEnum {
   DASHBOARD = '/dashboard',
   APP_SETTING_PAGE_URL = '/settings',
   LOGIN = '/login',
+  RESET_PASSWORD = '/reset-password',
+  FORGOT_PASSWORD = '/forgot-password',
+  ONBOARDING = '/onboarding',
 
   // REPORT
   REPORT_LIST = '/reports',
