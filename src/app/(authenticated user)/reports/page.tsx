@@ -1,5 +1,5 @@
 import PageUrlEnum from '@/enums/page-url'
-import { Button, Link } from '@nextui-org/react'
+import { Link } from '@nextui-org/react'
 import NextLink from 'next/link'
 
 export default function page() {
