@@ -74,6 +74,16 @@ interface BaseProductMovement {
    * The date and time when the product movement was last updated.
    */
   updated_at: ISODate
+
+  /**
+   * User who deleted the product movement.
+   */
+  deleted_by_user_state?: User
+
+  /**
+   * The date and time when the product movement was deleted.
+   */
+  deleted_at?: ISODate
 }
 
 /**
