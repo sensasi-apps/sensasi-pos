@@ -9,19 +9,12 @@ import { Permission } from '@/enums/permission'
  * @returns Whether the user has any of the provided permissions
  */
 export function hasAnyPermissions(
+  // eslint-disable-next-line
   permissions: Permission[],
+
+  // eslint-disable-next-line
   user?: User,
 ): boolean {
-  /**
-   * @todo delete this when #85 is solved
-   */
-  permissions
-
-  /**
-   * @todo delete this when #85 is solved
-   */
-  user
-
   /**
    * @todo delete this when #85 is solved
    */
