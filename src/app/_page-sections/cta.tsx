@@ -1,10 +1,10 @@
-'use client'
-
-import { Button, Tooltip } from '@nextui-org/react'
-import { useState } from 'react'
+import PageUrlEnum from '@/enums/page-url'
+import { Button } from '@nextui-org/react'
+import Link from 'next/link'
 
 export function Cta() {
-  const [isTooltipOpen, setIsTooltipOpen] = useState(false)
+  // TODO: Buat fungsi untuk mengecek apakah aplikasi sudah diinisialisasi
+  const appIsAlreadyInitialized = false
 
   return (
     <section className="container">
@@ -13,24 +13,14 @@ export function Cta() {
           Mulai Mengelola Usaha Anda Sekarang
         </h2>
 
-        <Tooltip
-          isOpen={isTooltipOpen}
-          onOpenChange={open => {
-            setIsTooltipOpen(open)
-          }}
-          onTouchStart={() => {
-            setIsTooltipOpen(true)
-          }}
-          onTouchCancel={() => {
-            setIsTooltipOpen(false)
-          }}
-          content="ⓘ Aplikasi masih dalam tahap pengembangan. Silakan kunjungi lagi nanti."
-          showArrow
-          color="warning">
-          <Button className="h-16 cursor-not-allowed rounded-full px-10 text-xl">
-            Coba Sekarang
-          </Button>
-        </Tooltip>
+        <Button
+          className="h-16 rounded-full px-10 text-xl"
+          as={Link}
+          href={
+            appIsAlreadyInitialized ? PageUrlEnum.LOGIN : PageUrlEnum.ONBOARDING
+          }>
+          {appIsAlreadyInitialized ? 'Login' : 'Coba Sekarang'}
+        </Button>
       </div>
     </section>
   )
