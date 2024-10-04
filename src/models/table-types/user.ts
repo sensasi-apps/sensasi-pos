@@ -1,8 +1,7 @@
 import type { ISODate } from '@/@types/iso-date'
 import type { Permission } from '@/enums/permission'
+import type { Role } from '@/enums/role'
 import type { UUID } from 'crypto'
-
-type UserRole = 'owner' | 'manager' | 'cashier' | 'stocker'
 
 /**
  * Represents a user in the system.
@@ -14,19 +13,47 @@ export interface User {
   uuid: Readonly<UUID>
 
   /**
-   * The encrypted email address of the user.
+   * The name of the user.
    */
-  email__hashed: string
+  name: string
+
+  /**
+   * The email address of the user.
+   */
+  email: string
 
   /**
    * The encrypted password of the user.
    */
-  password__hashed: string
+  password__hashed: string | null
+
+  /**
+   * The PIN of the user.
+   */
+  pin__hashed: string
+
+  /**
+   * The security questions and answers for the user
+   * to recover their account.
+   */
+  sequrity_questions:
+    | {
+        /**
+         * The hashed question.
+         */
+        question__hashed: string
+
+        /**
+         * The hashed answer.
+         */
+        answer__hashed: string
+      }[]
+    | null
 
   /**
    * The roles assigned to the user.
    */
-  roles: UserRole[]
+  roles: Role[]
 
   /**
    * The permissions granted to the user.
@@ -36,17 +63,18 @@ export interface User {
   /**
    * Optional user preferences.
    */
-  preferences?: {
-    /**
-     * The user's preferred timezone.
-     */
-    timezone?: string
+  // preferences?: {
 
-    /**
-     * The user's preferred locale.
-     */
-    locale?: string
-  }
+  /**
+   * The user's preferred timezone.
+   */
+  // timezone?: string
+
+  /**
+   * The user's preferred locale.
+   */
+  // locale?: string
+  // }
 
   /**
    * The date and time when the user was created.
@@ -59,7 +87,22 @@ export interface User {
   updated_at: ISODate
 
   /**
+   * The date and time when the user was last logged in.
+   */
+  inactivated_at?: ISODate | null
+
+  /**
+   * The user who inactivated this user, if applicable.
+   */
+  inactivated_by_user_state?: User | null
+
+  /**
    * The date and time when the user was deleted, if applicable.
    */
   deleted_at?: ISODate
+
+  /**
+   * The user who deleted this user, if applicable.
+   */
+  deleted_by_user_state?: User | null
 }
