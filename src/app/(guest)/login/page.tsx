@@ -1,6 +1,7 @@
 'use client'
 
 import { User, users } from '@/data/users'
+import PageUrlEnum from '@/enums/page-url'
 import {
   Autocomplete,
   AutocompleteItem,
@@ -12,6 +13,7 @@ import {
   Input,
 } from '@nextui-org/react'
 import { Eye, EyeOff, UserRound } from 'lucide-react'
+import Link from 'next/link'
 import { FormEvent, useState } from 'react'
 
 export default function Page() {
@@ -88,6 +90,12 @@ export default function Page() {
                 type="submit">
                 Masuk
               </Button>
+
+              <Link
+                href={`${PageUrlEnum.FORGOT_PASSWORD}?method=email`}
+                className="my-4 block text-center text-sm">
+                Lupa Kata Sandi?
+              </Link>
             </form>
           </CardBody>
         </Card>
