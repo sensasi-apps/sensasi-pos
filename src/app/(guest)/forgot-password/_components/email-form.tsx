@@ -16,25 +16,33 @@ export default function EmailForm() {
   }
 
   return (
-    <form onSubmit={handleForgotPasswordByEmail} className="space-y-4">
-      <Input
-        onChange={event =>
-          setHasValidEmail(
-            event.target.value !== '' && event.target.validity.valid,
-          )
-        }
-        type="email"
-        label="Surel"
-      />
+    <>
+      <div className="mx-auto mb-4 max-w-xs">
+        <span className="block text-center text-sm">
+          Kirim Tautan Untuk Mengatur Ulang Kata Sandi
+        </span>
+      </div>
 
-      <Button
-        color="primary"
-        className="w-full"
-        isDisabled={!hasValidEmail}
-        isLoading={isLoading}
-        type="submit">
-        Kirim Tautan
-      </Button>
-    </form>
+      <form onSubmit={handleForgotPasswordByEmail} className="space-y-4">
+        <Input
+          onChange={event =>
+            setHasValidEmail(
+              event.target.value !== '' && event.target.validity.valid,
+            )
+          }
+          type="email"
+          label="Surel"
+        />
+
+        <Button
+          color="primary"
+          className="w-full"
+          isDisabled={!hasValidEmail}
+          isLoading={isLoading}
+          type="submit">
+          Kirim Tautan
+        </Button>
+      </form>
+    </>
   )
 }
