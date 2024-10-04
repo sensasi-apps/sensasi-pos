@@ -1,6 +1,3 @@
-import PageUrlEnum from '@/enums/page-url'
-import { Button } from '@nextui-org/react'
-import Link from 'next/link'
 import { OnBoardCard } from '@/components/onboard-card'
 
 export default function Page() {
@@ -11,8 +8,8 @@ export default function Page() {
       </h1>
       <p className="mb-4 text-center">Pilih cara memulai aplikasi:</p>
 
-      <div className="md:mx-0 mx-12">
-        <OnBoardCard/>
+      <div className="mx-12 md:mx-0">
+        <OnBoardCard />
       </div>
 
       <p className="mt-6 text-center text-sm">
