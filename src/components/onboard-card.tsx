@@ -1,3 +1,5 @@
+'use client'
+
 import { Card, CardHeader, CardBody } from '@nextui-org/react'
 import { FileDown, GalleryHorizontalEnd, TvMinimalPlay } from 'lucide-react'
 import { Button } from '@nextui-org/react'
@@ -11,6 +13,7 @@ export const OnBoardCard = () => {
         <CardHeader className="flex-col items-center px-4 pb-0">
           <TvMinimalPlay size={80} color="#2081F0" />
         </CardHeader>
+
         <CardBody className="space-y-3 pb-2 pt-5">
           <h4 className="text-center text-base font-bold">Gunakan Data Demo</h4>
           <Button
@@ -18,12 +21,12 @@ export const OnBoardCard = () => {
             size="sm"
             variant="solid"
             color="primary"
-            href={PageUrlEnum.ONBOARDING_IMPORT_BACKUP}
-            as={Link}>
+            onClick={() => alert('Coming soon!')}>
             Mulai
           </Button>
         </CardBody>
       </Card>
+
       <Card className="border-2 border-transparent p-4 hover:border-[#2081F0]">
         <CardHeader className="flex-col items-center px-4 pb-0">
           <FileDown size={80} color="#2081F0" />
@@ -43,6 +46,7 @@ export const OnBoardCard = () => {
           </Button>
         </CardBody>
       </Card>
+
       <Card className="border-2 border-transparent p-4 hover:border-[#2081F0]">
         <CardHeader className="flex-col items-center px-4 pb-0">
           <GalleryHorizontalEnd size={80} color="#2081F0" />
@@ -56,7 +60,7 @@ export const OnBoardCard = () => {
             size="sm"
             variant="solid"
             color="primary"
-            href={PageUrlEnum.ONBOARDING_IMPORT_BACKUP}
+            href={PageUrlEnum.ONBOARDING_STEP_1}
             as={Link}>
             Mulai
           </Button>
