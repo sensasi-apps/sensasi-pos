@@ -81,10 +81,13 @@ const Steps = () => {
 
                 <span className="ml-4 flex h-full min-w-0 flex-col justify-center">
                   <span
-                    className={mergeClass('text-sm font-semibold text-zinc-500', {
-                      'text-primary': isCompleted,
-                      'text-[#99C7FB]': isCurrent,
-                    })}>
+                    className={mergeClass(
+                      'text-sm font-semibold text-zinc-500',
+                      {
+                        'text-primary': isCompleted,
+                        'text-[#99C7FB]': isCurrent,
+                      },
+                    )}>
                     {step.name}
                   </span>
                 </span>
