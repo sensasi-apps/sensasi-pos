@@ -1,16 +1,20 @@
 import { User, users } from '@/data/users'
-import {
-  Autocomplete,
-  AutocompleteItem,
-  Button,
-  Input,
-} from '@nextui-org/react'
+import { SecurityQuestion } from '@/enums/security-question'
+import { Autocomplete, AutocompleteItem, Button } from '@nextui-org/react'
 import { UserRound } from 'lucide-react'
 import { FormEvent, useState } from 'react'
+import QuestionAndAnswerField from './question-and-answer-field'
 
 export default function SecurityQuestionForm() {
+  const securityQuestions = Object.entries(SecurityQuestion)
+
   const [hasSelectedUser, setHasSelectedUser] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [selectedQuestions, setSelectedQuestions] = useState(
+    [] as {
+      questionNumber: number
+    }[],
+  )
 
   const toggleHasSelectedUser = (key: string | number | null) =>
     setHasSelectedUser(!!key)
@@ -54,16 +58,25 @@ export default function SecurityQuestionForm() {
 
         {hasSelectedUser && (
           <>
-            <Input type="text" label="Nama Ibu Kandung" />
-
-            <Input type="text" label="Nama Panggilan Masa Kecil" />
+            <QuestionAndAnswerField
+              questionNumber={1}
+              securityQuestions={securityQuestions}
+              selectedQuestions={selectedQuestions}
+              setSelectedQuestions={setSelectedQuestions}
+            />
+            <QuestionAndAnswerField
+              questionNumber={2}
+              securityQuestions={securityQuestions}
+              selectedQuestions={selectedQuestions}
+              setSelectedQuestions={setSelectedQuestions}
+            />
           </>
         )}
 
         <Button
           color="primary"
           className="w-full"
-          isDisabled={!hasSelectedUser}
+          isDisabled={!hasSelectedUser || selectedQuestions.length < 2}
           isLoading={isLoading}
           type="submit">
           Proses

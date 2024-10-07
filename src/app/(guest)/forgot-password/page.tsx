@@ -12,7 +12,7 @@ export default function Page() {
   const selectedMethod = query.get('method')
 
   return (
-    <div className="container mt-8">
+    <div className="container my-8">
       <div className="flex justify-center">
         <Card className="max-w-md md:min-w-[400px]">
           <CardHeader>
