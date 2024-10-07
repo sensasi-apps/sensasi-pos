@@ -42,6 +42,7 @@ export default function SecurityQuestionForm() {
         onSubmit={handleForgotPasswordBySecurityQuestion}
         className="space-y-4">
         <Autocomplete
+          className="mb-4"
           label="Pilih Pengguna"
           onSelectionChange={toggleHasSelectedUser}
           isRequired>
