@@ -19,7 +19,7 @@ export default function EmailForm() {
     <>
       <div className="mx-auto mb-4 max-w-xs">
         <span className="block text-center text-sm">
-          Kirim Tautan Untuk Mengatur Ulang Kata Sandi
+          Masukkan Surel Anda Untuk Menerima Tautan Atur Ulang Kata Sandi
         </span>
       </div>
 
@@ -30,6 +30,7 @@ export default function EmailForm() {
               event.target.value !== '' && event.target.validity.valid,
             )
           }
+          isRequired
           type="email"
           label="Surel"
         />
