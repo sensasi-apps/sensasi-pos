@@ -1,33 +1,34 @@
 import { SecurityQuestion } from '@/enums/security-question'
-import { Input, Select, SelectItem } from '@nextui-org/react'
-import { Dispatch, SetStateAction } from 'react'
+import { useFormSubmission } from '@/stores/form-submission'
+import { Input, Select, SelectItem, SharedSelection } from '@nextui-org/react'
+import { useSecurityQuestion } from '../../_stores/security-question'
 
 export default function QuestionAndAnswerField({
   securityQuestions,
   questionNumber,
-  selectedQuestions,
-  setSelectedQuestions,
 }: {
   securityQuestions: [string, SecurityQuestion][]
   questionNumber: number
-  selectedQuestions: {
-    questionNumber: number
-  }[]
-  setSelectedQuestions: Dispatch<SetStateAction<{ questionNumber: number }[]>>
 }) {
+  // Stores
+  const { isSubmitting } = useFormSubmission()
+  const { pushSelectedQuestionNumbers, hasQuestionNumber } =
+    useSecurityQuestion()
+
+  const handleSelectionChange = ({ currentKey }: SharedSelection) => {
+    if (!currentKey) return
+
+    pushSelectedQuestionNumbers(questionNumber)
+  }
+
   return (
     <>
       <Select
         disallowEmptySelection
-        onSelectionChange={({ currentKey }) =>
-          setSelectedQuestions(prev => {
-            if (!currentKey) return prev
-
-            return [...prev, { questionNumber }]
-          })
-        }
+        onSelectionChange={handleSelectionChange}
         label={`Pilih Pertanyaan Keamanan ${questionNumber.toString()}`}
-        isRequired>
+        isRequired
+        isDisabled={isSubmitting}>
         {securityQuestions.map(([key, value]: [string, string]) => (
           <SelectItem key={key} value={key}>
             {value}
@@ -39,11 +40,7 @@ export default function QuestionAndAnswerField({
         type="text"
         label={`Jawaban Pertanyaan Keamanan ${questionNumber.toString()}`}
         isRequired
-        isDisabled={((): boolean => {
-          return !selectedQuestions.some(
-            question => question.questionNumber === questionNumber,
-          )
-        })()}
+        isDisabled={!hasQuestionNumber(questionNumber) || isSubmitting}
       />
     </>
   )

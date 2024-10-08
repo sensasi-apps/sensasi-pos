@@ -4,17 +4,18 @@ import { Autocomplete, AutocompleteItem, Button } from '@nextui-org/react'
 import { UserRound } from 'lucide-react'
 import { FormEvent, useState } from 'react'
 import QuestionAndAnswerField from './question-and-answer-field'
+import { useFormSubmission } from '@/stores/form-submission'
+import { useSecurityQuestion } from '../../_stores/security-question'
 
 export default function SecurityQuestionForm() {
   const securityQuestions = Object.entries(SecurityQuestion)
 
+  // States
   const [hasSelectedUser, setHasSelectedUser] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-  const [selectedQuestions, setSelectedQuestions] = useState(
-    [] as {
-      questionNumber: number
-    }[],
-  )
+
+  // Stores
+  const { isSubmitting, toggleSubmitting } = useFormSubmission()
+  const { selectedQuestionNumbers } = useSecurityQuestion()
 
   const toggleHasSelectedUser = (key: string | number | null) =>
     setHasSelectedUser(!!key)
@@ -24,10 +25,10 @@ export default function SecurityQuestionForm() {
   ) => {
     event.preventDefault()
 
-    setIsLoading(true)
+    toggleSubmitting()
 
     setTimeout(() => {
-      setIsLoading(false)
+      toggleSubmitting()
     }, 2000)
   }
 
@@ -45,7 +46,8 @@ export default function SecurityQuestionForm() {
           className="mb-4"
           label="Pilih Pengguna"
           onSelectionChange={toggleHasSelectedUser}
-          isRequired>
+          isRequired
+          isDisabled={isSubmitting}>
           {users.map((user: User) => (
             <AutocompleteItem
               key={user.id}
@@ -59,26 +61,21 @@ export default function SecurityQuestionForm() {
 
         {hasSelectedUser && (
           <>
-            <QuestionAndAnswerField
-              questionNumber={1}
-              securityQuestions={securityQuestions}
-              selectedQuestions={selectedQuestions}
-              setSelectedQuestions={setSelectedQuestions}
-            />
-            <QuestionAndAnswerField
-              questionNumber={2}
-              securityQuestions={securityQuestions}
-              selectedQuestions={selectedQuestions}
-              setSelectedQuestions={setSelectedQuestions}
-            />
+            {[1, 2].map(questionNumber => (
+              <QuestionAndAnswerField
+                key={`question-number-${questionNumber}`}
+                questionNumber={questionNumber}
+                securityQuestions={securityQuestions}
+              />
+            ))}
           </>
         )}
 
         <Button
           color="primary"
           className="w-full"
-          isDisabled={!hasSelectedUser || selectedQuestions.length < 2}
-          isLoading={isLoading}
+          isDisabled={!hasSelectedUser || selectedQuestionNumbers.length < 2}
+          isLoading={isSubmitting}
           type="submit">
           Proses
         </Button>

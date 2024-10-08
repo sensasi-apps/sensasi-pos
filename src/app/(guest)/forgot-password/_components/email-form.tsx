@@ -1,17 +1,21 @@
+import { useFormSubmission } from '@/stores/form-submission'
 import { Button, Input } from '@nextui-org/react'
 import { FormEvent, useState } from 'react'
 
 export default function EmailForm() {
-  const [isLoading, setIsLoading] = useState(false)
+  // States
   const [hasValidEmail, setHasValidEmail] = useState(false)
+
+  // Stores
+  const { isSubmitting, toggleSubmitting } = useFormSubmission()
 
   const handleForgotPasswordByEmail = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    setIsLoading(true)
+    toggleSubmitting()
 
     setTimeout(() => {
-      setIsLoading(false)
+      toggleSubmitting()
     }, 2000)
   }
 
@@ -30,6 +34,7 @@ export default function EmailForm() {
               event.target.value !== '' && event.target.validity.valid,
             )
           }
+          isDisabled={isSubmitting}
           isRequired
           type="email"
           label="Surel"
@@ -39,7 +44,7 @@ export default function EmailForm() {
           color="primary"
           className="w-full"
           isDisabled={!hasValidEmail}
-          isLoading={isLoading}
+          isLoading={isSubmitting}
           type="submit">
           Kirim Tautan
         </Button>

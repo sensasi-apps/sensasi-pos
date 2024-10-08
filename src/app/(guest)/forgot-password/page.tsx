@@ -6,8 +6,10 @@ import SecurityQuestionForm from './_components/security-question'
 import Link from 'next/link'
 import PageUrlEnum from '@/enums/page-url'
 import { useSearchParams } from 'next/navigation'
+import { useFormSubmission } from '@/stores/form-submission'
 
 export default function Page() {
+  const { isSubmitting } = useFormSubmission()
   const query = useSearchParams()
   const selectedMethod = query.get('method')
 
@@ -29,7 +31,7 @@ export default function Page() {
             )}
 
             <Link
-              className="mt-4 block cursor-pointer text-center text-sm outline-none"
+              className={`${isSubmitting ? 'pointer-events-none text-default-400' : 'pointer-events-auto'} mx-auto mt-4 block w-fit cursor-pointer text-center text-sm outline-none`}
               href={`${PageUrlEnum.FORGOT_PASSWORD}?method=${selectedMethod === 'security-question' ? 'email' : 'security-question'}`}>
               Coba Cara Lain?
             </Link>
