@@ -1,4 +1,4 @@
-import { useFormSubmission } from '@/stores/form-submission'
+import { useFormSubmissionState } from '@/stores/form-submission'
 import { Button, Input } from '@nextui-org/react'
 import { FormEvent, useState } from 'react'
 
@@ -7,7 +7,7 @@ export default function EmailForm() {
   const [hasValidEmail, setHasValidEmail] = useState(false)
 
   // Stores
-  const { isSubmitting, toggleSubmitting } = useFormSubmission()
+  const { isSubmitting, toggleSubmitting } = useFormSubmissionState()
 
   const handleForgotPasswordByEmail = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
