@@ -2,6 +2,7 @@
 
 import { User, users } from '@/data/users'
 import PageUrlEnum from '@/enums/page-url'
+import mergeClass from '@/functions/merge-class'
 import {
   Autocomplete,
   AutocompleteItem,
@@ -49,7 +50,8 @@ export default function Page() {
               <Autocomplete
                 label="Pilih Pengguna"
                 onSelectionChange={toggleHasSelectedUser}
-                isRequired>
+                isRequired
+                isDisabled={isLoading}>
                 {users.map((user: User) => (
                   <AutocompleteItem
                     key={user.id}
@@ -65,6 +67,7 @@ export default function Page() {
                 <Input
                   label="Kata Sandi"
                   isRequired
+                  isDisabled={isLoading}
                   endContent={
                     <button
                       className="focus:outline-none"
@@ -93,7 +96,12 @@ export default function Page() {
 
               <Link
                 href={`${PageUrlEnum.FORGOT_PASSWORD}?method=email`}
-                className="my-4 block text-center text-sm">
+                className={mergeClass(
+                  isLoading
+                    ? 'pointer-events-none text-default-400'
+                    : 'pointer-events-auto',
+                  'my-4 block text-center text-sm',
+                )}>
                 Lupa Kata Sandi?
               </Link>
             </form>
