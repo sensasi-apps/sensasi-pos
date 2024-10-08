@@ -1,16 +1,21 @@
 import { User, users } from '@/data/users'
-import {
-  Autocomplete,
-  AutocompleteItem,
-  Button,
-  Input,
-} from '@nextui-org/react'
+import { SecurityQuestion } from '@/enums/security-question'
+import { Autocomplete, AutocompleteItem, Button } from '@nextui-org/react'
 import { UserRound } from 'lucide-react'
 import { FormEvent, useState } from 'react'
+import QuestionAndAnswerField from './question-and-answer-field'
+import { useFormSubmissionState } from '@/stores/form-submission'
+import { useSecurityQuestionState } from '../../_stores/security-question'
 
 export default function SecurityQuestionForm() {
+  const securityQuestions = Object.entries(SecurityQuestion)
+
+  // States
   const [hasSelectedUser, setHasSelectedUser] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+
+  // Stores
+  const { isSubmitting, toggleSubmitting } = useFormSubmissionState()
+  const { selectedQuestionNumbers } = useSecurityQuestionState()
 
   const toggleHasSelectedUser = (key: string | number | null) =>
     setHasSelectedUser(!!key)
@@ -20,10 +25,10 @@ export default function SecurityQuestionForm() {
   ) => {
     event.preventDefault()
 
-    setIsLoading(true)
+    toggleSubmitting()
 
     setTimeout(() => {
-      setIsLoading(false)
+      toggleSubmitting()
     }, 2000)
   }
 
@@ -38,9 +43,11 @@ export default function SecurityQuestionForm() {
         onSubmit={handleForgotPasswordBySecurityQuestion}
         className="space-y-4">
         <Autocomplete
+          className="mb-4"
           label="Pilih Pengguna"
           onSelectionChange={toggleHasSelectedUser}
-          isRequired>
+          isRequired
+          isDisabled={isSubmitting}>
           {users.map((user: User) => (
             <AutocompleteItem
               key={user.id}
@@ -54,17 +61,21 @@ export default function SecurityQuestionForm() {
 
         {hasSelectedUser && (
           <>
-            <Input type="text" label="Nama Ibu Kandung" />
-
-            <Input type="text" label="Nama Panggilan Masa Kecil" />
+            {[1, 2].map(questionNumber => (
+              <QuestionAndAnswerField
+                key={`question-number-${questionNumber}`}
+                questionNumber={questionNumber}
+                securityQuestions={securityQuestions}
+              />
+            ))}
           </>
         )}
 
         <Button
           color="primary"
           className="w-full"
-          isDisabled={!hasSelectedUser}
-          isLoading={isLoading}
+          isDisabled={!hasSelectedUser || selectedQuestionNumbers.length < 2}
+          isLoading={isSubmitting}
           type="submit">
           Proses
         </Button>
