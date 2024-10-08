@@ -5,7 +5,7 @@ export interface FormSubmissionState {
   toggleSubmitting: () => void
 }
 
-export const useFormSubmission = create<FormSubmissionState>(set => ({
+export const useFormSubmissionState = create<FormSubmissionState>(set => ({
   isSubmitting: false,
   toggleSubmitting: () => set(state => ({ isSubmitting: !state.isSubmitting })),
 }))

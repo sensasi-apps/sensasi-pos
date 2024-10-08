@@ -4,8 +4,8 @@ import { Autocomplete, AutocompleteItem, Button } from '@nextui-org/react'
 import { UserRound } from 'lucide-react'
 import { FormEvent, useState } from 'react'
 import QuestionAndAnswerField from './question-and-answer-field'
-import { useFormSubmission } from '@/stores/form-submission'
-import { useSecurityQuestion } from '../../_stores/security-question'
+import { useFormSubmissionState } from '@/stores/form-submission'
+import { useSecurityQuestionState } from '../../_stores/security-question'
 
 export default function SecurityQuestionForm() {
   const securityQuestions = Object.entries(SecurityQuestion)
@@ -14,8 +14,8 @@ export default function SecurityQuestionForm() {
   const [hasSelectedUser, setHasSelectedUser] = useState(false)
 
   // Stores
-  const { isSubmitting, toggleSubmitting } = useFormSubmission()
-  const { selectedQuestionNumbers } = useSecurityQuestion()
+  const { isSubmitting, toggleSubmitting } = useFormSubmissionState()
+  const { selectedQuestionNumbers } = useSecurityQuestionState()
 
   const toggleHasSelectedUser = (key: string | number | null) =>
     setHasSelectedUser(!!key)

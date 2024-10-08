@@ -6,7 +6,7 @@ export interface SecurityQuestionState {
   hasQuestionNumber: (questionNumber: number) => boolean
 }
 
-export const useSecurityQuestion = create<SecurityQuestionState>(
+export const useSecurityQuestionState = create<SecurityQuestionState>(
   (set, get) => ({
     selectedQuestionNumbers: [],
     pushSelectedQuestionNumbers: (questionNumber: number) =>

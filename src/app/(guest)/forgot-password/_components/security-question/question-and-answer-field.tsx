@@ -1,7 +1,7 @@
 import { SecurityQuestion } from '@/enums/security-question'
-import { useFormSubmission } from '@/stores/form-submission'
+import { useFormSubmissionState } from '@/stores/form-submission'
 import { Input, Select, SelectItem, SharedSelection } from '@nextui-org/react'
-import { useSecurityQuestion } from '../../_stores/security-question'
+import { useSecurityQuestionState } from '../../_stores/security-question'
 
 export default function QuestionAndAnswerField({
   securityQuestions,
@@ -11,9 +11,9 @@ export default function QuestionAndAnswerField({
   questionNumber: number
 }) {
   // Stores
-  const { isSubmitting } = useFormSubmission()
+  const { isSubmitting } = useFormSubmissionState()
   const { pushSelectedQuestionNumbers, hasQuestionNumber } =
-    useSecurityQuestion()
+    useSecurityQuestionState()
 
   const handleSelectionChange = ({ currentKey }: SharedSelection) => {
     if (!currentKey) return

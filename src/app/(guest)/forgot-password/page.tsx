@@ -6,10 +6,10 @@ import SecurityQuestionForm from './_components/security-question'
 import Link from 'next/link'
 import PageUrlEnum from '@/enums/page-url'
 import { useSearchParams } from 'next/navigation'
-import { useFormSubmission } from '@/stores/form-submission'
+import { useFormSubmissionState } from '@/stores/form-submission'
 
 export default function Page() {
-  const { isSubmitting } = useFormSubmission()
+  const { isSubmitting } = useFormSubmissionState()
   const query = useSearchParams()
   const selectedMethod = query.get('method')
 
