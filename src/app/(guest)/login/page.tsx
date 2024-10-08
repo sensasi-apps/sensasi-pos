@@ -96,11 +96,12 @@ export default function Page() {
 
               <Link
                 href={`${PageUrlEnum.FORGOT_PASSWORD}?method=email`}
-                className={
-                  mergeClass(
-                    isLoading ? 'pointer-events-none text-default-400' : 'pointer-events-auto',
-                    'my-4 block text-center text-sm'
-                  )}>
+                className={mergeClass(
+                  isLoading
+                    ? 'pointer-events-none text-default-400'
+                    : 'pointer-events-auto',
+                  'my-4 block text-center text-sm',
+                )}>
                 Lupa Kata Sandi?
               </Link>
             </form>
