@@ -6,6 +6,7 @@ import './_layout-components/main.css'
 import { Providers } from './_layout-components/providers'
 import { PageIndicator } from './_layout-components/page-indicator'
 import { sans } from './_layout-components/font'
+import ProgressBar from '@/components/progress-bar'
 
 export const metadata: Metadata = {
   title: 'Sensasi POS — Aplikasi Point of Sale Sederhana',
@@ -32,18 +33,20 @@ export default function RootLayout({
       </head>
 
       <body className={sans.className}>
-        <Providers>
-          {navbar}
+        <ProgressBar>
+          <Providers>
+            {navbar}
 
-          <div className="sticky top-0 z-20 w-full bg-amber-500 p-2.5 text-center tracking-wide text-zinc-800">
-            ⓘ Aplikasi masih dalam tahap pengembangan. Silakan kunjungi lagi
-            nanti.
-          </div>
+            <div className="sticky top-0 z-20 w-full bg-amber-500 p-2.5 text-center tracking-wide text-zinc-800">
+              ⓘ Aplikasi masih dalam tahap pengembangan. Silakan kunjungi lagi
+              nanti.
+            </div>
 
-          {children}
+            {children}
 
-          <PageIndicator />
-        </Providers>
+            <PageIndicator />
+          </Providers>
+        </ProgressBar>
 
         {isProduction && <Analytics mode="production" debug={false} />}
       </body>
