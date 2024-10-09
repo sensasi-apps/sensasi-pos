@@ -10,6 +10,7 @@ interface PasswordVisibility {
 }
 
 export default function ResetPasswordForm() {
+  const [errorMessage, setErrorMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [passwordVisibility, setPasswordVisibility] = useState<
     PasswordVisibility[]
@@ -41,6 +42,22 @@ export default function ResetPasswordForm() {
 
   const handleResetPassword = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    setErrorMessage('')
+
+    const formData = new FormData(event.currentTarget)
+
+    const password = formData.get('password') as string
+    const confirmPassword = formData.get('confirm-password') as string
+
+    if (password.length < 8 || confirmPassword.length < 8) {
+      setErrorMessage('Kata sandi minimal 8 karakter')
+      return
+    }
+
+    if (formData.get('password') !== formData.get('confirm-password')) {
+      setErrorMessage('Kata sandi tidak sama')
+      return
+    }
 
     setIsLoading(true)
 
@@ -51,12 +68,17 @@ export default function ResetPasswordForm() {
 
   return (
     <form className="space-y-4" onSubmit={handleResetPassword}>
+      {errorMessage && (
+        <div className="text-sm text-red-500">{errorMessage}</div>
+      )}
       <Input
         label="Kata Sandi Baru"
         isRequired
         isDisabled={isLoading}
+        name="password"
         endContent={
           <button
+            tabIndex={-1}
             className="focus:outline-none"
             type="button"
             onClick={() => toggleVisibility('password')}
@@ -81,8 +103,10 @@ export default function ResetPasswordForm() {
         label="Konfirmasi Kata Sandi Baru"
         isRequired
         isDisabled={isLoading}
+        name="confirm-password"
         endContent={
           <button
+            tabIndex={-1}
             className="focus:outline-none"
             type="button"
             onClick={() => toggleVisibility('confirm-password')}
