@@ -1,8 +1,6 @@
 'use client'
 
-import { generateOrderedUuid } from '@/functions/generate-ordered-uuid'
-import { toast } from '@/functions/toast'
-import db from '@/models/db'
+// vendors
 import {
   Button,
   Card,
@@ -14,6 +12,11 @@ import {
 } from '@nextui-org/react'
 import { useRouter } from 'next/navigation'
 import { Controller, useForm } from 'react-hook-form'
+// functions
+import { generateOrderedUuid } from '@/functions/generate-ordered-uuid'
+import { toast } from '@/functions/toast'
+// models
+import db from '@/models/db'
 
 const FORM_ID = 'warehouse-create-form'
 
@@ -25,7 +28,7 @@ export default function Page() {
   } = useForm<FormValues>()
   const router = useRouter()
 
-  function handleSubmitValid(formValues: FormValues) {
+  function handleFormValuesValid(formValues: FormValues) {
     db.warehouses
       .add({
         ...formValues,
@@ -50,7 +53,9 @@ export default function Page() {
         <CardBody>
           <form
             id={FORM_ID}
-            onSubmit={handleSubmit(handleSubmitValid)}
+            onSubmit={() => {
+              handleSubmit(handleFormValuesValid)
+            }}
             className="flex flex-col gap-3">
             <Controller
               control={control}
