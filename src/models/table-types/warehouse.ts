@@ -1,6 +1,7 @@
 // vendors
 import type { UUID } from 'crypto'
 // globals
+import type { User } from '@/data/users'
 import type { ISODate } from '@/@types/iso-date'
 
 /**
@@ -33,6 +34,12 @@ export interface Warehouse {
    * Timestamp when the warehouse was last updated.
    */
   updated_at: ISODate
+
+  /**
+   * User who deleted the warehouse.
+   * @readonly
+   */
+  deleted_by_user?: Readonly<User>
 
   /**
    * Optional timestamp when the warehouse was deleted.
