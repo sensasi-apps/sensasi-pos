@@ -16,17 +16,20 @@ import {
   SettingsIcon,
   UserCogIcon,
   WarehouseIcon,
+  MenuIcon,
+  CalculatorIcon,
+  ShoppingCartIcon,
+  FileSpreadsheetIcon,
 } from 'lucide-react'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
-
 // globals
 import { hasAnyPermissions } from '@/functions/has-any-permissions'
 import { Permission } from '@/enums/permission'
 import ThemeSwitcher from '@/components/theme-switcher'
 import PageUrlEnum from '@/enums/page-url'
 
-export default function SettingsDropdownButtonInNavbar({
+export function SettingDropdownButton({
   onFeedbackFormModalOpen,
 }: {
   onFeedbackFormModalOpen: () => void
@@ -39,13 +42,46 @@ export default function SettingsDropdownButtonInNavbar({
         <Button
           color="primary"
           variant="light"
-          className="min-w-[50px] gap-0 px-0"
-          endContent={<ChevronDown size={16} />}>
-          <SettingsIcon />
+          className="w-fit min-w-min gap-0 px-2"
+          endContent={<ChevronDown size={16} className="max-sm:hidden" />}>
+          <SettingsIcon className="max-sm:hidden" />
+          <MenuIcon className="sm:hidden" />
         </Button>
       </DropdownTrigger>
 
-      <DropdownMenu aria-label="Pengaturan">
+      <DropdownMenu aria-label="Menu">
+        <DropdownSection title="Navigasi" showDivider className="sm:hidden">
+          <DropdownItem
+            as={Link}
+            className={
+              hasAnyPermissions([Permission.READ_SALE]) ? '' : 'hidden'
+            }
+            href={PageUrlEnum.SALE_LIST}
+            startContent={<CalculatorIcon className="mr-1" />}>
+            Kasir
+          </DropdownItem>
+
+          <DropdownItem
+            as={Link}
+            className={
+              hasAnyPermissions([Permission.READ_PURCHASE]) ? '' : 'hidden'
+            }
+            href={PageUrlEnum.PURCHASE_LIST}
+            startContent={<ShoppingCartIcon className="mr-1" />}>
+            Pengadaan
+          </DropdownItem>
+
+          <DropdownItem
+            as={Link}
+            className={
+              hasAnyPermissions([Permission.READ_DASHBOARD]) ? '' : 'hidden'
+            }
+            href={PageUrlEnum.REPORT_LIST}
+            startContent={<FileSpreadsheetIcon className="mr-1" />}>
+            Laporan
+          </DropdownItem>
+        </DropdownSection>
+
         <DropdownItem
           startContent={<ThemeSwitcher />}
           onClick={() => {
