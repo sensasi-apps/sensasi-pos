@@ -15,7 +15,7 @@ import { Permission } from '@/enums/permission'
 import PageUrlEnum from '@/enums/page-url'
 // siblings
 import { FeedbackFormModal } from '../feedback-form-modal'
-import SettingsDropdownButtonInNavbar from './components/settings-dropdown-button'
+import { SettingDropdownButton } from './components/settings-dropdown-button'
 
 /**
  * Navbar items for authenticated users
@@ -26,40 +26,51 @@ export function AuthNavbarItems() {
   return (
     <>
       <NavbarItem className="flex gap-2">
-        {hasAnyPermissions([Permission.READ_SALE]) && (
-          <Tooltip content="Kasir" color="primary" showArrow size="lg">
-            <Button
-              isIconOnly
-              href={PageUrlEnum.SALE_LIST}
-              as={NextLink}
-              variant="light"
-              color="primary">
-              <CalculatorIcon />
-            </Button>
-          </Tooltip>
-        )}
+        <Tooltip content="Kasir" color="primary" showArrow size="lg">
+          <Button
+            className={
+              hasAnyPermissions([Permission.READ_SALE])
+                ? 'max-sm:hidden'
+                : 'hidden'
+            }
+            isIconOnly
+            href={PageUrlEnum.SALE_LIST}
+            as={NextLink}
+            variant="light"
+            color="primary">
+            <CalculatorIcon />
+          </Button>
+        </Tooltip>
 
-        {hasAnyPermissions([Permission.READ_PURCHASE]) && (
-          <Tooltip content="Pengadaan" color="primary" showArrow size="lg">
-            <Button
-              isIconOnly
-              href={PageUrlEnum.PURCHASE_LIST}
-              as={NextLink}
-              variant="light"
-              color="primary">
-              <ShoppingCartIcon />
-            </Button>
-          </Tooltip>
-        )}
+        <Tooltip content="Pengadaan" color="primary" showArrow size="lg">
+          <Button
+            className={
+              hasAnyPermissions([Permission.READ_PURCHASE])
+                ? 'max-sm:hidden'
+                : 'hidden'
+            }
+            isIconOnly
+            href={PageUrlEnum.PURCHASE_LIST}
+            as={NextLink}
+            variant="light"
+            color="primary">
+            <ShoppingCartIcon />
+          </Button>
+        </Tooltip>
 
-        <SettingsDropdownButtonInNavbar
+        <SettingDropdownButton
           onFeedbackFormModalOpen={() => {
             setIsFeedbackFormModalOpen(true)
           }}
         />
       </NavbarItem>
 
-      <NavbarItem>
+      <NavbarItem
+        className={
+          hasAnyPermissions([Permission.READ_DASHBOARD])
+            ? 'max-sm:hidden'
+            : 'hidden'
+        }>
         <Button
           href={PageUrlEnum.REPORT_LIST}
           as={NextLink}
