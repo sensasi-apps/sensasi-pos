@@ -1,7 +1,7 @@
 'use client'
 
 import { Card, CardBody, CardHeader, Divider } from '@nextui-org/react'
-import ResetPasswordForm from './_components/reset-password-form'
+import ResetPasswordForm from './_components/reset-password-form/reset-password-form'
 
 export default function Page() {
   return (
