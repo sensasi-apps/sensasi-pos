@@ -82,7 +82,7 @@ export function ItemsInput() {
                 }
                 errorMessage={error?.message}
                 isInvalid={!!error}
-                value={value.uuid}
+                value={value?.uuid}
                 onChange={({ target: { value } }) => {
                   const selectedProduct = products?.find(
                     product => product.uuid === value,
@@ -120,7 +120,7 @@ export function ItemsInput() {
                 }}
                 endContent={
                   <InputAdditionalContent>
-                    {item.product_state.qty_unit}
+                    {item.product_state?.qty_unit}
                   </InputAdditionalContent>
                 }
                 {...rest}
@@ -151,7 +151,7 @@ export function ItemsInput() {
                 }
                 endContent={
                   <InputAdditionalContent>
-                    /{item.product_state.qty_unit}
+                    /{item.product_state?.qty_unit}
                   </InputAdditionalContent>
                 }
                 {...rest}
