@@ -1,20 +1,24 @@
-import { ProductMovement } from '@/models/table-types/product-movement'
+// types
+import type { FormEventHandler } from 'react'
+import type { FormValues } from '../_types/form-values'
+// vendors
 import { parseDate } from '@internationalized/date'
 import { DatePicker, Input, Textarea } from '@nextui-org/react'
 import { Controller, useFormContext } from 'react-hook-form'
-import { CostsInput } from './costs-input'
+// components
 import resizeImage from '@/components/image-input/functions/resize-image'
+// local components
+import { CostsInput } from './costs-input'
 import { ItemsInput } from './items-input'
-import { DOMAttributes, HTMLAttributes } from 'react'
 
 export function ProductPurchaseForm({
   id,
   onSubmit,
 }: {
-  id: HTMLAttributes<HTMLFormElement>['id']
-  onSubmit: DOMAttributes<HTMLFormElement>['onSubmit']
+  id: string
+  onSubmit: FormEventHandler<HTMLFormElement>
 }) {
-  const { register, control } = useFormContext<ProductMovement>()
+  const { register, control } = useFormContext<FormValues>()
 
   // const warehouses = useLiveQuery(() => {
   //   return db.warehouses.toArray()
