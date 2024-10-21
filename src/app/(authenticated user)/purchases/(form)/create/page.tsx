@@ -17,33 +17,33 @@ export default function PurchaseFormPage() {
   const { handleSubmit, handleCancel, formContextValue } = usePageHook()
 
   return (
-    <FormProvider {...formContextValue}>
-      <div className="mx-auto max-w-xl">
-        <Card>
-          <CardHeader>Tambah Data Pengadaan Stok</CardHeader>
+    <div className="mx-auto max-w-xl">
+      <Card>
+        <CardHeader>Tambah Data Pengadaan Stok</CardHeader>
 
-          <CardBody>
+        <CardBody>
+          <FormProvider {...formContextValue}>
             <ProductPurchaseForm
               id={FORM_ID}
               onSubmit={() => {
-                handleSubmit().catch(e => {
-                  throw e
+                handleSubmit().catch(err => {
+                  throw err
                 })
               }}
             />
-          </CardBody>
+          </FormProvider>
+        </CardBody>
 
-          <CardFooter className="justify-end">
-            <Button variant="light" color="primary" onClick={handleCancel}>
-              Batal
-            </Button>
+        <CardFooter className="justify-end">
+          <Button variant="light" color="primary" onClick={handleCancel}>
+            Batal
+          </Button>
 
-            <Button form={FORM_ID} type="submit" color="primary">
-              Simpan
-            </Button>
-          </CardFooter>
-        </Card>
-      </div>
-    </FormProvider>
+          <Button form={FORM_ID} type="submit" color="primary">
+            Simpan
+          </Button>
+        </CardFooter>
+      </Card>
+    </div>
   )
 }

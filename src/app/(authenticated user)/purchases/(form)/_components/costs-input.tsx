@@ -1,14 +1,16 @@
+// types
+import type { FormValues } from '../_types/form-values'
+// components
 import { Controller, useFieldArray, useFormContext } from 'react-hook-form'
 import { Button, Input } from '@nextui-org/react'
 import { PlusCircleIcon, TrashIcon } from 'lucide-react'
-import { ProductMovement } from '@/models/table-types/product-movement'
 import { InputAdditionalContent } from '@/components/input-additional-content'
 
 export function CostsInput() {
   const {
     control,
     formState: { errors },
-  } = useFormContext<ProductMovement>()
+  } = useFormContext<FormValues>()
   const { remove, fields, append } = useFieldArray({
     control,
     name: 'additional_costs',
@@ -78,7 +80,7 @@ export function CostsInput() {
                 isRequired
                 label="Biaya"
                 type="number"
-                value={value.toString()}
+                value={value?.toString() ?? ''}
                 onValueChange={value => {
                   onChange(value ? Number(value) : undefined)
                 }}
@@ -98,9 +100,7 @@ export function CostsInput() {
             color="danger"
             size="sm"
             tabIndex={-1}
-            onClick={() => {
-              remove(i)
-            }}>
+            onClick={() => remove(i)}>
             <TrashIcon />
           </Button>
         </div>
