@@ -43,6 +43,7 @@ export default function PurchaseListPage() {
               variant="flat"
               color="primary"
               size="sm"
+              as={Link}
               href={PageUrlEnum.PURCHASE_EDIT.replace(':uuid', movement.uuid)}>
               <EditIcon />
             </Button>
