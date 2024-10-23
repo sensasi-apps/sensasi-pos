@@ -25,7 +25,7 @@
     "dexie-react-hooks": "^1.1.7",
     "framer-motion": "^11.11.9",
     "lucide-react": "^0.453.0",
-    "next": "14.2.15",
+    "next": "15.0.1",
     "next-nprogress-bar": "^2.3.14",
     "next-themes": "^0.3.0",
     "nextui-alert": "^0.1.5",
@@ -43,16 +43,14 @@
     "zustand": "^5.0.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.13.0",
     "@types/bcryptjs": "^2.4.6",
-    "@types/eslint__js": "^8.42.3",
     "@types/node": "^22",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/uuid": "^10.0.0",
     "autoprefixer": "^10.4.20",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "14.2.15",
+    "eslint": "^9.13.0",
+    "eslint-config-next": "15.0.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "npm-check-updates": "^17.1.4",
@@ -61,6 +59,6 @@
     "prettier-plugin-tailwindcss": "^0.6.8",
     "tailwindcss": "^3.4.14",
     "typescript": "^5.6.3",
-    "typescript-eslint": "^7.18.0"
+    "typescript-eslint": "^8.11.0"
   }
 }
