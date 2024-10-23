@@ -7,6 +7,9 @@ import { PERMISSION_TEMPLATES } from '@/data/permission-templates'
 import { useHook as useCreateHook } from '../create/hook'
 import { useHook as useUpdateHook } from '../[uuid]/hook'
 
+/**
+ * @bug autoComplete="off" tidak berfungsi pada chrome
+ */
 export function UserForm({
   formContextValue: { control, watch, setValue },
   userEmails,
@@ -16,7 +19,9 @@ export function UserForm({
   return (
     <form
       autoComplete="off"
-      onSubmit={() => {
+      onSubmit={ev => {
+        ev.preventDefault()
+
         handleSubmit().catch(error => {
           throw error
         })
@@ -70,11 +75,15 @@ export function UserForm({
       <Controller
         control={control}
         name="roles"
-        render={({ field: { onChange, ...rest }, fieldState: { error } }) => (
+        render={({
+          field: { onChange, value, ...rest },
+          fieldState: { error },
+        }) => (
           <CheckboxGroup
             label="Peran"
             orientation="horizontal"
             {...rest}
+            value={value ?? []}
             onValueChange={roles => {
               const typedRoles = roles as Role[]
 
@@ -103,14 +112,17 @@ export function UserForm({
         )}
       />
 
+      {/**
+       *  @todo Membuat input hanya dapat diisi oleh angka
+       */}
       {!watch('uuid') && (
         <>
           <Controller
             control={control}
-            name="pin__hashed"
+            name="pin"
             rules={{
               required: 'PIN harus diisi',
-              validate: value => value.length === 6 || 'PIN harus 6 digit',
+              validate: value => value?.length === 6 || 'PIN harus 6 digit',
             }}
             render={({ field: { value, ...rest }, fieldState: { error } }) => (
               <Input
@@ -126,15 +138,17 @@ export function UserForm({
             )}
           />
 
+          {/**
+           *  @todo Membuat input hanya dapat diisi oleh angka
+           */}
           <Controller
             control={control}
-            name="pin__hashed_confirmation"
+            name="pin_confirmation"
             rules={{
               required: 'PIN harus diisi',
               minLength: 6,
               maxLength: 6,
-              validate: value =>
-                value === watch('pin__hashed') || 'PIN Tidak Sama',
+              validate: value => value === watch('pin') || 'PIN Tidak Sama',
             }}
             render={({ field: { value, ...rest }, fieldState: { error } }) => (
               <Input

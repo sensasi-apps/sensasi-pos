@@ -1,20 +1,20 @@
-import db from '@/models/db'
-import { toast } from '@/functions/toast'
-import { User } from '@/models/table-types/user'
-import { useRouter } from 'next/navigation'
+// types
+import type { FormValues } from '../_types/form-values'
+// vendors
 import { useForm } from 'react-hook-form'
 import { useLiveQuery } from 'dexie-react-hooks'
+import { useRouter } from 'next/navigation'
+// functions
 import { generateOrderedUuid } from '@/functions/generate-ordered-uuid'
-import { getHash } from '@/functions/get-hash'
+import { getValidatedFormValues } from '../_functions/get-validated-form-values'
+import { toast } from '@/functions/toast'
+// db
+import db from '@/models/db'
 
 export function useHook() {
   const router = useRouter()
 
-  const formContextValue = useForm<
-    User & {
-      pin__hashed_confirmation?: string
-    }
-  >()
+  const formContextValue = useForm<FormValues>()
 
   return {
     formContextValue,
@@ -27,16 +27,13 @@ export function useHook() {
     },
 
     handleSubmit: formContextValue.handleSubmit(formValues => {
-      delete formValues.pin__hashed_confirmation
+      formValues.uuid = generateOrderedUuid()
+      formValues.created_at = new Date().toISOString()
+
+      const newUser = getValidatedFormValues(formValues)
 
       db.users
-        .add({
-          ...formValues,
-          uuid: generateOrderedUuid(),
-          pin__hashed: getHash(formValues.pin__hashed),
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
-        })
+        .add(newUser)
         .then(() => {
           toast('Data pengguna berhasil disimpan')
           router.back()

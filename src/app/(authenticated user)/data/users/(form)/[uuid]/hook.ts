@@ -1,18 +1,34 @@
-import db from '@/models/db'
-import { toast } from '@/functions/toast'
-import { User } from '@/models/table-types/user'
-import { useRouter } from 'next/navigation'
+// types
+import type { FormValues } from '../_types/form-values'
+import type { UUID } from 'crypto'
+// vendors
 import { useForm } from 'react-hook-form'
 import { useLiveQuery } from 'dexie-react-hooks'
+import { useRouter } from 'next/navigation'
+// functions
+import { toast } from '@/functions/toast'
+// db
+import db from '@/models/db'
+import { getValidatedFormValues } from '../_functions/get-validated-form-values'
 
-export function useHook(userUuid: string) {
+export function useHook(userUuid: UUID) {
   const router = useRouter()
 
-  const formContextValue = useForm<
-    User & {
-      pin__hashed_confirmation?: string
-    }
-  >()
+  const formContextValue = useForm<FormValues>()
+
+  db.users
+    .get(userUuid)
+    .then(user => {
+      formContextValue.reset({
+        name: user?.name,
+        email: user?.email,
+        roles: user?.roles,
+      })
+    })
+    .catch(() => {
+      toast('Data pengguna tidak ditemukan', 'danger')
+      router.back()
+    })
 
   return {
     formContextValue,
@@ -27,14 +43,11 @@ export function useHook(userUuid: string) {
     },
 
     handleSubmit: formContextValue.handleSubmit(formValues => {
-      delete formValues.pin__hashed_confirmation
+      const updatedUser = getValidatedFormValues(formValues)
 
       db.users
-        .update(formValues.uuid, {
-          name: formValues.name,
-          email: formValues.email,
-          roles: formValues.roles,
-          updated_at: new Date().toISOString(),
+        .update(userUuid, {
+          ...updatedUser,
         })
         .then(() => {
           toast('Data pengguna berhasil disimpan')

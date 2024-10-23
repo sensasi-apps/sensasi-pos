@@ -1,13 +1,18 @@
 'use client'
 
+import { UUID } from 'crypto'
 import { UserForm } from '../_components/form'
 import { useHook } from './hook'
+import { useParams } from 'next/navigation'
 
-export default function Page({
-  params: { uuid },
-}: {
-  params: { uuid: string }
-}) {
+interface PageProps {
+  params: {
+    uuid: UUID
+  }
+}
+
+export default function Page() {
+  const { uuid } = useParams<PageProps['params']>()
   const hook = useHook(uuid)
 
   return (
