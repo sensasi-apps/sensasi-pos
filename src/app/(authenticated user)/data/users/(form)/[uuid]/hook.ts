@@ -2,12 +2,10 @@
 import type { FormValues } from '../_types/form-values'
 import type { UUID } from 'crypto'
 // vendors
-import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { useRouter } from 'next/navigation'
 // functions
-import { isUuidString } from '@/functions/is-uuid-string'
 import { toast } from '@/functions/toast'
 // db
 import db from '@/models/db'
