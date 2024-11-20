@@ -24,7 +24,7 @@
     "dexie": "^4.0.9",
     "dexie-react-hooks": "^1.1.7",
     "framer-motion": "^11.11.9",
-    "lucide-react": "^0.453.0",
+    "lucide-react": "^0.454.0",
     "next": "15.0.1",
     "next-nprogress-bar": "^2.3.14",
     "next-themes": "^0.3.0",
