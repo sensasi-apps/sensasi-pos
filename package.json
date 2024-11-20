@@ -23,7 +23,7 @@
     "dayjs": "^1.11.13",
     "dexie": "^4.0.9",
     "dexie-react-hooks": "^1.1.7",
-    "framer-motion": "^11.11.9",
+    "framer-motion": "^11.11.10",
     "lucide-react": "^0.453.0",
     "next": "15.0.1",
     "next-nprogress-bar": "^2.3.14",
