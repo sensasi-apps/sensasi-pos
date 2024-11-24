@@ -36,7 +36,7 @@
     "react-hook-form": "^7.53.1",
     "react-hot-toast": "^2.4.1",
     "react-image-file-resizer": "^0.4.8",
-    "recharts": "^2.13.0",
+    "recharts": "^2.13.2",
     "tailwind-merge": "^2.5.4",
     "use-debounce": "^10.0.4",
     "uuid": "^10.0.0",
