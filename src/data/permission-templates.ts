@@ -1,8 +1,11 @@
 import { Permission } from '@/enums/permission'
-import { User } from '@/models/table-types/user'
+import { Role } from '@/enums/role'
 
 export const PERMISSION_TEMPLATES: {
-  [key in User['roles'][0]]: Permission[]
+  [Role.OWNER]: Permission[]
+  [Role.MANAGER]: Permission[]
+  [Role.CASHIER]: Permission[]
+  [Role.STOCKER]: Permission[]
 } = {
   owner: [Permission.READ_REPORT, Permission.READ_DASHBOARD],
   manager: [
