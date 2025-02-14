@@ -1,7 +1,14 @@
 'use client'
 
 import mergeClass from '@/functions/merge-class'
-import { Boxes, Check, UserPlus, UsersRound, Warehouse } from 'lucide-react'
+import {
+  Boxes,
+  Check,
+  CircleCheck,
+  UserPlus,
+  UsersRound,
+  Warehouse,
+} from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { ReactElement } from 'react'
 
@@ -37,13 +44,19 @@ const STEPS: Step[] = [
     stepimgcurrent: <Boxes color="#99C7FB" />,
     url: '/steps/4-add-products-and-stock',
   },
+  {
+    name: '5. Selesai',
+    stepimg: <CircleCheck />,
+    stepimgcurrent: <CircleCheck color="#99C7FB" />,
+    url: '/steps/finish',
+  },
 ]
 
 const Steps = () => {
   const pathname = usePathname()
 
   return (
-    <ol className="rounded-md bg-transparent lg:flex">
+    <ol className="max-w-5xl rounded-md border-2 border-zinc-500 bg-transparent p-5 lg:flex">
       {STEPS.map((step, i) => {
         const isCurrent = pathname.endsWith(step.url)
         const isCompleted = STEPS.slice(i + 1).some(step =>
@@ -67,7 +80,7 @@ const Steps = () => {
               <span
                 className={mergeClass(
                   i !== 0 ? 'lg:pl-9' : '',
-                  'flex items-center px-6 py-4',
+                  'flex items-start px-6 py-4',
                 )}>
                 <span>
                   {isCompleted ? (
