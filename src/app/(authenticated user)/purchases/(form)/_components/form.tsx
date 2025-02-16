@@ -3,7 +3,8 @@ import type { FormEventHandler } from 'react'
 import type { FormValues } from '../_types/form-values'
 // vendors
 import { parseDate } from '@internationalized/date'
-import { DatePicker, Input, Textarea } from '@nextui-org/react'
+import { DatePicker } from '@nextui-org/date-picker'
+import { Input, Textarea } from '@nextui-org/input'
 import { Controller, useFormContext } from 'react-hook-form'
 // components
 import resizeImage from '@/components/image-input/functions/resize-image'

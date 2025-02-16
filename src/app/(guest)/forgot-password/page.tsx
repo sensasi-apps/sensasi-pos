@@ -1,12 +1,15 @@
 'use client'
 
-import { Card, CardBody, CardHeader, Divider } from '@nextui-org/react'
-import EmailForm from './_components/email-form'
-import SecurityQuestionForm from './_components/security-question'
-import Link from 'next/link'
-import PageUrlEnum from '@/enums/page-url'
+// vendors
+import { Card, CardBody, CardHeader } from '@nextui-org/card'
+import { Divider } from '@nextui-org/divider'
 import { useSearchParams } from 'next/navigation'
+import Link from 'next/link'
+//
 import { useFormSubmissionState } from '@/stores/form-submission'
+import EmailForm from './_components/email-form'
+import PageUrlEnum from '@/enums/page-url'
+import SecurityQuestionForm from './_components/security-question'
 
 export default function Page() {
   const { isSubmitting } = useFormSubmissionState()

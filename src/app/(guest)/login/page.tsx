@@ -1,21 +1,19 @@
 'use client'
 
+// vendors
+import { Autocomplete, AutocompleteItem } from '@nextui-org/autocomplete'
+import { Button } from '@nextui-org/button'
+import { Card, CardBody, CardHeader } from '@nextui-org/card'
+import { Divider } from '@nextui-org/divider'
+import { FormEvent, useState } from 'react'
+import { Input } from '@nextui-org/input'
+import Link from 'next/link'
+// icons
+import { Eye, EyeOff, UserRound } from 'lucide-react'
+//
 import { User, users } from '@/data/users'
 import PageUrlEnum from '@/enums/page-url'
 import mergeClass from '@/functions/merge-class'
-import {
-  Autocomplete,
-  AutocompleteItem,
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  Divider,
-  Input,
-} from '@nextui-org/react'
-import { Eye, EyeOff, UserRound } from 'lucide-react'
-import Link from 'next/link'
-import { FormEvent, useState } from 'react'
 
 export default function Page() {
   const [isVisible, setIsVisible] = useState(false)

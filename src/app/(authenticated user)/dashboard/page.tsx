@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { Card, CardBody } from '@nextui-org/card'
-import { Select, SelectItem } from '@nextui-org/react'
+import { Select, SelectItem } from '@nextui-org/select'
 
 import LineChart from '@/components/line-chart'
 import BarChart from '@/components/bar-chart'

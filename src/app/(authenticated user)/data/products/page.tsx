@@ -1,17 +1,12 @@
 'use client'
 
 // vendors
-import {
-  Button,
-  // ButtonGroup,
-  Card,
-  CardBody,
-  Chip,
-  Input,
-  Link,
-  Select,
-  SelectItem,
-} from '@nextui-org/react'
+import { Button } from '@nextui-org/button'
+import { Card, CardBody } from '@nextui-org/card'
+import { Chip } from '@nextui-org/chip'
+import { Input } from '@nextui-org/input'
+import { Link } from '@nextui-org/link'
+import { Select, SelectItem } from '@nextui-org/select'
 import {
   Barcode,
   // LayoutGridIcon, List,

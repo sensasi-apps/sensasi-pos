@@ -5,9 +5,10 @@ import {
   Navbar as VendorNavbar,
   NavbarBrand,
   NavbarContent,
-} from '@nextui-org/react'
-import { ComputerIcon } from 'lucide-react'
+} from '@nextui-org/navbar'
 import NextLink from 'next/link'
+// icons
+import { ComputerIcon } from 'lucide-react'
 // globals
 import { hasLoggedInUser } from '@/functions/has-logged-in-user'
 import PageUrlEnum from '@/enums/page-url'

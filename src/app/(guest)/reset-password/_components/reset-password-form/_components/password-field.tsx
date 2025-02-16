@@ -1,5 +1,8 @@
-import { Input } from '@nextui-org/react'
+// vendors
+import { Input } from '@nextui-org/input'
+// icons
 import { Eye, EyeOff } from 'lucide-react'
+//
 import { usePasswordVisibilityState } from '../_stores/password-visibility'
 import { useFormSubmissionState } from '@/stores/form-submission'
 import { useErrorMessageState } from '@/stores/input-error-message'

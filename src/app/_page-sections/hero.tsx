@@ -1,7 +1,8 @@
 'use client'
 
 // vendors
-import { Card, Image, CardHeader, CardBody } from '@nextui-org/react'
+import { Card, CardHeader, CardBody } from '@nextui-org/card'
+import { Image } from '@nextui-org/image'
 // locals
 import GridPattern from '@/components/grid-pattern'
 

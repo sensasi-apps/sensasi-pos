@@ -1,12 +1,15 @@
 // vendors
+import { Button } from '@nextui-org/button'
 import {
-  Button,
   Dropdown,
   DropdownItem,
   DropdownMenu,
   DropdownSection,
   DropdownTrigger,
-} from '@nextui-org/react'
+} from '@nextui-org/dropdown'
+import { useTheme } from 'next-themes'
+import Link from 'next/link'
+// icons
 import {
   ChevronDown,
   DatabaseBackupIcon,
@@ -21,8 +24,6 @@ import {
   ShoppingCartIcon,
   FileSpreadsheetIcon,
 } from 'lucide-react'
-import Link from 'next/link'
-import { useTheme } from 'next-themes'
 // globals
 import { hasAnyPermissions } from '@/functions/has-any-permissions'
 import { Permission } from '@/enums/permission'

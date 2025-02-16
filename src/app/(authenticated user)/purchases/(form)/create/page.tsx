@@ -1,15 +1,12 @@
 'use client'
 
-import {
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-} from '@nextui-org/react'
+// vendors
+import { Button } from '@nextui-org/button'
+import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card'
+import { FormProvider } from 'react-hook-form'
+//
 import { usePageHook } from './page-hook'
 import { ProductPurchaseForm } from '../_components/form'
-import { FormProvider } from 'react-hook-form'
 
 const FORM_ID = 'purchase-create-form'
 

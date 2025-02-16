@@ -2,7 +2,8 @@
 import type { ForwardRefExoticComponent, RefAttributes } from 'react'
 import type { LucideProps } from 'lucide-react'
 // vendors
-import { Button, ButtonProps, Tooltip } from '@nextui-org/react'
+import { Button, ButtonProps } from '@nextui-org/button'
+import { Tooltip } from '@nextui-org/tooltip'
 
 export function IconButtonInputContent({
   text,

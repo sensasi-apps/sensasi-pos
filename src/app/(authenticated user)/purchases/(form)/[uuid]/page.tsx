@@ -1,12 +1,9 @@
 'use client'
 
-import {
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-} from '@nextui-org/react'
+// vendors
+import { Button } from '@nextui-org/button'
+import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card'
+//
 import { usePageHook } from './page-hook'
 
 const FORM_ID = 'purchase-update-form'

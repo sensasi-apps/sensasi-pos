@@ -1,20 +1,23 @@
 'use client'
 
-import PageUrlEnum from '@/enums/page-url'
-import Link from 'next/link'
+// vendors
+import { Button } from '@nextui-org/button'
+import { Chip } from '@nextui-org/chip'
+import { Switch } from '@nextui-org/switch'
 import {
-  Button,
-  Chip,
-  Switch,
   Table,
   TableBody,
   TableCell,
   TableColumn,
   TableHeader,
   TableRow,
-} from '@nextui-org/react'
-import { useHook } from './hook'
+} from '@nextui-org/table'
+import Link from 'next/link'
+// icons
 import { EditIcon } from 'lucide-react'
+//
+import { useHook } from './hook'
+import PageUrlEnum from '@/enums/page-url'
 
 export default function Page() {
   const { users, setUserActiveStatus } = useHook()

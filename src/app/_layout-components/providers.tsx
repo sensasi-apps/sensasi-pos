@@ -1,7 +1,7 @@
 'use client'
 
 import { type ReactNode, useEffect, useState } from 'react'
-import { NextUIProvider } from '@nextui-org/react'
+import { NextUIProvider } from '@nextui-org/system'
 import { ThemeProvider as NextThemeProvider } from 'next-themes'
 import { Toaster } from 'react-hot-toast'
 

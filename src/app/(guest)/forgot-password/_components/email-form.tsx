@@ -1,6 +1,9 @@
-import { useFormSubmissionState } from '@/stores/form-submission'
-import { Button, Input } from '@nextui-org/react'
+// vendors
+import { Button } from '@nextui-org/button'
 import { FormEvent, useState } from 'react'
+import { Input } from '@nextui-org/input'
+//
+import { useFormSubmissionState } from '@/stores/form-submission'
 
 export default function EmailForm() {
   // States

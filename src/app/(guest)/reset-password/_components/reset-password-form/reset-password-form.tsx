@@ -1,5 +1,5 @@
 // vendors
-import { Button } from '@nextui-org/react'
+import { Button } from '@nextui-org/button'
 import { FormEvent } from 'react'
 // subcomponents
 import ConfirmPasswordField from './_components/confirm-password-field'

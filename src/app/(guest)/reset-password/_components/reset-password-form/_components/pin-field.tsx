@@ -1,9 +1,12 @@
-import { Input } from '@nextui-org/react'
+// vendors
+import { FormEvent } from 'react'
+import { Input } from '@nextui-org/input'
+// icons
 import { Eye, EyeOff } from 'lucide-react'
+//
 import { usePinVisibilityState } from '../_stores/pin-visibility'
 import { useFormSubmissionState } from '@/stores/form-submission'
 import { useErrorMessageState } from '@/stores/input-error-message'
-import { FormEvent } from 'react'
 
 export default function PinField() {
   // Stores

@@ -1,23 +1,21 @@
 'use client'
 
-import { Base64Blob } from '@/@types/base-64-blob'
-import resizeImage from '@/components/image-input/functions/resize-image'
+import { Button } from '@nextui-org/button'
+import { createRef, useCallback, useEffect, useState } from 'react'
+import { Image } from '@nextui-org/image'
 import {
-  Button,
-  Image,
   Modal,
   ModalBody,
   ModalContent,
   ModalFooter,
   ModalHeader,
   useDisclosure,
-} from '@nextui-org/react'
-import {
-  // CameraIcon,
-  Maximize2,
-  Trash2,
-} from 'lucide-react'
-import { createRef, useCallback, useEffect, useState } from 'react'
+} from '@nextui-org/modal'
+// icons
+import { Maximize2, Trash2 } from 'lucide-react'
+//
+import { type Base64Blob } from '@/@types/base-64-blob'
+import resizeImage from '@/components/image-input/functions/resize-image'
 
 /**
  *
