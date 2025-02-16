@@ -49,6 +49,8 @@ export function ProductPurchaseForm({
             isInvalid={!!error}
             errorMessage={error?.message}
             onChange={value => {
+              if (!value) return
+
               onChange(new Date(value.toString()).toISOString())
             }}
             {...restProps}
@@ -124,7 +126,7 @@ export function ProductPurchaseForm({
             label="Tanggal Bayar"
             value={value ? parseDate(value) : null}
             onChange={value => {
-              onChange(value.toString())
+              onChange(value?.toString())
             }}
             {...restProps}
             isInvalid={!!error}
@@ -144,7 +146,7 @@ export function ProductPurchaseForm({
             label="Tanggal Terima Barang"
             value={value ? parseDate(value) : null}
             onChange={value => {
-              onChange(value.toString())
+              onChange(value?.toString())
             }}
             {...restProps}
             isInvalid={!!error}
@@ -164,7 +166,7 @@ export function ProductPurchaseForm({
             label="Tanggal Jatuh Tempo"
             value={value ? parseDate(value) : null}
             onChange={value => {
-              onChange(value.toString())
+              onChange(value?.toString())
             }}
             {...restProps}
             isInvalid={!!error}

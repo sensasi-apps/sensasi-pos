@@ -99,6 +99,7 @@ export function ProductCard({
 
               <DropdownMenu>
                 <DropdownItem
+                  key="edit"
                   startContent={<EditIcon className="mr-2" />}
                   href={PageUrlEnum.PRODUCT_EDIT.replace(':uuid', uuid)}
                   as={Link}>
@@ -106,6 +107,7 @@ export function ProductCard({
                 </DropdownItem>
 
                 <DropdownItem
+                  key="delete"
                   startContent={<TrashIcon className="mr-2" />}
                   color="danger"
                   className="text-danger"
