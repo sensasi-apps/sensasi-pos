@@ -3,18 +3,16 @@
 // types
 import type { Product } from '@/models/table-types/product'
 // vendors
+import { Button } from '@nextui-org/button'
+import { Card, CardBody, type CardProps } from '@nextui-org/card'
+import { Chip } from '@nextui-org/chip'
 import {
-  Card,
-  CardBody,
-  Image,
-  CardProps,
-  Chip,
-  Button,
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
   DropdownItem,
-} from '@nextui-org/react'
+} from '@nextui-org/dropdown'
+import { Image } from '@nextui-org/image'
 import { EditIcon, MoreVerticalIcon, TrashIcon } from 'lucide-react'
 import Link from 'next/link'
 // etc

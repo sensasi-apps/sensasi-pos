@@ -1,7 +1,11 @@
 'use client'
 
-import { Button, Checkbox, CheckboxGroup, Input } from '@nextui-org/react'
+// vendors
+import { Button } from '@nextui-org/button'
+import { Checkbox, CheckboxGroup } from '@nextui-org/checkbox'
 import { Controller } from 'react-hook-form'
+import { Input } from '@nextui-org/input'
+//
 import { Role } from '@/enums/role'
 import { PERMISSION_TEMPLATES } from '@/data/permission-templates'
 import { useHook as useCreateHook } from '../create/hook'

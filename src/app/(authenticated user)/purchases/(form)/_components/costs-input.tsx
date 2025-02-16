@@ -1,9 +1,11 @@
+// vendors
+import { Controller, useFieldArray, useFormContext } from 'react-hook-form'
+import { Button } from '@nextui-org/button'
+import { Input } from '@nextui-org/input'
+import { PlusCircleIcon, TrashIcon } from 'lucide-react'
 // types
 import type { FormValues } from '../_types/form-values'
 // components
-import { Controller, useFieldArray, useFormContext } from 'react-hook-form'
-import { Button, Input } from '@nextui-org/react'
-import { PlusCircleIcon, TrashIcon } from 'lucide-react'
 import { InputAdditionalContent } from '@/components/input-additional-content'
 
 export function CostsInput() {

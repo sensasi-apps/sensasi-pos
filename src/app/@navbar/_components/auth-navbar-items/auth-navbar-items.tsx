@@ -1,7 +1,9 @@
 'use client'
 
 // vendors
-import { NavbarItem, Button, Tooltip } from '@nextui-org/react'
+import { Button } from '@nextui-org/button'
+import { NavbarItem } from '@nextui-org/navbar'
+import { Tooltip } from '@nextui-org/tooltip'
 import NextLink from 'next/link'
 import {
   CalculatorIcon,

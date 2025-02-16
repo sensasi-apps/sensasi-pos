@@ -1,15 +1,9 @@
 'use client'
 
 // vendors
-import {
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Input,
-  Textarea,
-} from '@nextui-org/react'
+import { Button } from '@nextui-org/button'
+import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card'
+import { Input, Textarea } from '@nextui-org/input'
 import { useRouter } from 'next/navigation'
 import { Controller, useForm } from 'react-hook-form'
 // functions

@@ -1,13 +1,15 @@
-import mergeClass from '@/functions/merge-class'
+// vendors
+import { Button } from '@nextui-org/button'
 import {
-  Button,
   Modal,
   ModalBody,
   ModalContent,
   ModalFooter,
   ModalHeader,
   ModalProps,
-} from '@nextui-org/react'
+} from '@nextui-org/modal'
+//
+import mergeClass from '@/functions/merge-class'
 
 type ColorType =
   | 'primary'

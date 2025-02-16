@@ -1,6 +1,6 @@
 'use client'
 
-import { Accordion, AccordionItem } from '@nextui-org/react'
+import { Accordion, AccordionItem } from '@nextui-org/accordion'
 
 export function Faq() {
   return (

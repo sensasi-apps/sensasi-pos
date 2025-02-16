@@ -1,13 +1,17 @@
 // types
 import type { FormValues } from '../_types/form-values'
 // vendors
-import { Button, Input, Link, Select, SelectItem } from '@nextui-org/react'
+import { Button } from '@nextui-org/button'
 import { Controller, useFieldArray, useFormContext } from 'react-hook-form'
-import { PlusCircleIcon, TrashIcon } from 'lucide-react'
+import { Input } from '@nextui-org/input'
+import { Link } from '@nextui-org/link'
+import { Select, SelectItem } from '@nextui-org/select'
 import { useLiveQuery } from 'dexie-react-hooks'
-import db from '@/models/db'
 import NextLink from 'next/link'
+// icons
+import { PlusCircleIcon, TrashIcon } from 'lucide-react'
 // locals
+import db from '@/models/db'
 import PageUrlEnum from '@/enums/page-url'
 import { InputAdditionalContent } from '@/components/input-additional-content'
 

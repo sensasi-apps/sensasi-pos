@@ -1,4 +1,4 @@
-import { Link } from '@nextui-org/react'
+import { Link } from '@nextui-org/link'
 import { ArrowUpRightIcon, ComputerIcon } from 'lucide-react'
 import packageJson from '@/../package.json'
 

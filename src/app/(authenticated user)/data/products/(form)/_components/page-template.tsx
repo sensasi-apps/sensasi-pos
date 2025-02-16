@@ -1,13 +1,8 @@
 'use client'
 
 // vendors
-import {
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-} from '@nextui-org/react'
+import { Button } from '@nextui-org/button'
+import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card'
 // sub-components
 import { ProductForm } from '@/app/(authenticated user)/data/products/(form)/_components/product-form'
 import { useHook as updateUseHook } from '../[uuid]/_hook'

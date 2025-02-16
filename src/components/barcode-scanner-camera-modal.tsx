@@ -1,18 +1,15 @@
 'use client'
 
+// vendors
 import { BarcodeScanner, type DetectedBarcode } from 'react-barcode-scanner'
-import {
-  Button,
-  Checkbox,
-  CheckboxGroup,
-  Modal,
-  ModalContent,
-  ModalProps,
-  Tooltip,
-} from '@nextui-org/react'
-import { InfoIcon, SettingsIcon, XIcon } from 'lucide-react'
+import { Button } from '@nextui-org/button'
+import { Checkbox, CheckboxGroup } from '@nextui-org/checkbox'
+import { Modal, ModalContent, ModalProps } from '@nextui-org/modal'
+import { Tooltip } from '@nextui-org/tooltip'
 import { useState } from 'react'
 import NextuiAlert from 'nextui-alert'
+// icons
+import { InfoIcon, SettingsIcon, XIcon } from 'lucide-react'
 
 /**
  * List of barcode types that can be detected by the camera

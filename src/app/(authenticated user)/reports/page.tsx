@@ -1,6 +1,8 @@
-import PageUrlEnum from '@/enums/page-url'
-import { Link } from '@nextui-org/react'
+// vendors
+import { Link } from '@nextui-org/link'
 import NextLink from 'next/link'
+//
+import PageUrlEnum from '@/enums/page-url'
 
 export default function page() {
   return (

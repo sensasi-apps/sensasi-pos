@@ -1,5 +1,7 @@
+// vendors
+import { Button } from '@nextui-org/button'
+//
 import PageUrlEnum from '@/enums/page-url'
-import { Button } from '@nextui-org/react'
 import Link from 'next/link'
 
 export default function Page() {

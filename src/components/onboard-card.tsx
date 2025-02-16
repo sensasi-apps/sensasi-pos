@@ -1,10 +1,13 @@
 'use client'
 
-import { Card, CardHeader, CardBody } from '@nextui-org/react'
-import { FileDown, GalleryHorizontalEnd, TvMinimalPlay } from 'lucide-react'
-import { Button } from '@nextui-org/react'
-import PageUrlEnum from '@/enums/page-url'
+// vendors
+import { Button } from '@nextui-org/button'
+import { Card, CardHeader, CardBody } from '@nextui-org/card'
 import Link from 'next/link'
+// icons
+import { FileDown, GalleryHorizontalEnd, TvMinimalPlay } from 'lucide-react'
+//
+import PageUrlEnum from '@/enums/page-url'
 
 export const OnBoardCard = () => {
   return (

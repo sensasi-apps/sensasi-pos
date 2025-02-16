@@ -1,17 +1,20 @@
 'use client'
 
+// vendors
+import { Button } from '@nextui-org/button'
 import {
-  Button,
   Modal,
   ModalBody,
   ModalContent,
   ModalFooter,
   ModalHeader,
-  Textarea,
-} from '@nextui-org/react'
-import { useFeedbackFormModalHook } from './hooks'
-import { SendIcon } from 'lucide-react'
+} from '@nextui-org/modal'
+import { Textarea } from '@nextui-org/input'
 import NextuiAlert from 'nextui-alert'
+// icons
+import { SendIcon } from 'lucide-react'
+//
+import { useFeedbackFormModalHook } from './hooks'
 
 const FORM_ID = 'feedback-form'
 
