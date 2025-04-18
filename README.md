@@ -26,3 +26,34 @@ Kami menyambut kontribusi dari siapa pun! Jika ingin membantu mengembangkan **Se
 ## Lisensi
 
 **Sensasi POS** bersifat _open-source_ dan dilindungi Lisensi MIT. Silakan membaca _file_ [LICENSE](https://github.com/sensasi-apps/sensasi-pos/blob/main/LICENSE) untuk informasi lebih lanjut.
+
+---
+
+# 💼📊 Sensasi POS (English)
+
+**Sensasi POS** is a simple Point of Sale application designed to help small and medium business owners manage their businesses! 🌐💡
+
+Transaction data is stored on each device, so you don't need an internet connection to use it. 🎉
+
+This application offers various features that make it easy for users to perform transactions, manage inventory, and track sales.
+
+## ✨ Main Features
+
+- 🗒️ Sales recording.
+- 🛒 Recording procurement/purchase/restocking of goods.
+- 📦 Monitoring the quantity/stock of goods.
+- 📈 Sales, purchase, inventory movement, and margin reports in both summary and detail.
+
+In addition to the features above, **Sensasi POS** also has other features that can accommodate sales and purchase data from multiple business branches.
+
+## 📖 How to Use
+
+Want to know how to use **Sensasi POS**? Follow the step-by-step guide here: 👉 [Sensasi POS User Guide](https://github.com/sensasi-apps/sensasi-pos#user-guide)
+
+## 🤝 Contribution
+
+We welcome contributions from anyone! If you want to help develop **Sensasi POS**, please read the [contribution guide](https://github.com/sensasi-apps/sensasi-pos/blob/main/CONTRIBUTING.md) for more information.
+
+## License
+
+**Sensasi POS** is open-source and protected by the MIT License. Please read the [LICENSE](https://github.com/sensasi-apps/sensasi-pos/blob/main/LICENSE) file for more information.
