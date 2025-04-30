@@ -74,16 +74,17 @@ const Page = () => {
           <div
             key={data.id}
             className="mx-auto rounded-md border border-b-2 border-l-2 dark:border-white">
-            <div className="items-center justify-center flex">
+            <div className="flex items-center justify-center">
               <Image
                 // as={NextImage}
                 width="240"
                 height="240"
                 src="https://nextui.org/images/album-cover.png"
-                className='mx-auto my-8'
+                alt=""
+                className="mx-auto my-8"
               />
             </div>
-            <div className="p-2 items-start overflow-hidden text-ellipsis font-bold">
+            <div className="items-start overflow-hidden text-ellipsis font-bold p-2">
               {data.name}
               <p className="text-left text-sm font-light">
                 {data.description}
