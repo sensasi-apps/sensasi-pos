@@ -84,11 +84,9 @@ const Page = () => {
                 className="mx-auto my-8"
               />
             </div>
-            <div className="items-start overflow-hidden text-ellipsis font-bold p-2">
+            <div className="items-start overflow-hidden text-ellipsis p-2 font-bold">
               {data.name}
-              <p className="text-left text-sm font-light">
-                {data.description}
-              </p>
+              <p className="text-left text-sm font-light">{data.description}</p>
               <div className="mt-2 flex justify-between text-lg text-slate-400">
                 <span className="text-lg text-slate-200 md:text-sm">
                   Rp. {data.default_price}
