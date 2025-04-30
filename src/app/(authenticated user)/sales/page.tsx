@@ -68,34 +68,32 @@ const dummyProducts = [
  */
 const Page = () => {
   return (
-    <div className="grid grid-cols-3 items-center justify-between gap-12 py-12">
+    <div className="grid grid-cols-3 items-center justify-between gap-12">
       {dummyProducts.map(data => {
         return (
-          <span
+          <div
             key={data.id}
             className="mx-auto rounded-md border border-b-2 border-l-2 dark:border-white">
-            <div className="ml-12 mr-12 items-center justify-center">
+            <div className="flex items-center justify-center">
               <Image
                 // as={NextImage}
-                width="480"
-                height="480"
+                width="240"
+                height="240"
                 src="https://nextui.org/images/album-cover.png"
                 alt=""
+                className="mx-auto my-8"
               />
             </div>
-            <div className="ml-4 items-start overflow-hidden text-ellipsis text-center font-bold">
+            <div className="items-start overflow-hidden text-ellipsis p-2 font-bold">
               {data.name}
-              <p className="pt-1 text-left text-sm font-light text-slate-400">
-                {data.description}
-              </p>
+              <p className="text-left text-sm font-light">{data.description}</p>
               <div className="mt-2 flex justify-between text-lg text-slate-400">
                 <span className="text-lg text-slate-200 md:text-sm">
-                  {data.default_price} IDR
+                  Rp. {data.default_price}
                 </span>
               </div>
-              <p className="mt-4"></p>
             </div>
-          </span>
+          </div>
         )
       })}
     </div>
