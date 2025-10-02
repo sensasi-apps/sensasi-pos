@@ -1,8 +1,9 @@
 // vendors
 import type { UUID } from 'crypto'
 // globals
-import type { User } from '@/data/users'
 import type { ISODate } from '@/@types/iso-date'
+// models
+import type { User } from './user'
 
 /**
  * Represents a warehouse entity with relevant details.

@@ -5,34 +5,58 @@ import { Autocomplete, AutocompleteItem } from '@heroui/autocomplete'
 import { Button } from '@heroui/button'
 import { Card, CardBody, CardHeader } from '@heroui/card'
 import { Divider } from '@heroui/divider'
-import { FormEvent, useState } from 'react'
+import { FormEvent, useEffect, useRef, useState } from 'react'
 import { Input } from '@heroui/input'
+import { useLiveQuery } from 'dexie-react-hooks'
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
 // icons
 import { Eye, EyeOff, UserRound } from 'lucide-react'
 //
-import { User, users } from '@/data/users'
 import PageUrlEnum from '@/enums/page-url'
 import mergeClass from '@/functions/merge-class'
+import db from '@/models/db'
+import { compare } from 'bcryptjs'
+import { toast } from '@/functions/toast'
+import { User } from '@/models/table-types/user'
 
 export default function Page() {
+  const users = useLiveQuery(() => db.users.toArray()) ?? []
   const [isVisible, setIsVisible] = useState(false)
-  const [hasSelectedUser, setHasSelectedUser] = useState(false)
+  const [selectedUser, setSelectedUser] = useState<User>()
   const [isLoading, setIsLoading] = useState(false)
+  const formEl = useRef(null)
+
+  useEffect(() => {
+    if (localStorage.getItem('logged-in-user-uuid')) {
+      redirect(PageUrlEnum.DASHBOARD)
+    }
+  }, [])
 
   const toggleVisibility = () => setIsVisible(!isVisible)
 
-  const toggleHasSelectedUser = (key: string | number | null) =>
-    setHasSelectedUser(!!key)
-
-  const handleAuthentication = (event: FormEvent<HTMLFormElement>) => {
+  const handleAuthentication = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+
+    if (!formEl.current || !selectedUser) return
 
     setIsLoading(true)
 
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 2000)
+    const formData = new FormData(formEl.current)
+    const formValues = Object.fromEntries(formData)
+
+    const isPasswordMatched = await compare(
+      formValues.password as string,
+      selectedUser.pin__hashed,
+    )
+
+    if (!isPasswordMatched) return toast('Pin salah', 'danger')
+
+    localStorage.setItem('logged-in-user-uuid', selectedUser.uuid)
+
+    toast('Berhasil masuk', 'success')
+
+    redirect(PageUrlEnum.DASHBOARD)
   }
 
   return (
@@ -44,15 +68,21 @@ export default function Page() {
           </CardHeader>
           <Divider />
           <CardBody>
-            <form className="space-y-4" onSubmit={handleAuthentication}>
+            <form
+              ref={formEl}
+              className="space-y-4"
+              onSubmit={handleAuthentication}>
               <Autocomplete
                 label="Pilih Pengguna"
-                onSelectionChange={toggleHasSelectedUser}
+                name="user_uuid"
+                onSelectionChange={key => {
+                  setSelectedUser(users.find(user => user.uuid === key))
+                }}
                 isRequired
                 isDisabled={isLoading}>
-                {users.map((user: User) => (
+                {users.map(user => (
                   <AutocompleteItem
-                    key={user.id}
+                    key={user.uuid}
                     startContent={
                       <UserRound size={24} className="text-primary-300" />
                     }>
@@ -61,9 +91,10 @@ export default function Page() {
                 ))}
               </Autocomplete>
 
-              {hasSelectedUser && (
+              {selectedUser && (
                 <Input
                   label="Kata Sandi"
+                  name="password"
                   isRequired
                   isDisabled={isLoading}
                   endContent={
@@ -86,7 +117,7 @@ export default function Page() {
               <Button
                 color="primary"
                 className="w-full"
-                isDisabled={!hasSelectedUser}
+                isDisabled={!selectedUser}
                 isLoading={isLoading}
                 type="submit">
                 Masuk

@@ -29,6 +29,7 @@ export function useHook() {
     handleSubmit: formContextValue.handleSubmit(formValues => {
       formValues.uuid = generateOrderedUuid()
       formValues.created_at = new Date().toISOString()
+      formValues.updated_at = new Date().toISOString()
 
       const newUser = getValidatedFormValues(formValues)
 
