@@ -45,7 +45,6 @@ export function ProductPurchaseForm({
           <DatePicker
             isRequired
             label="Tanggal"
-            // @ts-expect-error will fix this later
             value={value ? parseZonedDateTime(value) : null}
             isInvalid={!!error}
             errorMessage={error?.message}
@@ -125,7 +124,6 @@ export function ProductPurchaseForm({
         }) => (
           <DatePicker
             label="Tanggal Bayar"
-            // @ts-expect-error will fix this later
             value={value ? parseZonedDateTime(value) : null}
             onChange={value => {
               onChange(value?.toString())
@@ -146,7 +144,6 @@ export function ProductPurchaseForm({
         }) => (
           <DatePicker
             label="Tanggal Terima Barang"
-            // @ts-expect-error will fix this later
             value={value ? parseZonedDateTime(value) : null}
             onChange={value => {
               onChange(value?.toString())
@@ -167,7 +164,6 @@ export function ProductPurchaseForm({
         }) => (
           <DatePicker
             label="Tanggal Jatuh Tempo"
-            // @ts-expect-error will fix this later
             value={value ? parseZonedDateTime(value) : null}
             onChange={value => {
               onChange(value?.toString())
