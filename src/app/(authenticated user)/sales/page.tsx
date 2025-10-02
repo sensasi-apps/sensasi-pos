@@ -79,7 +79,7 @@ const Page = () => {
                 // as={NextImage}
                 width="240"
                 height="240"
-                src="https://nextui.org/images/album-cover.png"
+                src="https://heroui.com/images/album-cover.png"
                 alt=""
                 className="mx-auto my-8"
               />

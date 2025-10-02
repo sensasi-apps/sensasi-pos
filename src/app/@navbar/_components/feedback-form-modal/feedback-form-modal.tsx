@@ -1,6 +1,7 @@
 'use client'
 
 // vendors
+import { Alert } from '@heroui/alert'
 import { Button } from '@heroui/button'
 import {
   Modal,
@@ -10,7 +11,6 @@ import {
   ModalHeader,
 } from '@heroui/modal'
 import { Textarea } from '@heroui/input'
-import NextuiAlert from 'nextui-alert'
 // icons
 import { SendIcon } from 'lucide-react'
 //
@@ -42,10 +42,10 @@ export function FeedbackFormModal({
 
         <ModalBody className="pt-4">
           {isSubmitted ? (
-            <NextuiAlert severity="success" title="Saran Anda telah terkirim!">
+            <Alert color="success" title="Saran Anda telah terkirim!">
               Terima kasih atas partisipasi Anda dalam pengembangan{' '}
               <b>Sensasi POS</b>
-            </NextuiAlert>
+            </Alert>
           ) : (
             <>
               <p>

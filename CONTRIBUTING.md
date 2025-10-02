@@ -8,7 +8,7 @@ Kami sangat senang Anda ingin berkontribusi pada **Sensasi POS**! 🎉 Baik Anda
 
 Aplikasi ini mendasarkan teknologi pengkodean pada _framework_ [**NextJS**](https://nextjs.org/) dan [**TypeScript**](https://www.typescriptlang.org/). Selain itu aplikasi ini juga menggunakan beberapa teknologi lain yang perlu Anda ketahui:
 
-- 🎨 **NextUI** - Sistem desain modern untuk aplikasi web berbasis NextJS. [Pelajari lebih lanjut di sini](https://nextui.org/).
+- 🎨 **Hero UI** - Sistem desain modern untuk aplikasi web berbasis React. [Pelajari lebih lanjut di sini](https://heroui.com/).
 - ⛃ **Dexie.js** - Pustaka IndexedDB yang memudahkan penggunaan basis data berbasis browser. [Info lebih lanjut di sini](https://dexie.org/).
 
 > Panjang umur untuk semua pengembang _open source_ di seluruh dunia! 🌍

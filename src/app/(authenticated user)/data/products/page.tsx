@@ -1,6 +1,7 @@
 'use client'
 
 // vendors
+import { Alert } from '@heroui/alert'
 import { Button } from '@heroui/button'
 import { Card, CardBody } from '@heroui/card'
 import { Chip } from '@heroui/chip'
@@ -14,7 +15,6 @@ import {
   Search,
 } from 'lucide-react'
 import NextLink from 'next/link'
-import NextuiAlert from 'nextui-alert'
 // components
 import PageUrlEnum from '@/enums/page-url'
 // sub-components
@@ -107,7 +107,7 @@ export default function ProductListPage() {
         <div className="col-span-8">
           {nProducts === 0 && (
             <div className="flex justify-center">
-              <NextuiAlert className="max-w-96 text-center">
+              <Alert className="max-w-96 text-center">
                 <p>Tidak ada data produk yang ditemukan.</p>
                 <Link
                   className="text-sm"
@@ -115,7 +115,7 @@ export default function ProductListPage() {
                   as={NextLink}>
                   Tambah produk baru?
                 </Link>
-              </NextuiAlert>
+              </Alert>
             </div>
           )}
 
