@@ -7,8 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "tsc && next lint",
-    "lint:fix": "tsc && next lint --fix",
+    "lint": "tsc && eslint .",
+    "lint:fix": "tsc && eslint --fix .",
     "check:update": "ncu",
     "update": "ncu -u -t patch && npm update",
     "update:minor": "ncu -u -t minor && npm update",
@@ -43,6 +43,7 @@
     "zustand": "^5.0.3"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^22.13.4",
     "@types/react": "^18.3.18",
