@@ -183,6 +183,8 @@ export function SettingDropdownButton({
           className="text-danger"
           color="danger"
           key="logout"
+          as={Link}
+          href={PageUrlEnum.LOGOUT}
           startContent={<PowerCircleIcon className="mr-1" />}>
           Log Keluar
         </DropdownItem>

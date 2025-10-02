@@ -6,8 +6,9 @@ import { Permission } from '@/enums/permission'
 import { useLocalStorage } from '@uidotdev/usehooks'
 
 export default function useAuth() {
-  const [loggedInUser, setLoggedInUser] =
-    useLocalStorage<User>('logged-in-user')
+  const [loggedInUser, setLoggedInUser] = useLocalStorage<User | undefined>(
+    'logged-in-user',
+  )
 
   return {
     user: loggedInUser,
