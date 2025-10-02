@@ -4,15 +4,13 @@
   "versionDate": "2024-12-07",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "check:update": "ncu",
+    "dev": "next dev",
     "lint": "tsc && eslint .",
     "lint:fix": "tsc && eslint --fix .",
-    "check:update": "ncu",
-    "update": "ncu -u -t patch && npm update",
-    "update:minor": "ncu -u -t minor && npm update",
-    "update:major": "ncu -u && npm update"
+    "start": "next start",
+    "test": ""
   },
   "dependencies": {
     "@heroui/accordion": "^2.2.23",
