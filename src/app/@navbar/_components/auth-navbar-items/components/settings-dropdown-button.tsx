@@ -25,16 +25,17 @@ import {
   FileSpreadsheetIcon,
 } from 'lucide-react'
 // globals
-import { hasAnyPermissions } from '@/functions/has-any-permissions'
 import { Permission } from '@/enums/permission'
 import ThemeSwitcher from '@/components/theme-switcher'
 import PageUrlEnum from '@/enums/page-url'
+import useAuth from '@/hooks/use-auth'
 
 export function SettingDropdownButton({
   onFeedbackFormModalOpen,
 }: {
   onFeedbackFormModalOpen: () => void
 }) {
+  const { hasAnyPermissions } = useAuth()
   const { theme, setTheme } = useTheme()
 
   return (

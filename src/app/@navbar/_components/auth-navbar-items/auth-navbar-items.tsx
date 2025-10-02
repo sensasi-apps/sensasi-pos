@@ -12,52 +12,48 @@ import {
 } from 'lucide-react'
 import { useState } from 'react'
 // globals
-import { hasAnyPermissions } from '@/functions/has-any-permissions'
 import { Permission } from '@/enums/permission'
 import PageUrlEnum from '@/enums/page-url'
 // siblings
 import { FeedbackFormModal } from '../feedback-form-modal'
 import { SettingDropdownButton } from './components/settings-dropdown-button'
+import useAuth from '@/hooks/use-auth'
 
 /**
  * Navbar items for authenticated users
  */
 export function AuthNavbarItems() {
+  const { hasAnyPermissions } = useAuth()
   const [isFeedbackFormModalOpen, setIsFeedbackFormModalOpen] = useState(false)
 
   return (
     <>
       <NavbarItem className="flex gap-2">
         <Tooltip content="Kasir" color="primary" showArrow size="lg">
-          <Button
-            className={
-              hasAnyPermissions([Permission.READ_SALE])
-                ? 'max-sm:hidden'
-                : 'hidden'
-            }
-            isIconOnly
-            href={PageUrlEnum.SALE_LIST}
-            as={NextLink}
-            variant="light"
-            color="primary">
-            <CalculatorIcon />
-          </Button>
+          {hasAnyPermissions([Permission.READ_SALE]) && (
+            <Button
+              className="max-sm:hidden"
+              isIconOnly
+              href={PageUrlEnum.SALE_LIST}
+              as={NextLink}
+              variant="light"
+              color="primary">
+              <CalculatorIcon />
+            </Button>
+          )}
         </Tooltip>
 
         <Tooltip content="Pengadaan" color="primary" showArrow size="lg">
-          <Button
-            className={
-              hasAnyPermissions([Permission.READ_PURCHASE])
-                ? 'max-sm:hidden'
-                : 'hidden'
-            }
-            isIconOnly
-            href={PageUrlEnum.PURCHASE_LIST}
-            as={NextLink}
-            variant="light"
-            color="primary">
-            <ShoppingCartIcon />
-          </Button>
+          {hasAnyPermissions([Permission.READ_PURCHASE]) && (
+            <Button
+              isIconOnly
+              href={PageUrlEnum.PURCHASE_LIST}
+              as={NextLink}
+              variant="light"
+              color="primary">
+              <ShoppingCartIcon />
+            </Button>
+          )}
         </Tooltip>
 
         <SettingDropdownButton
@@ -67,21 +63,18 @@ export function AuthNavbarItems() {
         />
       </NavbarItem>
 
-      <NavbarItem
-        className={
-          hasAnyPermissions([Permission.READ_DASHBOARD])
-            ? 'max-sm:hidden'
-            : 'hidden'
-        }>
-        <Button
-          href={PageUrlEnum.REPORT_LIST}
-          as={NextLink}
-          startContent={<FileSpreadsheetIcon size="1rem" />}
-          variant="flat"
-          color="primary">
-          Laporan
-        </Button>
-      </NavbarItem>
+      {hasAnyPermissions([Permission.READ_DASHBOARD]) && (
+        <NavbarItem className="max-sm:hidden">
+          <Button
+            href={PageUrlEnum.REPORT_LIST}
+            as={NextLink}
+            startContent={<FileSpreadsheetIcon size="1rem" />}
+            variant="flat"
+            color="primary">
+            Laporan
+          </Button>
+        </NavbarItem>
+      )}
 
       <FeedbackFormModal
         isOpen={isFeedbackFormModalOpen}
