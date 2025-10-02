@@ -2,15 +2,17 @@
 import { Autocomplete, AutocompleteItem } from '@heroui/autocomplete'
 import { Button } from '@heroui/button'
 import { FormEvent, useState } from 'react'
+import { useLiveQuery } from 'dexie-react-hooks'
 //
-import { User, users } from '@/data/users'
 import { UserRound } from 'lucide-react'
 import { useFormSubmissionState } from '@/stores/form-submission'
 import { useSecurityQuestionState } from '../../_stores/security-question'
 import { SecurityQuestion } from '@/enums/security-question'
 import QuestionAndAnswerField from './question-and-answer-field'
+import db from '@/models/db'
 
 export default function SecurityQuestionForm() {
+  const users = useLiveQuery(() => db.users.toArray(), [])
   const securityQuestions = Object.entries(SecurityQuestion)
 
   // States
@@ -35,6 +37,16 @@ export default function SecurityQuestionForm() {
     }, 2000)
   }
 
+  if (!users)
+    return (
+      <div className="mx-auto mb-4 max-w-xs">
+        <span className="block text-center text-sm">Tidak Ada Pengguna</span>
+        <span className="block text-center text-sm">
+          Silakan Tambahkan Pengguna Terlebih Dahulu
+        </span>
+      </div>
+    )
+
   return (
     <>
       <div className="mx-auto mb-4 max-w-xs">
@@ -51,9 +63,9 @@ export default function SecurityQuestionForm() {
           onSelectionChange={toggleHasSelectedUser}
           isRequired
           isDisabled={isSubmitting}>
-          {users.map((user: User) => (
+          {users.map(user => (
             <AutocompleteItem
-              key={user.id}
+              key={user.uuid}
               startContent={
                 <UserRound size={24} className="text-primary-300" />
               }>
