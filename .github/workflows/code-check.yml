@@ -1,5 +1,8 @@
 name: Code check
 
+permissions:
+  contents: read
+
 on:
   pull_request:
     branches:
