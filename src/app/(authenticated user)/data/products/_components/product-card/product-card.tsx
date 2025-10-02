@@ -3,16 +3,16 @@
 // types
 import type { Product } from '@/models/table-types/product'
 // vendors
-import { Button } from '@nextui-org/button'
-import { Card, CardBody, type CardProps } from '@nextui-org/card'
-import { Chip } from '@nextui-org/chip'
+import { Button } from '@heroui/button'
+import { Card, CardBody, type CardProps } from '@heroui/card'
+import { Chip } from '@heroui/chip'
 import {
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
   DropdownItem,
-} from '@nextui-org/dropdown'
-import { Image } from '@nextui-org/image'
+} from '@heroui/dropdown'
+import { Image } from '@heroui/image'
 import { EditIcon, MoreVerticalIcon, TrashIcon } from 'lucide-react'
 import Link from 'next/link'
 // etc
@@ -42,7 +42,7 @@ export function ProductCard({
     <Card
       as={as}
       className={
-        'w-full bg-background/60 light:border-none dark:bg-default-100/50' +
+        'bg-background/60 light:border-none dark:bg-default-100/50 w-full' +
         (className ? ` ${className}` : '')
       }
       shadow="sm">

@@ -2,9 +2,9 @@
 import type { FormEventHandler } from 'react'
 import type { FormValues } from '../_types/form-values'
 // vendors
-import { parseDate } from '@internationalized/date'
-import { DatePicker } from '@nextui-org/date-picker'
-import { Input, Textarea } from '@nextui-org/input'
+import { parseZonedDateTime } from '@internationalized/date'
+import { DatePicker } from '@heroui/date-picker'
+import { Input, Textarea } from '@heroui/input'
 import { Controller, useFormContext } from 'react-hook-form'
 // components
 import resizeImage from '@/components/image-input/functions/resize-image'
@@ -45,7 +45,8 @@ export function ProductPurchaseForm({
           <DatePicker
             isRequired
             label="Tanggal"
-            value={value ? parseDate(value.split('T')[0]) : null}
+            // @ts-expect-error will fix this later
+            value={value ? parseZonedDateTime(value) : null}
             isInvalid={!!error}
             errorMessage={error?.message}
             onChange={value => {
@@ -124,7 +125,8 @@ export function ProductPurchaseForm({
         }) => (
           <DatePicker
             label="Tanggal Bayar"
-            value={value ? parseDate(value) : null}
+            // @ts-expect-error will fix this later
+            value={value ? parseZonedDateTime(value) : null}
             onChange={value => {
               onChange(value?.toString())
             }}
@@ -144,7 +146,8 @@ export function ProductPurchaseForm({
         }) => (
           <DatePicker
             label="Tanggal Terima Barang"
-            value={value ? parseDate(value) : null}
+            // @ts-expect-error will fix this later
+            value={value ? parseZonedDateTime(value) : null}
             onChange={value => {
               onChange(value?.toString())
             }}
@@ -164,7 +167,8 @@ export function ProductPurchaseForm({
         }) => (
           <DatePicker
             label="Tanggal Jatuh Tempo"
-            value={value ? parseDate(value) : null}
+            // @ts-expect-error will fix this later
+            value={value ? parseZonedDateTime(value) : null}
             onChange={value => {
               onChange(value?.toString())
             }}

@@ -1,9 +1,9 @@
 'use client'
 
 // vendors
-import { Button } from '@nextui-org/button'
-import { Chip } from '@nextui-org/chip'
-import { Switch } from '@nextui-org/switch'
+import { Button } from '@heroui/button'
+import { Chip } from '@heroui/chip'
+import { Switch } from '@heroui/switch'
 import {
   Table,
   TableBody,
@@ -11,7 +11,7 @@ import {
   TableColumn,
   TableHeader,
   TableRow,
-} from '@nextui-org/table'
+} from '@heroui/table'
 import Link from 'next/link'
 // icons
 import { EditIcon } from 'lucide-react'

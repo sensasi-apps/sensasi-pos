@@ -1,10 +1,10 @@
-import { Link } from '@nextui-org/link'
+import { Link } from '@heroui/link'
 import { ArrowUpRightIcon, ComputerIcon } from 'lucide-react'
 import packageJson from '@/../package.json'
 
 export function Footer() {
   return (
-    <footer className="container mt-10 text-balance border-t py-10 text-sm text-gray-400 dark:border-zinc-800">
+    <footer className="container mt-10 border-t py-10 text-sm text-balance text-gray-400 dark:border-zinc-800">
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
         <p>
           Sensasi POS adalah aplikasi Point of Sale sederhana yang dirancang
@@ -46,7 +46,7 @@ export function Footer() {
 
       <div className="mt-20 flex flex-row text-xs text-gray-500 max-lg:text-center max-md:flex-col md:items-center md:gap-3">
         <div className="flex items-center justify-center gap-1 leading-4 max-md:items-end">
-          <ComputerIcon className="max-h-full text-primary" /> Sensasi POS v
+          <ComputerIcon className="text-primary max-h-full" /> Sensasi POS v
           {packageJson.version} ({packageJson.versionDate})
         </div>
 

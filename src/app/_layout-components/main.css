@@ -1,3 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin './hero.ts';
+
+@source '../../../node_modules/@heroui/theme/dist/components/*.js';
+
+@layer components {
+  .container {
+    margin-right: auto;
+    margin-left: auto;
+    padding: 2rem;
+  }
+}
+
+@custom-variant dark (&:is(.dark *));

@@ -1,10 +1,10 @@
 'use client'
 
 // vendors
-import { Button } from '@nextui-org/button'
-import { Checkbox, CheckboxGroup } from '@nextui-org/checkbox'
+import { Button } from '@heroui/button'
+import { Checkbox, CheckboxGroup } from '@heroui/checkbox'
 import { Controller } from 'react-hook-form'
-import { Input } from '@nextui-org/input'
+import { Input } from '@heroui/input'
 //
 import { Role } from '@/enums/role'
 import { PERMISSION_TEMPLATES } from '@/data/permission-templates'
@@ -46,7 +46,6 @@ export function UserForm({
           />
         )}
       />
-
       <Controller
         control={control}
         name="email"
@@ -75,7 +74,6 @@ export function UserForm({
           />
         )}
       />
-
       <Controller
         control={control}
         name="roles"
@@ -115,7 +113,6 @@ export function UserForm({
           </CheckboxGroup>
         )}
       />
-
       {/**
        *  @todo Membuat input hanya dapat diisi oleh angka
        */}
@@ -169,11 +166,9 @@ export function UserForm({
           />
         </>
       )}
-
       <Button onClick={handleCancel} variant="light" color="primary">
         Batal
       </Button>
-
       <Button type="submit" variant="solid" color="primary">
         Simpan
       </Button>

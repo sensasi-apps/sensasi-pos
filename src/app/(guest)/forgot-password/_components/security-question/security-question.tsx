@@ -1,6 +1,6 @@
 // vendors
-import { Autocomplete, AutocompleteItem } from '@nextui-org/autocomplete'
-import { Button } from '@nextui-org/button'
+import { Autocomplete, AutocompleteItem } from '@heroui/autocomplete'
+import { Button } from '@heroui/button'
 import { FormEvent, useState } from 'react'
 //
 import { User, users } from '@/data/users'

@@ -2,10 +2,10 @@
 
 // vendors
 import { BarcodeScanner, type DetectedBarcode } from 'react-barcode-scanner'
-import { Button } from '@nextui-org/button'
-import { Checkbox, CheckboxGroup } from '@nextui-org/checkbox'
-import { Modal, ModalContent, ModalProps } from '@nextui-org/modal'
-import { Tooltip } from '@nextui-org/tooltip'
+import { Button } from '@heroui/button'
+import { Checkbox, CheckboxGroup } from '@heroui/checkbox'
+import { Modal, ModalContent, ModalProps } from '@heroui/modal'
+import { Tooltip } from '@heroui/tooltip'
 import { useState } from 'react'
 import NextuiAlert from 'nextui-alert'
 // icons
@@ -84,7 +84,7 @@ export default function BarcodeScannerCameraModal({
           placement="left"
           showArrow>
           <Button
-            className="absolute right-4 top-4 rounded-full"
+            className="absolute top-4 right-4 rounded-full"
             color="danger"
             variant="flat"
             isIconOnly
@@ -93,7 +93,7 @@ export default function BarcodeScannerCameraModal({
           </Button>
         </Tooltip>
 
-        <div className="absolute pl-4 pt-3">
+        <div className="absolute pt-3 pl-4">
           <Tooltip content="Buka Pengaturan" placement="right" showArrow>
             <Button
               variant="light"

@@ -1,8 +1,8 @@
 'use client'
 
 // vendors
-import { Button } from '@nextui-org/button'
-import { Card, CardHeader, CardBody } from '@nextui-org/card'
+import { Button } from '@heroui/button'
+import { Card, CardHeader, CardBody } from '@heroui/card'
 import Link from 'next/link'
 // icons
 import { FileDown, GalleryHorizontalEnd, TvMinimalPlay } from 'lucide-react'
@@ -17,7 +17,7 @@ export const OnBoardCard = () => {
           <TvMinimalPlay size={80} color="#2081F0" />
         </CardHeader>
 
-        <CardBody className="space-y-3 pb-2 pt-5">
+        <CardBody className="space-y-3 pt-5 pb-2">
           <h4 className="text-center text-base font-bold">Gunakan Data Demo</h4>
           <Button
             className="font-medium"
@@ -34,7 +34,7 @@ export const OnBoardCard = () => {
         <CardHeader className="flex-col items-center px-4 pb-0">
           <FileDown size={80} color="#2081F0" />
         </CardHeader>
-        <CardBody className="space-y-3 pb-2 pt-5">
+        <CardBody className="space-y-3 pt-5 pb-2">
           <h4 className="text-center text-base font-bold">
             Impor Data Hasil Pencadangan
           </h4>
@@ -54,7 +54,7 @@ export const OnBoardCard = () => {
         <CardHeader className="flex-col items-center px-4 pb-0">
           <GalleryHorizontalEnd size={80} color="#2081F0" />
         </CardHeader>
-        <CardBody className="space-y-3 pb-2 pt-5">
+        <CardBody className="space-y-3 pt-5 pb-2">
           <h4 className="text-center text-base font-bold">
             Mulai Ulang Dari Awal
           </h4>

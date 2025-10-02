@@ -1,6 +1,6 @@
 // vendors
-import { NavbarItem } from '@nextui-org/navbar'
-import { Link } from '@nextui-org/link'
+import { NavbarItem } from '@heroui/navbar'
+import { Link } from '@heroui/link'
 import NextLink from 'next/link'
 // globals
 import PageUrlEnum from '@/enums/page-url'

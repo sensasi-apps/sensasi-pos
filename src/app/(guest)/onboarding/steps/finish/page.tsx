@@ -1,7 +1,7 @@
 'use client'
 
 import PageUrlEnum from '@/enums/page-url'
-import { Button } from '@nextui-org/button'
+import { Button } from '@heroui/button'
 import { MoveRightIcon } from 'lucide-react'
 import Link from 'next/link'
 

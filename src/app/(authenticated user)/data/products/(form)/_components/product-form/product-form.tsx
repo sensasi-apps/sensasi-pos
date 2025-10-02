@@ -5,8 +5,8 @@ import {
   Autocomplete,
   AutocompleteItem,
   AutocompleteSection,
-} from '@nextui-org/autocomplete'
-import { Input, Textarea } from '@nextui-org/input'
+} from '@heroui/autocomplete'
+import { Input, Textarea } from '@heroui/input'
 import { CameraIcon, InfoIcon } from 'lucide-react'
 import BarcodeReader from 'react-barcode-reader'
 // components

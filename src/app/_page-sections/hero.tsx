@@ -1,8 +1,8 @@
 'use client'
 
 // vendors
-import { Card, CardHeader, CardBody } from '@nextui-org/card'
-import { Image } from '@nextui-org/image'
+import { Card, CardHeader, CardBody } from '@heroui/card'
+import { Image } from '@heroui/image'
 // locals
 import GridPattern from '@/components/grid-pattern'
 

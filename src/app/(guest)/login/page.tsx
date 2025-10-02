@@ -1,12 +1,12 @@
 'use client'
 
 // vendors
-import { Autocomplete, AutocompleteItem } from '@nextui-org/autocomplete'
-import { Button } from '@nextui-org/button'
-import { Card, CardBody, CardHeader } from '@nextui-org/card'
-import { Divider } from '@nextui-org/divider'
+import { Autocomplete, AutocompleteItem } from '@heroui/autocomplete'
+import { Button } from '@heroui/button'
+import { Card, CardBody, CardHeader } from '@heroui/card'
+import { Divider } from '@heroui/divider'
 import { FormEvent, useState } from 'react'
-import { Input } from '@nextui-org/input'
+import { Input } from '@heroui/input'
 import Link from 'next/link'
 // icons
 import { Eye, EyeOff, UserRound } from 'lucide-react'
@@ -73,9 +73,9 @@ export default function Page() {
                       onClick={toggleVisibility}
                       aria-label="toggle password visibility">
                       {isVisible ? (
-                        <EyeOff className="pointer-events-none text-2xl text-default-400" />
+                        <EyeOff className="text-default-400 pointer-events-none text-2xl" />
                       ) : (
-                        <Eye className="pointer-events-none text-2xl text-default-400" />
+                        <Eye className="text-default-400 pointer-events-none text-2xl" />
                       )}
                     </button>
                   }
@@ -96,7 +96,7 @@ export default function Page() {
                 href={`${PageUrlEnum.FORGOT_PASSWORD}?method=email`}
                 className={mergeClass(
                   isLoading
-                    ? 'pointer-events-none text-default-400'
+                    ? 'text-default-400 pointer-events-none'
                     : 'pointer-events-auto',
                   'my-4 block text-center text-sm',
                 )}>

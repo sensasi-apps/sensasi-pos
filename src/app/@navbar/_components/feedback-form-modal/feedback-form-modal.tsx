@@ -1,15 +1,15 @@
 'use client'
 
 // vendors
-import { Button } from '@nextui-org/button'
+import { Button } from '@heroui/button'
 import {
   Modal,
   ModalBody,
   ModalContent,
   ModalFooter,
   ModalHeader,
-} from '@nextui-org/modal'
-import { Textarea } from '@nextui-org/input'
+} from '@heroui/modal'
+import { Textarea } from '@heroui/input'
 import NextuiAlert from 'nextui-alert'
 // icons
 import { SendIcon } from 'lucide-react'

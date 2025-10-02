@@ -1,8 +1,8 @@
 'use client'
 
-import { Button } from '@nextui-org/button'
+import { Button } from '@heroui/button'
 import { createRef, useCallback, useEffect, useState } from 'react'
-import { Image } from '@nextui-org/image'
+import { Image } from '@heroui/image'
 import {
   Modal,
   ModalBody,
@@ -10,7 +10,7 @@ import {
   ModalFooter,
   ModalHeader,
   useDisclosure,
-} from '@nextui-org/modal'
+} from '@heroui/modal'
 // icons
 import { Maximize2, Trash2 } from 'lucide-react'
 //
@@ -81,7 +81,7 @@ export default function ImageInput({
       <div
         onDrop={onDrop}
         onDragOver={onDragOver}
-        className="cursor-pointer rounded-lg border-2 border-dashed border-gray-300 p-4 text-center transition-colors duration-300 hover:border-primary"
+        className="hover:border-primary cursor-pointer rounded-lg border-2 border-dashed border-gray-300 p-4 text-center transition-colors duration-300"
         onClick={() => fileInputRef.current?.click()}>
         {value === undefined ? (
           <>
@@ -126,7 +126,7 @@ export default function ImageInput({
                 src={value}
               />
               {hoveredImage && (
-                <div className="absolute inset-0 z-10 flex items-center justify-center gap-6 rounded-lg bg-black bg-opacity-50 p-4">
+                <div className="bg-opacity-50 absolute inset-0 z-10 flex items-center justify-center gap-6 rounded-lg bg-black p-4">
                   <Button
                     isIconOnly
                     color="danger"
