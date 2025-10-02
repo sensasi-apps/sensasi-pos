@@ -1,17 +1,13 @@
 import toastVendor from 'react-hot-toast'
-import NextuiAlert, { NextuiAlertProps } from 'nextui-alert'
+import { Alert, AlertProps } from '@heroui/alert'
 
-export function toast(
-  message: React.ReactNode,
-  severity?: NextuiAlertProps['severity'],
-) {
+export function toast(message: React.ReactNode, color?: AlertProps['color']) {
   return toastVendor.custom(
-    <NextuiAlert
-      shadow="md"
+    <Alert
       className="max-w-[350px]"
       variant="solid"
-      severity={severity ?? 'success'}>
-      {message}
-    </NextuiAlert>,
+      color={color}
+      description={message}
+    />,
   )
 }

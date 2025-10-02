@@ -1,13 +1,13 @@
 'use client'
 
 // vendors
+import { Alert } from '@heroui/alert'
 import { BarcodeScanner, type DetectedBarcode } from 'react-barcode-scanner'
 import { Button } from '@heroui/button'
 import { Checkbox, CheckboxGroup } from '@heroui/checkbox'
 import { Modal, ModalContent, ModalProps } from '@heroui/modal'
 import { Tooltip } from '@heroui/tooltip'
 import { useState } from 'react'
-import NextuiAlert from 'nextui-alert'
 // icons
 import { InfoIcon, SettingsIcon, XIcon } from 'lucide-react'
 
@@ -126,9 +126,7 @@ export default function BarcodeScannerCameraModal({
             closeButton: 'z-10',
           }}>
           <ModalContent>
-            <NextuiAlert startContent={<InfoIcon />}>
-              {EAN_13_WARNING_TEXT}
-            </NextuiAlert>
+            <Alert description={EAN_13_WARNING_TEXT} />
 
             <div className="p-4">
               <CheckboxGroup
