@@ -1,12 +1,12 @@
 'use client'
 
 // vendors
-import { Button } from '@nextui-org/button'
-import { Card, CardBody } from '@nextui-org/card'
-import { Chip } from '@nextui-org/chip'
-import { Input } from '@nextui-org/input'
-import { Link } from '@nextui-org/link'
-import { Select, SelectItem } from '@nextui-org/select'
+import { Button } from '@heroui/button'
+import { Card, CardBody } from '@heroui/card'
+import { Chip } from '@heroui/chip'
+import { Input } from '@heroui/input'
+import { Link } from '@heroui/link'
+import { Select, SelectItem } from '@heroui/select'
 import {
   Barcode,
   // LayoutGridIcon, List,
@@ -51,7 +51,7 @@ export default function ProductListPage() {
                 isIconOnly
                 aria-label="Pindai kode batang"
                 variant="light">
-                <Barcode className="pointer-events-none text-2xl font-bold text-primary" />
+                <Barcode className="text-primary pointer-events-none text-2xl font-bold" />
               </Button>
             }
           />
@@ -76,7 +76,7 @@ export default function ProductListPage() {
         </div>
       </div>
 
-      <p className="mb-2 text-right text-xs text-default-400">
+      <p className="text-default-400 mb-2 text-right text-xs">
         Menampilkan {nProducts} dari {nProducts} <i>item</i>
       </p>
 

@@ -68,7 +68,7 @@ const Steps = () => {
             <div>
               <span
                 className={mergeClass(
-                  'absolute left-0 top-0 h-full w-1 bg-transparent bg-zinc-500 lg:bottom-0 lg:top-auto lg:h-1 lg:w-full',
+                  'absolute top-0 left-0 h-full w-1 bg-transparent bg-zinc-500 lg:top-auto lg:bottom-0 lg:h-1 lg:w-full',
                   {
                     'bg-[#99C7FB]': isCurrent,
                     'bg-primary': isCompleted,

@@ -1,5 +1,5 @@
 // vendors
-import { Button } from '@nextui-org/button'
+import { Button } from '@heroui/button'
 //
 import PageUrlEnum from '@/enums/page-url'
 import Link from 'next/link'

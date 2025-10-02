@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Card, CardBody } from '@nextui-org/card'
-import { Select, SelectItem } from '@nextui-org/select'
+import { Card, CardBody } from '@heroui/card'
+import { Select, SelectItem } from '@heroui/select'
 
 import LineChart from '@/components/line-chart'
 import BarChart from '@/components/bar-chart'
@@ -43,7 +43,7 @@ const ReportPage = () => {
 
             <LineChart day={value} />
 
-            <p className="text-small text-default-500">Selected: {value}</p>
+            <p className="text-default-500 text-small">Selected: {value}</p>
           </CardBody>
         </Card>
 
@@ -72,7 +72,7 @@ const ReportPage = () => {
 
             <BarChart total={value} />
 
-            <p className="text-small text-default-500">Selected: {value}</p>
+            <p className="text-default-500 text-small">Selected: {value}</p>
           </CardBody>
         </Card>
       </div>

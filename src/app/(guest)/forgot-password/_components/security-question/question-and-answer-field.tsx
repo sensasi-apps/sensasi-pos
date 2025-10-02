@@ -1,7 +1,7 @@
 // vendors
-import { Input } from '@nextui-org/input'
-import { Select, SelectItem } from '@nextui-org/select'
-import { SharedSelection } from '@nextui-org/system-rsc'
+import { Input } from '@heroui/input'
+import { Select, SelectItem } from '@heroui/select'
+import { SharedSelection } from '@heroui/system-rsc'
 //
 import { SecurityQuestion } from '@/enums/security-question'
 import { useFormSubmissionState } from '@/stores/form-submission'
@@ -34,9 +34,7 @@ export default function QuestionAndAnswerField({
         isRequired
         isDisabled={isSubmitting}>
         {securityQuestions.map(([key, value]: [string, string]) => (
-          <SelectItem key={key} value={key}>
-            {value}
-          </SelectItem>
+          <SelectItem key={key}>{value}</SelectItem>
         ))}
       </Select>
 

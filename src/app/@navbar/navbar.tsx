@@ -5,7 +5,7 @@ import {
   Navbar as VendorNavbar,
   NavbarBrand,
   NavbarContent,
-} from '@nextui-org/navbar'
+} from '@heroui/navbar'
 import NextLink from 'next/link'
 // icons
 import { ComputerIcon } from 'lucide-react'
@@ -28,10 +28,10 @@ export function Navbar() {
       <NavbarBrand
         as={NextLink}
         href={PageUrlEnum.HOME}
-        className="flex items-center transition-all hover:text-primary-300">
+        className="hover:text-primary-300 flex items-center transition-all">
         <ComputerIcon size={24} className="text-primary-300" />
 
-        <p className="ml-2 font-bold leading-4 text-inherit">Sensasi POS</p>
+        <p className="ml-2 leading-4 font-bold text-inherit">Sensasi POS</p>
       </NavbarBrand>
 
       <NavbarContent justify="end">

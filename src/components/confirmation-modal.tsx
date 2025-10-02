@@ -1,5 +1,5 @@
 // vendors
-import { Button } from '@nextui-org/button'
+import { Button } from '@heroui/button'
 import {
   Modal,
   ModalBody,
@@ -7,7 +7,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalProps,
-} from '@nextui-org/modal'
+} from '@heroui/modal'
 //
 import mergeClass from '@/functions/merge-class'
 

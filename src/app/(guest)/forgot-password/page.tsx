@@ -1,8 +1,8 @@
 'use client'
 
 // vendors
-import { Card, CardBody, CardHeader } from '@nextui-org/card'
-import { Divider } from '@nextui-org/divider'
+import { Card, CardBody, CardHeader } from '@heroui/card'
+import { Divider } from '@heroui/divider'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 //
@@ -34,7 +34,7 @@ export default function Page() {
             )}
 
             <Link
-              className={`${isSubmitting ? 'pointer-events-none text-default-400' : 'pointer-events-auto'} mx-auto mt-4 block w-fit cursor-pointer text-center text-sm outline-none`}
+              className={`${isSubmitting ? 'text-default-400 pointer-events-none' : 'pointer-events-auto'} mx-auto mt-4 block w-fit cursor-pointer text-center text-sm outline-none`}
               href={`${PageUrlEnum.FORGOT_PASSWORD}?method=${selectedMethod === 'security-question' ? 'email' : 'security-question'}`}>
               Coba Cara Lain?
             </Link>

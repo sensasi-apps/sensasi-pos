@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/react'
 // local modules
 import './_layout-components/main.css'
-import { Providers } from './_layout-components/providers'
+import Providers from './_layout-components/providers'
 import { PageIndicator } from './_layout-components/page-indicator'
 import { sans } from './_layout-components/font'
 import ProgressBar from '@/components/progress-bar'

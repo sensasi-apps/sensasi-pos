@@ -1,11 +1,11 @@
 // types
 import type { FormValues } from '../_types/form-values'
 // vendors
-import { Button } from '@nextui-org/button'
+import { Button } from '@heroui/button'
 import { Controller, useFieldArray, useFormContext } from 'react-hook-form'
-import { Input } from '@nextui-org/input'
-import { Link } from '@nextui-org/link'
-import { Select, SelectItem } from '@nextui-org/select'
+import { Input } from '@heroui/input'
+import { Link } from '@heroui/link'
+import { Select, SelectItem } from '@heroui/select'
 import { useLiveQuery } from 'dexie-react-hooks'
 import NextLink from 'next/link'
 // icons
@@ -103,9 +103,7 @@ export function ItemsInput() {
                   }}
                   {...rest}>
                   {(products ?? []).map(product => (
-                    <SelectItem key={product.uuid} value={product.uuid}>
-                      {product.name}
-                    </SelectItem>
+                    <SelectItem key={product.uuid}>{product.name}</SelectItem>
                   ))}
                 </Select>
               )}

@@ -1,7 +1,7 @@
 // vendors
 import { Controller, useFieldArray, useFormContext } from 'react-hook-form'
-import { Button } from '@nextui-org/button'
-import { Input } from '@nextui-org/input'
+import { Button } from '@heroui/button'
+import { Input } from '@heroui/input'
 import { PlusCircleIcon, TrashIcon } from 'lucide-react'
 // types
 import type { FormValues } from '../_types/form-values'

@@ -1,11 +1,11 @@
 'use client'
 
 import { type ReactNode, useEffect, useState } from 'react'
-import { NextUIProvider } from '@nextui-org/system'
+import { HeroUIProvider } from '@heroui/system'
 import { ThemeProvider as NextThemeProvider } from 'next-themes'
 import { Toaster } from 'react-hot-toast'
 
-export function Providers({ children }: { children: ReactNode }) {
+export default function Providers({ children }: { children: ReactNode }) {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -15,11 +15,11 @@ export function Providers({ children }: { children: ReactNode }) {
   if (!mounted) return null
 
   return (
-    <NextUIProvider>
+    <HeroUIProvider>
       <NextThemeProvider attribute="class">
         {children}
         <Toaster position="top-center" />
       </NextThemeProvider>
-    </NextUIProvider>
+    </HeroUIProvider>
   )
 }

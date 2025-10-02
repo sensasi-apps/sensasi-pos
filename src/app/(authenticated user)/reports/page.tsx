@@ -1,5 +1,5 @@
 // vendors
-import { Link } from '@nextui-org/link'
+import { Link } from '@heroui/link'
 import NextLink from 'next/link'
 //
 import PageUrlEnum from '@/enums/page-url'

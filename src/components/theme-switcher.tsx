@@ -2,7 +2,7 @@
 
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
-import { Switch } from '@nextui-org/switch'
+import { Switch } from '@heroui/switch'
 import { MoonStar, Sun } from 'lucide-react'
 
 export default function ThemeSwitcher() {

@@ -1,4 +1,4 @@
-import { Image } from '@nextui-org/image'
+import { Image } from '@heroui/image'
 
 const dummyProducts = [
   {
@@ -84,7 +84,7 @@ const Page = () => {
                 className="mx-auto my-8"
               />
             </div>
-            <div className="items-start overflow-hidden text-ellipsis p-2 font-bold">
+            <div className="items-start overflow-hidden p-2 font-bold text-ellipsis">
               {data.name}
               <p className="text-left text-sm font-light">{data.description}</p>
               <div className="mt-2 flex justify-between text-lg text-slate-400">
