@@ -12,7 +12,7 @@ import PageUrlEnum from '@/enums/page-url'
 // components
 import NavbarItems from './navbar-items'
 
-export function Navbar() {
+export default function Navbar() {
   return (
     <VendorNavbar
       className="transition-[background-color] duration-1000 ease-in-out"
