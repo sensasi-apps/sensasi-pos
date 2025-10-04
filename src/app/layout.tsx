@@ -7,6 +7,7 @@ import Providers from './_layout-components/providers'
 import { PageIndicator } from './_layout-components/page-indicator'
 import { sans } from './_layout-components/font'
 import ProgressBar from '@/components/progress-bar'
+import Navbar from './_layout-components/navbar'
 
 export const metadata: Metadata = {
   title: 'Sensasi POS — Aplikasi Point of Sale Sederhana',
@@ -16,10 +17,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  navbar,
 }: Readonly<{
   children: React.ReactNode
-  navbar: React.ReactNode
 }>) {
   const isProduction = process.env.NODE_ENV === 'production'
 
@@ -35,7 +34,7 @@ export default function RootLayout({
       <body className={sans.className}>
         <ProgressBar>
           <Providers>
-            {navbar}
+            <Navbar />
 
             <div className="sticky top-0 z-20 w-full bg-amber-500 p-2.5 text-center tracking-wide text-zinc-800">
               ⓘ Aplikasi masih dalam tahap pengembangan. Silakan kunjungi lagi
