@@ -14,13 +14,11 @@ import ThemeSwitcher from '@/components/theme-switcher'
 export function GuestNavbarItems() {
   return (
     <>
-      {process.env.NODE_ENV !== 'production' && (
-        <NavbarItem>
-          <Link href={PageUrlEnum.LOGIN} as={NextLink}>
-            Login
-          </Link>
-        </NavbarItem>
-      )}
+      <NavbarItem>
+        <Link href={PageUrlEnum.LOGIN} as={NextLink}>
+          Login
+        </Link>
+      </NavbarItem>
 
       <NavbarItem>
         <ThemeSwitcher />
