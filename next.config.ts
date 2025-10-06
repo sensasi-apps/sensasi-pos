@@ -7,7 +7,13 @@ const nextConfig: NextConfig = {
     /**
      * Some libraries are optimized by default, see https://nextjs.org/docs/app/api-reference/config/next-config-js/optimizePackageImports for the full list.
      */
-    optimizePackageImports: ['@heroui'],
+    optimizePackageImports: [
+      '@heroui',
+      'framer-motion',
+      'react-hot-toast',
+      'next-nprogress-bar',
+      'next-themes',
+    ],
   },
 }
 
