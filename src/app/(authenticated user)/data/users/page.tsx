@@ -65,7 +65,7 @@ export default function Page() {
                         () =>
                           (user.inactivated_at = !user.inactivated_at
                             ? new Date().toISOString()
-                            : null),
+                            : undefined),
                       )
                       .catch(err => {
                         throw err

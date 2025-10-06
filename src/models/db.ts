@@ -17,7 +17,7 @@ const db = new Dexie('sensasi-pos-db') as Dexie & Tables
  * @see https://dexie.org/docs/Version/Version.stores()
  */
 db.version(1).stores({
-  users: '&uuid, &email, name, created_at',
+  users: '&uuid, &email, name, *roles, created_at',
   warehouses: '&uuid, &name, note, created_at',
   products:
     '&uuid, &code, &barcode_reg_id, &name, description, category, created_at',

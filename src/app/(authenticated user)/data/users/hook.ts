@@ -15,7 +15,7 @@ export function useHook() {
          */
         // inactivated_by_user_state: getAuthUser(),
 
-        inactivated_at: isActive ? null : new Date().toISOString(),
+        inactivated_at: isActive ? undefined : new Date().toISOString(),
       })
     },
   }

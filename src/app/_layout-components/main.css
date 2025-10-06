@@ -13,3 +13,7 @@
 }
 
 @custom-variant dark (&:is(.dark *));
+
+.text-align-unset {
+  text-align: unset;
+}

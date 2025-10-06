@@ -26,9 +26,6 @@ export function getValidatedFormValues(formValues: FormValues): User {
     roles: formValues.roles,
     permissions: formValues.permissions,
 
-    password__hashed: null,
-    sequrity_questions: null,
-
     created_at: formValues.created_at,
     updated_at: new Date().toISOString(),
   }
