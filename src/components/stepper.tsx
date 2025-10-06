@@ -14,40 +14,40 @@ import { ReactElement } from 'react'
 
 interface Step {
   name: string
-  stepimg: ReactElement
-  stepimgcurrent: ReactElement
+  stepImg: ReactElement
+  stepImgCurrent: ReactElement
   url: string
 }
 
 const STEPS: Step[] = [
   {
-    name: '1. Tambah pengguna admin',
-    stepimg: <UserPlus />,
-    stepimgcurrent: <UserPlus color="#99C7FB" />,
+    name: '1. Buat Akun Pengelola',
+    stepImg: <UserPlus />,
+    stepImgCurrent: <UserPlus color="#99C7FB" />,
     url: '/steps/1-add-admin-user',
   },
   {
-    name: '2. Tambah pengguna lain',
-    stepimg: <UsersRound />,
-    stepimgcurrent: <UsersRound color="#99C7FB" />,
+    name: '2. Tambah Akun Pengguna Lain',
+    stepImg: <UsersRound />,
+    stepImgCurrent: <UsersRound color="#99C7FB" />,
     url: '/steps/2-add-other-users',
   },
   {
-    name: '3. Tambah gudang',
-    stepimg: <Warehouse />,
-    stepimgcurrent: <Warehouse color="#99C7FB" />,
+    name: '3. Masukkan Data Gudang',
+    stepImg: <Warehouse />,
+    stepImgCurrent: <Warehouse color="#99C7FB" />,
     url: '/steps/3-add-warehouses',
   },
   {
-    name: '4. Tambah produk dan stok',
-    stepimg: <Boxes />,
-    stepimgcurrent: <Boxes color="#99C7FB" />,
+    name: '4. Masukkan Data Produk dan Stok',
+    stepImg: <Boxes />,
+    stepImgCurrent: <Boxes color="#99C7FB" />,
     url: '/steps/4-add-products-and-stock',
   },
   {
     name: '5. Selesai',
-    stepimg: <CircleCheck />,
-    stepimgcurrent: <CircleCheck color="#99C7FB" />,
+    stepImg: <CircleCheck />,
+    stepImgCurrent: <CircleCheck color="#99C7FB" />,
     url: '/steps/finish',
   },
 ]
@@ -68,7 +68,7 @@ const Steps = () => {
             <div>
               <span
                 className={mergeClass(
-                  'absolute top-0 left-0 h-full w-1 bg-transparent bg-zinc-500 lg:top-auto lg:bottom-0 lg:h-1 lg:w-full',
+                  'absolute top-0 left-0 h-full w-1 bg-transparent lg:top-auto lg:bottom-0 lg:h-1 lg:w-full',
                   {
                     'bg-[#99C7FB]': isCurrent,
                     'bg-primary': isCompleted,
@@ -86,9 +86,9 @@ const Steps = () => {
                   {isCompleted ? (
                     <Check color="#016BE4" />
                   ) : isCurrent ? (
-                    step.stepimgcurrent
+                    step.stepImgCurrent
                   ) : (
-                    step.stepimg
+                    step.stepImg
                   )}
                 </span>
 
