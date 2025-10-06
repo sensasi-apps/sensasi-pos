@@ -25,30 +25,28 @@ export interface User {
   /**
    * The encrypted password of the user.
    */
-  password__hashed: string | null
+  password__hashed?: string
 
   /**
    * The PIN of the user.
    */
-  pin__hashed: string
+  pin__hashed?: string
 
   /**
    * The security questions and answers for the user
    * to recover their account.
    */
-  sequrity_questions:
-    | {
-        /**
-         * The hashed question.
-         */
-        question__hashed: string
+  sequrity_questions?: {
+    /**
+     * The hashed question.
+     */
+    question__hashed: string
 
-        /**
-         * The hashed answer.
-         */
-        answer__hashed: string
-      }[]
-    | null
+    /**
+     * The hashed answer.
+     */
+    answer__hashed: string
+  }[]
 
   /**
    * The roles assigned to the user.
@@ -84,17 +82,17 @@ export interface User {
   /**
    * The date and time when the user was last updated
    */
-  updated_at: ISODate
+  updated_at?: ISODate
 
   /**
    * The date and time when the user was last logged in.
    */
-  inactivated_at?: ISODate | null
+  inactivated_at?: ISODate
 
   /**
    * The user who inactivated this user, if applicable.
    */
-  inactivated_by_user_state?: User | null
+  inactivated_by_user_state?: User
 
   /**
    * The date and time when the user was deleted, if applicable.
@@ -104,5 +102,5 @@ export interface User {
   /**
    * The user who deleted this user, if applicable.
    */
-  deleted_by_user_state?: User | null
+  deleted_by_user_state?: User
 }

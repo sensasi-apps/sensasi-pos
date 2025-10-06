@@ -42,7 +42,7 @@ export default function Page() {
 
     const isPasswordMatched = await compare(
       formValues.password as string,
-      selectedUser.pin__hashed,
+      selectedUser.pin__hashed ?? '',
     )
 
     setIsLoading(false)
