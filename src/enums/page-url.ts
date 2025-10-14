@@ -10,9 +10,7 @@ enum PageUrlEnum {
   // ONBOARDING
   ONBOARDING = '/onboarding',
   ONBOARDING_STEP_1 = '/onboarding/steps/1-add-admin-user',
-  ONBOARDING_STEP_2 = '/onboarding/steps/2-add-other-users',
-  ONBOARDING_STEP_3 = '/onboarding/steps/3-add-warehouses',
-  ONBOARDING_STEP_4 = '/onboarding/steps/4-add-products-and-stock',
+  ONBOARDING_STEP_2 = '/onboarding/steps/2-add-products-and-stock',
   ONBOARDING_STEP_FINISH = '/onboarding/steps/finish',
   ONBOARDING_IMPORT_BACKUP = '/onboarding/import-backup',
 
