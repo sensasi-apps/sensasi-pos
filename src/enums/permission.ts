@@ -14,12 +14,6 @@ export enum Permission {
   UPDATE_USER = 'update:user',
   DELETE_USER = 'delete:user',
 
-  // WAREHOUSE
-  CREATE_WAREHOUSE = 'create:warehouse',
-  READ_WAREHOUSE = 'read:warehouse',
-  UPDATE_WAREHOUSE = 'update:warehouse',
-  DELETE_WAREHOUSE = 'delete:warehouse',
-
   // PURCHASE
   CREATE_PURCHASE = 'create:purchase',
   READ_PURCHASE = 'read:purchase',

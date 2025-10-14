@@ -4,7 +4,6 @@ import type { UUID } from 'crypto'
 import type { File } from '@/@types/file'
 import type { ISODate } from '@/@types/iso-date'
 // other models
-import type { Warehouse } from './warehouse'
 import type { User } from './user'
 // local types
 import type { ProductMovementItem } from './product-movement/item'
@@ -42,12 +41,6 @@ interface BaseProductMovement {
    * Optional reference identifier for the product movement.
    */
   ref?: string
-
-  /**
-   * The state of the warehouse at the time of the product movement.
-   * @readonly
-   */
-  warehouse_state: Readonly<Warehouse>
 
   /**
    * List of items involved in the product movement.
@@ -122,12 +115,3 @@ interface WithSaleAdditionalInfoProps {
  */
 export type ProductMovement = BaseProductMovement &
   (WithPurchaseAdditionalInfoProps | WithSaleAdditionalInfoProps)
-
-/**
- * This is a type definition for the `OtherType` model.
- *
- * @note Is this really necessary to implement?
- */
-// interface OtherType {
-//   type: 'return' | 'refund' | 'adjustment'
-// }

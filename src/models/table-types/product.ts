@@ -3,8 +3,6 @@ import type { UUID } from 'crypto'
 // globals
 import type { File } from '@/@types/file'
 import type { ISODate } from '@/@types/iso-date'
-// models
-import type { Warehouse } from './warehouse'
 
 /**
  * Represents the product information.
@@ -77,22 +75,17 @@ export interface Product {
   low_qty_threshold?: number
 
   /**
-   * The current stock of the product in all warehouses.
+   * The current stock of the product.
    */
-  stocks: ProductStock[]
+  stock: ProductStock
 }
 
 /**
- * Represents the stock information for a product in a specific warehouse.
+ * Represents the stock information for a product.
  */
 interface ProductStock {
   /**
-   * The unique identifier of the warehouse where the product is stored.
-   */
-  warehouse_uuid: Warehouse['uuid']
-
-  /**
-   * The quantity of the product available in the warehouse.
+   * The quantity of the product available in the stock.
    */
   qty: number
 

@@ -18,7 +18,6 @@ import {
   PowerCircleIcon,
   SettingsIcon,
   UserCogIcon,
-  WarehouseIcon,
   MenuIcon,
   CalculatorIcon,
   ShoppingCartIcon,
@@ -119,7 +118,6 @@ export function SettingDropdownButton({
           className={
             hasAnyPermissions([
               Permission.READ_PRODUCT,
-              Permission.READ_WAREHOUSE,
               Permission.READ_USER,
               Permission.EXPORT_DB,
               Permission.WIPE_DB,
@@ -137,17 +135,6 @@ export function SettingDropdownButton({
             key="product"
             startContent={<PackageIcon className="mr-1" />}>
             Produk
-          </DropdownItem>
-
-          <DropdownItem
-            as={Link}
-            className={
-              hasAnyPermissions([Permission.READ_WAREHOUSE]) ? '' : 'hidden'
-            }
-            href={PageUrlEnum.WAREHOUSE_LIST}
-            key="warehouse"
-            startContent={<WarehouseIcon className="mr-1" />}>
-            Gudang
           </DropdownItem>
 
           <DropdownItem

@@ -21,7 +21,7 @@ import PageUrlEnum from '@/enums/page-url'
 import { useHook } from './_hook'
 
 export function ProductCard({
-  data: { uuid, name, default_price, qty_unit, category, image_file, stocks },
+  data: { uuid, name, default_price, qty_unit, category, image_file, stock },
   className,
   as,
 }: {
@@ -32,11 +32,8 @@ export function ProductCard({
 }) {
   const { handleOpenDeleteModal, deleteConfirmationModal } = useHook(uuid)
 
-  const totalStock = stocks.reduce((acc, { qty }) => acc + qty, 0)
-  const cost =
-    totalStock === 0
-      ? 0
-      : stocks.reduce((acc, { qty, cost }) => acc + cost * qty, 0) / totalStock
+  const totalStock = stock.qty
+  const cost = totalStock === 0 ? 0 : stock.cost
 
   return (
     <Card

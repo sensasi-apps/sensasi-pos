@@ -21,10 +21,6 @@ export function ProductPurchaseForm({
 }) {
   const { register, control } = useFormContext<FormValues>()
 
-  // const warehouses = useLiveQuery(() => {
-  //   return db.warehouses.toArray()
-  // })
-
   return (
     <form id={id} onSubmit={onSubmit} className="flex flex-col gap-3">
       <Input
@@ -57,50 +53,6 @@ export function ProductPurchaseForm({
           />
         )}
       />
-
-      {/* <Controller
-        name="warehouse_state"
-        control={control}
-        rules={{ required: 'Gudang harus diisi' }}
-        render={({
-          field: { onChange, value, ...restProps },
-          fieldState: { error },
-        }) => (
-          <Select
-            isRequired
-            isDisabled={!warehouses?.length}
-            label="Gudang"
-            description={
-              !warehouses?.length ? (
-                <>
-                  Data gudang tidak ditemukan.{' '}
-                  <Link href="/warehouses/create" className="text-xs">
-                    Tambah gudang baru?
-                  </Link>
-                </>
-              ) : undefined
-            }
-            errorMessage={error?.message}
-            isInvalid={!!error}
-            value={value?.uuid}
-            onChange={({ target: { value } }) => {
-              const selectedWarehouse = warehouses?.find(
-                warehouse => warehouse.uuid === value,
-              )
-
-              if (selectedWarehouse) {
-                onChange(selectedWarehouse)
-              }
-            }}
-            {...restProps}>
-            {(warehouses ?? []).map(warehouse => (
-              <SelectItem key={warehouse.uuid} value={warehouse.uuid}>
-                {warehouse.name}
-              </SelectItem>
-            ))}
-          </Select>
-        )}
-      /> */}
 
       <Controller
         name="note"

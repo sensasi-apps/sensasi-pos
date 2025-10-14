@@ -2,14 +2,7 @@
 
 import PageUrlEnum from '@/enums/page-url'
 import mergeClass from '@/functions/merge-class'
-import {
-  Boxes,
-  Check,
-  CircleCheck,
-  UserPlus,
-  UsersRound,
-  Warehouse,
-} from 'lucide-react'
+import { Boxes, Check, CircleCheck, UserPlus } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { ReactElement } from 'react'
 
