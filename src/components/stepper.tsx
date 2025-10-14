@@ -1,5 +1,6 @@
 'use client'
 
+import PageUrlEnum from '@/enums/page-url'
 import mergeClass from '@/functions/merge-class'
 import {
   Boxes,
@@ -24,28 +25,16 @@ const STEPS: Step[] = [
     name: '1. Buat Akun Pengelola',
     stepImg: <UserPlus />,
     stepImgCurrent: <UserPlus color="#99C7FB" />,
-    url: '/steps/1-add-admin-user',
+    url: PageUrlEnum.ONBOARDING_STEP_1,
   },
   {
-    name: '2. Tambah Akun Pengguna Lain',
-    stepImg: <UsersRound />,
-    stepImgCurrent: <UsersRound color="#99C7FB" />,
-    url: '/steps/2-add-other-users',
-  },
-  {
-    name: '3. Masukkan Data Gudang',
-    stepImg: <Warehouse />,
-    stepImgCurrent: <Warehouse color="#99C7FB" />,
-    url: '/steps/3-add-warehouses',
-  },
-  {
-    name: '4. Masukkan Data Produk dan Stok',
+    name: '2. Masukkan Data Produk dan Stok',
     stepImg: <Boxes />,
     stepImgCurrent: <Boxes color="#99C7FB" />,
-    url: '/steps/4-add-products-and-stock',
+    url: PageUrlEnum.ONBOARDING_STEP_2,
   },
   {
-    name: '5. Selesai',
+    name: '3. Selesai',
     stepImg: <CircleCheck />,
     stepImgCurrent: <CircleCheck color="#99C7FB" />,
     url: '/steps/finish',
