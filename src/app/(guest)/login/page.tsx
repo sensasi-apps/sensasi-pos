@@ -42,11 +42,16 @@ export default function Page() {
 
     const isPasswordMatched = await compare(
       formValues.password as string,
+      selectedUser.password__hashed ?? '',
+    )
+
+    const isPinMatched = await compare(
+      formValues.password as string,
       selectedUser.pin__hashed ?? '',
     )
 
     setIsLoading(false)
-    if (!isPasswordMatched) return toast('Pin salah', 'danger')
+    if (!isPasswordMatched && !isPinMatched) return toast('Pin salah', 'danger')
 
     toast('Berhasil masuk', 'success')
     setLoggedInUser(selectedUser)
