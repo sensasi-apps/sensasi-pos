@@ -34,12 +34,6 @@ enum PageUrlEnum {
   USER_EDIT = '/data/users/:uuid',
   USER_DELETE = '/data/users/:uuid/delete',
 
-  // WAREHOUSE
-  WAREHOUSE_LIST = '/data/warehouses',
-  WAREHOUSE_CREATE = '/data/warehouses/create',
-  WAREHOUSE_EDIT = '/data/warehouses/:uuid',
-  WAREHOUSE_DELETE = '/data/warehouses/:uuid/delete',
-
   // ############# TRANSACTIONAL DATA #############
   // PURCHASE
   PURCHASE_LIST = '/purchases',
