@@ -1,6 +1,4 @@
-'use client'
-
-import { type ReactNode, useEffect, useState } from 'react'
+import type { ReactNode } from 'react'
 import { HeroUIProvider } from '@heroui/system'
 import { ThemeProvider as NextThemeProvider } from 'next-themes'
 import { Toaster } from 'react-hot-toast'
@@ -13,14 +11,6 @@ import { Toaster } from 'react-hot-toast'
  * @see https://www.heroui.com/docs/customization/dark-mode
  */
 export default function Providers({ children }: { children: ReactNode }) {
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) return null
-
   return (
     <HeroUIProvider>
       <NextThemeProvider attribute="class">

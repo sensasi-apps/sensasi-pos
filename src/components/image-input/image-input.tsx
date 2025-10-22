@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '@heroui/button'
-import { createRef, useCallback, useEffect, useState } from 'react'
+import { createRef, useCallback, useEffectEvent, useState } from 'react'
 import { Image } from '@heroui/image'
 import {
   Modal,
@@ -39,7 +39,7 @@ export default function ImageInput({
   const fileInputRef = createRef<HTMLInputElement>()
   const [isMobile, setIsMobile] = useState<boolean>(false)
 
-  useEffect(() => {
+  useEffectEvent(() => {
     // Runs only on the client side
     const userAgent = typeof window !== 'undefined' ? navigator.userAgent : ''
     const mobileRegex =
@@ -48,7 +48,7 @@ export default function ImageInput({
     if (mobileRegex.test(userAgent)) {
       setIsMobile(true)
     }
-  }, [])
+  })
 
   const onDrop = useCallback(
     (e: React.DragEvent<HTMLDivElement>) => {

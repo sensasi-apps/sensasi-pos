@@ -25,7 +25,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="transition-[background-color] duration-1000 ease-in-out">
+      className="transition-[background-color] duration-1000 ease-in-out"
+      suppressHydrationWarning>
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="initial-scale=1, width=device-width" />

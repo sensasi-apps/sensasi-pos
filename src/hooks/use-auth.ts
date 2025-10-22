@@ -3,16 +3,17 @@
 // local
 import type { User } from '@/models/table-types/user'
 import { Permission } from '@/enums/permission'
-import { useLocalStorage } from '@uidotdev/usehooks'
+import { useLocalStorage } from 'usehooks-ts'
 
 export default function useAuth() {
-  const [loggedInUser, setLoggedInUser] = useLocalStorage<User | undefined>(
-    'logged-in-user',
-  )
+  const [loggedInUser, setLoggedInUser, removeLoggedInUser] = useLocalStorage<
+    User | undefined
+  >('logged-in-user', undefined)
 
   return {
     user: loggedInUser,
-    setLoggedInUser,
+    setLoggedInUser: (user: User | undefined) =>
+      user ? setLoggedInUser(user) : removeLoggedInUser(),
 
     /**
      * Checks if the user has any of the given permissions
