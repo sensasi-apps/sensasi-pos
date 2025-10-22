@@ -1,19 +1,19 @@
 'use client'
 
 import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
-import { Switch } from '@heroui/switch'
 import { MoonStar, Sun } from 'lucide-react'
+import { SwitchProps } from '@heroui/switch'
+import dynamic from 'next/dynamic'
+
+const Switch = dynamic<SwitchProps>(
+  () => import('@heroui/switch').then(mod => mod.Switch),
+  {
+    ssr: false,
+  },
+)
 
 export default function ThemeSwitcher() {
   const { resolvedTheme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) return null
 
   return (
     <Switch
