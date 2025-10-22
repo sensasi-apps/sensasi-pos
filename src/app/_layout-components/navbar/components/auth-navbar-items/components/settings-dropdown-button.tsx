@@ -8,7 +8,6 @@ import {
   DropdownTrigger,
 } from '@heroui/dropdown'
 import { useTheme } from 'next-themes'
-import Link from 'next/link'
 // icons
 import {
   ChevronDown,
@@ -53,7 +52,6 @@ export function SettingDropdownButton({
       <DropdownMenu aria-label="Menu">
         <DropdownSection title="Navigasi" showDivider className="sm:hidden">
           <DropdownItem
-            as={Link}
             className={
               hasAnyPermissions([Permission.READ_SALE]) ? '' : 'hidden'
             }
@@ -64,7 +62,6 @@ export function SettingDropdownButton({
           </DropdownItem>
 
           <DropdownItem
-            as={Link}
             className={
               hasAnyPermissions([Permission.READ_PURCHASE]) ? '' : 'hidden'
             }
@@ -75,7 +72,6 @@ export function SettingDropdownButton({
           </DropdownItem>
 
           <DropdownItem
-            as={Link}
             className={
               hasAnyPermissions([Permission.READ_DASHBOARD]) ? '' : 'hidden'
             }
@@ -96,7 +92,6 @@ export function SettingDropdownButton({
         </DropdownItem>
 
         <DropdownItem
-          as={Link}
           href={PageUrlEnum.APP_SETTING_PAGE_URL}
           key="setting"
           startContent={<SettingsIcon className="mr-1" />}>
@@ -127,7 +122,6 @@ export function SettingDropdownButton({
               : 'hidden'
           }>
           <DropdownItem
-            as={Link}
             className={
               hasAnyPermissions([Permission.READ_PRODUCT]) ? '' : 'hidden'
             }
@@ -138,7 +132,6 @@ export function SettingDropdownButton({
           </DropdownItem>
 
           <DropdownItem
-            as={Link}
             className={
               hasAnyPermissions([Permission.READ_USER]) ? '' : 'hidden'
             }
@@ -149,7 +142,6 @@ export function SettingDropdownButton({
           </DropdownItem>
 
           <DropdownItem
-            as={Link}
             className={
               hasAnyPermissions([
                 Permission.EXPORT_DB,
@@ -170,7 +162,6 @@ export function SettingDropdownButton({
           className="text-danger"
           color="danger"
           key="logout"
-          as={Link}
           href={PageUrlEnum.LOGOUT}
           startContent={<PowerCircleIcon className="mr-1" />}>
           Log Keluar

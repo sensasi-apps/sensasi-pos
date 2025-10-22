@@ -1,7 +1,6 @@
 // vendors
 import { NavbarItem } from '@heroui/navbar'
 import { Link } from '@heroui/link'
-import NextLink from 'next/link'
 // globals
 import PageUrlEnum from '@/enums/page-url'
 import ThemeSwitcher from '@/components/theme-switcher'
@@ -15,9 +14,7 @@ export function GuestNavbarItems() {
   return (
     <>
       <NavbarItem>
-        <Link href={PageUrlEnum.LOGIN} as={NextLink}>
-          Login
-        </Link>
+        <Link href={PageUrlEnum.LOGIN}>Login</Link>
       </NavbarItem>
 
       <NavbarItem>

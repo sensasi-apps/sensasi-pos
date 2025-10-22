@@ -4,7 +4,6 @@
 import { Button } from '@heroui/button'
 import { NavbarItem } from '@heroui/navbar'
 import { Tooltip } from '@heroui/tooltip'
-import NextLink from 'next/link'
 import {
   CalculatorIcon,
   FileSpreadsheetIcon,
@@ -35,7 +34,6 @@ export function AuthNavbarItems() {
               className="max-sm:hidden"
               isIconOnly
               href={PageUrlEnum.SALE_LIST}
-              as={NextLink}
               variant="light"
               color="primary">
               <CalculatorIcon />
@@ -48,7 +46,6 @@ export function AuthNavbarItems() {
             <Button
               isIconOnly
               href={PageUrlEnum.PURCHASE_LIST}
-              as={NextLink}
               variant="light"
               color="primary">
               <ShoppingCartIcon />
@@ -67,7 +64,6 @@ export function AuthNavbarItems() {
         <NavbarItem className="max-sm:hidden">
           <Button
             href={PageUrlEnum.REPORT_LIST}
-            as={NextLink}
             startContent={<FileSpreadsheetIcon size="1rem" />}
             variant="flat"
             color="primary">

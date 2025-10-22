@@ -14,7 +14,6 @@ import {
 } from '@heroui/dropdown'
 import { Image } from '@heroui/image'
 import { EditIcon, MoreVerticalIcon, TrashIcon } from 'lucide-react'
-import Link from 'next/link'
 // etc
 import formatNumber from '@/functions/format-number'
 import PageUrlEnum from '@/enums/page-url'
@@ -98,8 +97,7 @@ export function ProductCard({
                 <DropdownItem
                   key="edit"
                   startContent={<EditIcon className="mr-2" />}
-                  href={PageUrlEnum.PRODUCT_EDIT.replace(':uuid', uuid)}
-                  as={Link}>
+                  href={PageUrlEnum.PRODUCT_EDIT.replace(':uuid', uuid)}>
                   Sunting
                 </DropdownItem>
 

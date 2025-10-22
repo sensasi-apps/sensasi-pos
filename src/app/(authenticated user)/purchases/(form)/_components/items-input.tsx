@@ -7,7 +7,6 @@ import { Input } from '@heroui/input'
 import { Link } from '@heroui/link'
 import { Select, SelectItem } from '@heroui/select'
 import { useLiveQuery } from 'dexie-react-hooks'
-import NextLink from 'next/link'
 // icons
 import { PlusCircleIcon, TrashIcon } from 'lucide-react'
 // locals
@@ -82,8 +81,7 @@ export function ItemsInput() {
                         Data produk tidak ditemukan.{' '}
                         <Link
                           href={PageUrlEnum.PRODUCT_CREATE}
-                          className="clickable text-xs"
-                          as={NextLink}>
+                          className="clickable text-xs">
                           Tambah data produk?
                         </Link>
                       </>

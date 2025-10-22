@@ -3,7 +3,6 @@
 import PageUrlEnum from '@/enums/page-url'
 import { Button } from '@heroui/button'
 import { MoveRightIcon } from 'lucide-react'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 export default function Page() {
@@ -19,8 +18,7 @@ export default function Page() {
       <Button
         variant="flat"
         endContent={<MoveRightIcon />}
-        href={PageUrlEnum.ONBOARDING_STEP_FINISH}
-        as={Link}>
+        href={PageUrlEnum.ONBOARDING_STEP_FINISH}>
         Selanjunya
       </Button>
     </div>
