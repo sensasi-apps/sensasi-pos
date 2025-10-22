@@ -1,7 +1,6 @@
 // vendors
 import { Input } from '@heroui/input'
-import { Select, SelectItem } from '@heroui/select'
-import { SharedSelection } from '@heroui/system-rsc'
+import { Select, SelectItem, type SelectProps } from '@heroui/select'
 //
 import { SecurityQuestion } from '@/enums/security-question'
 import { useFormSubmissionState } from '@/stores/form-submission'
@@ -19,7 +18,9 @@ export default function QuestionAndAnswerField({
   const { pushSelectedQuestionNumbers, hasQuestionNumber } =
     useSecurityQuestionState()
 
-  const handleSelectionChange = ({ currentKey }: SharedSelection) => {
+  const handleSelectionChange: SelectProps['onSelectionChange'] = ({
+    currentKey,
+  }) => {
     if (!currentKey) return
 
     pushSelectedQuestionNumbers(questionNumber)
