@@ -3,7 +3,6 @@
 import PageUrlEnum from '@/enums/page-url'
 import { Button } from '@heroui/button'
 import { MoveRightIcon } from 'lucide-react'
-import Link from 'next/link'
 
 export default function Page() {
   return (
@@ -15,8 +14,7 @@ export default function Page() {
       <Button
         variant="flat"
         endContent={<MoveRightIcon />}
-        href={PageUrlEnum.DASHBOARD}
-        as={Link}>
+        href={PageUrlEnum.DASHBOARD}>
         Lihat Dasbor
       </Button>
     </div>

@@ -1,7 +1,6 @@
 'use client'
 
 // vendors
-import Link from 'next/link'
 import { Button } from '@heroui/button'
 // global
 import PageUrlEnum from '@/enums/page-url'
@@ -22,7 +21,6 @@ export default function PurchaseListPage() {
   return (
     <>
       <Button
-        as={Link}
         href={PageUrlEnum.PURCHASE_CREATE}
         className="mb-4"
         color="primary">
@@ -43,7 +41,6 @@ export default function PurchaseListPage() {
               variant="flat"
               color="primary"
               size="sm"
-              as={Link}
               href={PageUrlEnum.PURCHASE_EDIT.replace(':uuid', movement.uuid)}>
               <EditIcon />
             </Button>

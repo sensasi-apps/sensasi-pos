@@ -19,7 +19,6 @@ import { getHash } from '@/functions/get-hash'
 import { PERMISSION_TEMPLATES } from '@/data/permission-templates'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { Alert } from '@heroui/alert'
-import Link from 'next/link'
 
 interface FormValues {
   name: string
@@ -154,7 +153,6 @@ function UserExistsAlert() {
           variant="light"
           startContent={<MoveLeftIcon />}
           href={PageUrlEnum.ONBOARDING}
-          as={Link}
           color="primary">
           Kembali
         </Button>
@@ -163,8 +161,7 @@ function UserExistsAlert() {
           color="primary"
           variant="solid"
           endContent={<MoveRightIcon />}
-          href={PageUrlEnum.ONBOARDING_STEP_2}
-          as={Link}>
+          href={PageUrlEnum.ONBOARDING_STEP_2}>
           Selanjutnya
         </Button>
       </div>
