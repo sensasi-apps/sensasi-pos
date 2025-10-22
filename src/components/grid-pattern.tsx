@@ -1,6 +1,13 @@
 'use client'
 
-import { useCallback, useEffect, useId, useRef, useState } from 'react'
+import {
+  useCallback,
+  useEffect,
+  useEffectEvent,
+  useId,
+  useRef,
+  useState,
+} from 'react'
 import { motion } from 'framer-motion'
 import mergeClass from '@/functions/merge-class'
 
@@ -16,7 +23,7 @@ interface GridPatternProps {
   duration?: number
 }
 
-export function GridPattern({
+export default function GridPattern({
   width = 40,
   height = 40,
   x = -1,
@@ -66,10 +73,16 @@ export function GridPattern({
     )
   }
 
+  const updateSquares = useEffectEvent(
+    (newSquares: ReturnType<typeof generateSquares>) => {
+      setSquares(newSquares)
+    },
+  )
+
   // Update squares to animate in
   useEffect(() => {
     if (dimensions.width && dimensions.height) {
-      setSquares(generateSquares(numSquares))
+      updateSquares(generateSquares(numSquares))
     }
   }, [dimensions, numSquares, generateSquares])
 
@@ -148,5 +161,3 @@ export function GridPattern({
     </svg>
   )
 }
-
-export default GridPattern

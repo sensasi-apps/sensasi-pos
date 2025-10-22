@@ -3,7 +3,6 @@
 // vendors
 import { Button } from '@heroui/button'
 import { Card, CardHeader, CardBody } from '@heroui/card'
-import Link from 'next/link'
 // icons
 import { FileDown, GalleryHorizontalEnd, TvMinimalPlay } from 'lucide-react'
 //
@@ -43,8 +42,7 @@ export const OnBoardCard = () => {
             size="sm"
             variant="solid"
             color="primary"
-            href={PageUrlEnum.ONBOARDING_IMPORT_BACKUP}
-            as={Link}>
+            href={PageUrlEnum.ONBOARDING_IMPORT_BACKUP}>
             Mulai
           </Button>
         </CardBody>
@@ -63,8 +61,7 @@ export const OnBoardCard = () => {
             size="sm"
             variant="solid"
             color="primary"
-            href={PageUrlEnum.ONBOARDING_STEP_1}
-            as={Link}>
+            href={PageUrlEnum.ONBOARDING_STEP_1}>
             Mulai
           </Button>
         </CardBody>

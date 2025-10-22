@@ -12,7 +12,6 @@ import {
   TableHeader,
   TableRow,
 } from '@heroui/table'
-import Link from 'next/link'
 // icons
 import { EditIcon } from 'lucide-react'
 //
@@ -24,7 +23,7 @@ export default function Page() {
 
   return (
     <div>
-      <Button href={PageUrlEnum.USER_CREATE} as={Link} color="primary">
+      <Button href={PageUrlEnum.USER_CREATE} color="primary">
         Tambah data pengguna
       </Button>
 
@@ -76,8 +75,7 @@ export default function Page() {
               <TableCell className="flex gap-3">
                 <Button
                   isIconOnly
-                  href={PageUrlEnum.USER_EDIT.replace(':uuid', user.uuid)}
-                  as={Link}>
+                  href={PageUrlEnum.USER_EDIT.replace(':uuid', user.uuid)}>
                   <EditIcon />
                 </Button>
               </TableCell>

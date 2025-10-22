@@ -17,14 +17,13 @@ export default function Navbar() {
     <VendorNavbar
       className="transition-[background-color] duration-1000 ease-in-out"
       position="static">
-      <NavbarBrand
-        as={NextLink}
-        href={PageUrlEnum.HOME}
-        className="hover:text-primary-300 flex items-center transition-all">
-        <ComputerIcon size={24} className="text-primary-300" />
+      <NextLink href={PageUrlEnum.HOME}>
+        <NavbarBrand className="hover:text-primary-300 flex items-center transition-all">
+          <ComputerIcon size={24} className="text-primary-300" />
 
-        <p className="ml-2 leading-4 font-bold text-inherit">Sensasi POS</p>
-      </NavbarBrand>
+          <p className="ml-2 leading-4 font-bold text-inherit">Sensasi POS</p>
+        </NavbarBrand>
+      </NextLink>
 
       <NavbarContent justify="end">
         <NavbarItems />

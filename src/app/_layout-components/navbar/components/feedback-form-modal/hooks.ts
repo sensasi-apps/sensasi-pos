@@ -1,4 +1,4 @@
-import { lastEventId, captureFeedback } from '@sentry/browser'
+import * as Sentry from '@sentry/nextjs'
 import { useState } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
 
@@ -40,9 +40,9 @@ export function useFeedbackFormModalHook() {
      * @see https://docs.sentry.io/platforms/javascript/guides/nextjs/user-feedback/#user-feedback-api
      */
     handleSubmit: () => {
-      captureFeedback({
+      Sentry.captureFeedback({
         message,
-        associatedEventId: lastEventId(),
+        associatedEventId: Sentry.lastEventId(),
       })
 
       setIsSubmitted(true)

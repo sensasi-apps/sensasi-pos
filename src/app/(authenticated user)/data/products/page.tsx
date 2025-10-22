@@ -14,7 +14,6 @@ import {
   PlusCircle,
   Search,
 } from 'lucide-react'
-import NextLink from 'next/link'
 // components
 import PageUrlEnum from '@/enums/page-url'
 // sub-components
@@ -69,7 +68,6 @@ export default function ProductListPage() {
             variant="flat"
             color="success"
             startContent={<PlusCircle />}
-            as={NextLink}
             href={PageUrlEnum.PRODUCT_CREATE}>
             Tambah Produk
           </Button>
@@ -109,10 +107,7 @@ export default function ProductListPage() {
             <div className="flex justify-center">
               <Alert className="max-w-96 text-center">
                 <p>Tidak ada data produk yang ditemukan.</p>
-                <Link
-                  className="text-sm"
-                  href={PageUrlEnum.PRODUCT_CREATE}
-                  as={NextLink}>
+                <Link className="text-sm" href={PageUrlEnum.PRODUCT_CREATE}>
                   Tambah produk baru?
                 </Link>
               </Alert>
