@@ -27,6 +27,7 @@ import { Permission } from '@/enums/permission'
 import ThemeSwitcher from '@/components/theme-switcher'
 import PageUrlEnum from '@/enums/page-url'
 import useAuth from '@/hooks/use-auth'
+import { Link } from '@heroui/link'
 
 export function SettingDropdownButton({
   onFeedbackFormModalOpen,
@@ -55,6 +56,7 @@ export function SettingDropdownButton({
             className={
               hasAnyPermissions([Permission.READ_SALE]) ? '' : 'hidden'
             }
+            as={Link}
             href={PageUrlEnum.SALE_LIST}
             key="sale"
             startContent={<CalculatorIcon className="mr-1" />}>
@@ -65,6 +67,7 @@ export function SettingDropdownButton({
             className={
               hasAnyPermissions([Permission.READ_PURCHASE]) ? '' : 'hidden'
             }
+            as={Link}
             href={PageUrlEnum.PURCHASE_LIST}
             key="purchase"
             startContent={<ShoppingCartIcon className="mr-1" />}>
@@ -75,6 +78,7 @@ export function SettingDropdownButton({
             className={
               hasAnyPermissions([Permission.READ_DASHBOARD]) ? '' : 'hidden'
             }
+            as={Link}
             href={PageUrlEnum.REPORT_LIST}
             key="report"
             startContent={<FileSpreadsheetIcon className="mr-1" />}>
@@ -92,8 +96,10 @@ export function SettingDropdownButton({
         </DropdownItem>
 
         <DropdownItem
+          as={Link}
           href={PageUrlEnum.APP_SETTING_PAGE_URL}
           key="setting"
+          className="text-white"
           startContent={<SettingsIcon className="mr-1" />}>
           Pengaturan
         </DropdownItem>
@@ -122,9 +128,8 @@ export function SettingDropdownButton({
               : 'hidden'
           }>
           <DropdownItem
-            className={
-              hasAnyPermissions([Permission.READ_PRODUCT]) ? '' : 'hidden'
-            }
+            className={`${hasAnyPermissions([Permission.READ_PRODUCT]) ? '' : 'hidden'} text-white`}
+            as={Link}
             href={PageUrlEnum.PRODUCT_LIST}
             key="product"
             startContent={<PackageIcon className="mr-1" />}>
@@ -132,9 +137,8 @@ export function SettingDropdownButton({
           </DropdownItem>
 
           <DropdownItem
-            className={
-              hasAnyPermissions([Permission.READ_USER]) ? '' : 'hidden'
-            }
+            className={`${hasAnyPermissions([Permission.READ_USER]) ? '' : 'hidden'} text-white`}
+            as={Link}
             href={PageUrlEnum.USER_LIST}
             key="user"
             startContent={<UserCogIcon className="mr-1" />}>
@@ -151,6 +155,7 @@ export function SettingDropdownButton({
                 ? ''
                 : 'hidden'
             }
+            as={Link}
             href={PageUrlEnum.DATABASE_ACTION_LIST}
             key="backup"
             startContent={<DatabaseBackupIcon className="mr-1" />}>
@@ -162,6 +167,7 @@ export function SettingDropdownButton({
           className="text-danger"
           color="danger"
           key="logout"
+          as={Link}
           href={PageUrlEnum.LOGOUT}
           startContent={<PowerCircleIcon className="mr-1" />}>
           Log Keluar

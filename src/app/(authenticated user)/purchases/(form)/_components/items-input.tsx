@@ -80,6 +80,7 @@ export function ItemsInput() {
                       <>
                         Data produk tidak ditemukan.{' '}
                         <Link
+                          as={Link}
                           href={PageUrlEnum.PRODUCT_CREATE}
                           className="clickable text-xs">
                           Tambah data produk?

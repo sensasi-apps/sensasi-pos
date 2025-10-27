@@ -7,6 +7,7 @@ import { Card, CardHeader, CardBody } from '@heroui/card'
 import { FileDown, GalleryHorizontalEnd, TvMinimalPlay } from 'lucide-react'
 //
 import PageUrlEnum from '@/enums/page-url'
+import { Link } from '@heroui/link'
 
 export const OnBoardCard = () => {
   return (
@@ -42,6 +43,7 @@ export const OnBoardCard = () => {
             size="sm"
             variant="solid"
             color="primary"
+            as={Link}
             href={PageUrlEnum.ONBOARDING_IMPORT_BACKUP}>
             Mulai
           </Button>
@@ -61,6 +63,7 @@ export const OnBoardCard = () => {
             size="sm"
             variant="solid"
             color="primary"
+            as={Link}
             href={PageUrlEnum.ONBOARDING_STEP_1}>
             Mulai
           </Button>

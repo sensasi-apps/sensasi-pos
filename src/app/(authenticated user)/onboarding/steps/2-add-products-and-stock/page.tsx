@@ -1,7 +1,6 @@
 'use client'
 
 import { Button } from '@heroui/button'
-import { useRouter } from 'next/navigation'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { MoveLeftIcon, MoveRightIcon } from 'lucide-react'
 
@@ -20,9 +19,9 @@ import {
 } from '@heroui/drawer'
 import { ProductList } from './_component/list-product'
 import { ProductForm } from './_component/product-form'
+import { Link } from '@heroui/link'
 
 export default function AddProductsPage() {
-  const router = useRouter()
   const products = useLiveQuery(() => db.products.toArray(), [])
   const nProducts = products?.length ?? 0
 
@@ -44,7 +43,8 @@ export default function AddProductsPage() {
               <Button
                 variant="light"
                 startContent={<MoveLeftIcon />}
-                onPress={() => router.push(PageUrlEnum.ONBOARDING_STEP_1)}
+                as={Link}
+                href={PageUrlEnum.ONBOARDING_STEP_1}
                 color="primary">
                 Kembali
               </Button>
@@ -53,7 +53,8 @@ export default function AddProductsPage() {
                 color="primary"
                 variant="solid"
                 endContent={<MoveRightIcon />}
-                onPress={() => router.push(PageUrlEnum.ONBOARDING_STEP_FINISH)}
+                as={Link}
+                href={PageUrlEnum.ONBOARDING_STEP_FINISH}
                 isDisabled={nProducts === 0}>
                 Selesai
               </Button>
@@ -85,7 +86,8 @@ export default function AddProductsPage() {
 
               <Button
                 variant="ghost"
-                onPress={() => router.push(PageUrlEnum.ONBOARDING_STEP_FINISH)}>
+                as={Link}
+                href={PageUrlEnum.ONBOARDING_STEP_FINISH}>
                 Lewati untuk sekarang
               </Button>
             </div>

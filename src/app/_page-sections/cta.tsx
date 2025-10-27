@@ -1,5 +1,6 @@
 import PageUrlEnum from '@/enums/page-url'
 import { Button } from '@heroui/button'
+import { Link } from '@heroui/link'
 
 export function Cta() {
   // TODO: Buat fungsi untuk mengecek apakah aplikasi sudah diinisialisasi
@@ -14,6 +15,7 @@ export function Cta() {
 
         <Button
           className="h-16 rounded-full px-10 text-xl"
+          as={Link}
           href={
             appIsAlreadyInitialized ? PageUrlEnum.LOGIN : PageUrlEnum.ONBOARDING
           }>
