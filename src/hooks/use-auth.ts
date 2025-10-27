@@ -2,7 +2,7 @@
 
 // local
 import type { User } from '@/models/table-types/user'
-import { Permission } from '@/enums/permission'
+import type { Permission } from '@/enums/permission'
 import { useLocalStorage } from 'usehooks-ts'
 
 export default function useAuth() {

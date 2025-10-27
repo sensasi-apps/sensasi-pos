@@ -1,8 +1,8 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
-@plugin './hero.ts';
+@plugin "./hero.ts";
 
-@source '../../../node_modules/@heroui/theme/dist/components/*.js';
+@source "../../../node_modules/@heroui/theme/dist/components/*.js";
 
 @layer components {
   .container {

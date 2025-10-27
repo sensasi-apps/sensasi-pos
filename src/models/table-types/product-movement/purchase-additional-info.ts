@@ -1,4 +1,4 @@
-import { ISODate } from '@/@types/iso-date'
+import type { ISODate } from '@/@types/iso-date'
 
 /**
  * Interface representing additional information for product movement purchases.

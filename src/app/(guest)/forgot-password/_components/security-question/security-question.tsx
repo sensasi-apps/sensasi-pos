@@ -1,7 +1,7 @@
 // vendors
 import { Autocomplete, AutocompleteItem } from '@heroui/autocomplete'
 import { Button } from '@heroui/button'
-import { FormEvent, useState } from 'react'
+import { type FormEvent, useState } from 'react'
 import { useLiveQuery } from 'dexie-react-hooks'
 //
 import { UserRound } from 'lucide-react'
@@ -74,17 +74,14 @@ export default function SecurityQuestionForm() {
           ))}
         </Autocomplete>
 
-        {hasSelectedUser && (
-          <>
-            {[1, 2].map(questionNumber => (
-              <QuestionAndAnswerField
-                key={`question-number-${questionNumber}`}
-                questionNumber={questionNumber}
-                securityQuestions={securityQuestions}
-              />
-            ))}
-          </>
-        )}
+        {hasSelectedUser &&
+          [1, 2].map(questionNumber => (
+            <QuestionAndAnswerField
+              key={`question-number-${questionNumber}`}
+              questionNumber={questionNumber}
+              securityQuestions={securityQuestions}
+            />
+          ))}
 
         <Button
           color="primary"

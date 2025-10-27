@@ -1,6 +1,6 @@
 import { toast } from '@/functions/toast'
 import db from '@/models/db'
-import { ProductMovement } from '@/models/table-types/product-movement'
+import type { ProductMovement } from '@/models/table-types/product-movement'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { useState } from 'react'
 

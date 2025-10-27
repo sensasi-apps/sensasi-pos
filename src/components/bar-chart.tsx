@@ -1,6 +1,5 @@
 import { dataPenjualan } from '@/data/penjualan'
 import { useTheme } from 'next-themes'
-import React from 'react'
 import {
   ResponsiveContainer,
   BarChart as Chart,

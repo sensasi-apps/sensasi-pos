@@ -2,7 +2,7 @@
 
 import { useTheme } from 'next-themes'
 import { MoonStar, Sun } from 'lucide-react'
-import { SwitchProps } from '@heroui/switch'
+import type { SwitchProps } from '@heroui/switch'
 import dynamic from 'next/dynamic'
 
 const Switch = dynamic<SwitchProps>(

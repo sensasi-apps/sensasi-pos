@@ -52,8 +52,8 @@ export function CostsInput() {
         </div>
       )}
 
-      {fields.map((_, i) => (
-        <div key={i} className="flex items-center gap-3">
+      {fields.map((field, i) => (
+        <div key={field.id} className="flex items-center gap-3">
           <Controller
             control={control}
             name={`additional_costs.${i}.name`}

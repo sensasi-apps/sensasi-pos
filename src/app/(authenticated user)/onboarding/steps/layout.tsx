@@ -1,5 +1,5 @@
 import Steps from '@/components/stepper'
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (

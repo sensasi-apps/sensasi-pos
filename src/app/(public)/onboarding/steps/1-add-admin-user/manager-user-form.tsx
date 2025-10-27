@@ -7,13 +7,13 @@ import { useRouter } from 'next/navigation'
 import { MoveLeftIcon, MoveRightIcon } from 'lucide-react'
 //
 import PageUrlEnum from '@/enums/page-url'
-import { FormProvider, SubmitHandler, useForm } from 'react-hook-form'
+import { FormProvider, type SubmitHandler, useForm } from 'react-hook-form'
 import { Role } from '@/enums/role'
 import TextInput from '@/components/input-controllers/text-input'
 import UserEmail from '@/components/input-controllers/user-email'
 import { generateOrderedUuid } from '@/functions/generate-ordered-uuid'
 import db from '@/models/db'
-import { User } from '@/models/table-types/user'
+import type { User } from '@/models/table-types/user'
 import { toast } from '@/functions/toast'
 import { getHash } from '@/functions/get-hash'
 import { PERMISSION_TEMPLATES } from '@/data/permission-templates'
@@ -33,7 +33,7 @@ export default function ManagerUserForm() {
 
   const isManagerUserExists =
     useLiveQuery(() => db.users.where('roles').equals(Role.MANAGER).count()) ??
-    0 > 0
+    false
 
   if (isManagerUserExists) {
     return <UserExistsAlert />

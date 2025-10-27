@@ -5,7 +5,7 @@ import { Alert } from '@heroui/alert'
 import { BarcodeScanner, type DetectedBarcode } from 'react-barcode-scanner'
 import { Button } from '@heroui/button'
 import { Checkbox, CheckboxGroup } from '@heroui/checkbox'
-import { Modal, ModalContent, ModalProps } from '@heroui/modal'
+import { Modal, ModalContent, type ModalProps } from '@heroui/modal'
 import { Tooltip } from '@heroui/tooltip'
 import { useState } from 'react'
 // icons

@@ -8,8 +8,8 @@
     "build:analyze": "cross-env ANALYZE=true next build",
     "dev": "next dev",
     "knip": "knip",
-    "lint": "tsc && eslint .",
-    "lint:fix": "tsc && eslint --fix .",
+    "lint": "biome check && tsc --noEmit",
+    "lint:fix": "tsc --noEmit && biome check --write",
     "start": "next start",
     "test": ""
   },
@@ -65,6 +65,7 @@
     "zustand": "^5.0.3"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.3.1",
     "@next/bundle-analyzer": "^16.0.0",
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^22.18.8",
@@ -72,15 +73,8 @@
     "@types/react-dom": "^19.2.2",
     "@types/uuid": "^10.0.0",
     "cross-env": "^10.1.0",
-    "eslint": "^9.20.1",
-    "eslint-config-next": "^16.0.0",
-    "eslint-config-prettier": "^10.0.1",
-    "eslint-plugin-prettier": "^5.2.3",
-    "eslint-plugin-unicorn": "^61.0.2",
     "knip": "^5.64.2",
     "postcss": "^8.5.6",
-    "prettier": "^3.5.1",
-    "prettier-plugin-tailwindcss": "^0.7.1",
     "typescript": "^5.9.3"
   }
 }

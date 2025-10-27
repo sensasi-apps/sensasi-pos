@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Card, CardBody } from '@heroui/card'
 import { Select, SelectItem } from '@heroui/select'
 

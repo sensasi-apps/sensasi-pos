@@ -1,7 +1,7 @@
 import { Input, type InputProps } from '@heroui/input'
 import {
   Controller,
-  FieldValues,
+  type FieldValues,
   useFormContext,
   type ControllerProps,
 } from 'react-hook-form'

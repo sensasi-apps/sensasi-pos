@@ -4,7 +4,7 @@ import PageUrlEnum from '@/enums/page-url'
 import mergeClass from '@/functions/merge-class'
 import { Boxes, Check, CircleCheck, UserPlus } from 'lucide-react'
 import { usePathname } from 'next/navigation'
-import { ReactElement } from 'react'
+import type { ReactElement } from 'react'
 
 interface Step {
   name: string

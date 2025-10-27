@@ -2,7 +2,7 @@
 import { Input } from '@heroui/input'
 import { Select, SelectItem, type SelectProps } from '@heroui/select'
 //
-import { SecurityQuestion } from '@/enums/security-question'
+import type { SecurityQuestion } from '@/enums/security-question'
 import { useFormSubmissionState } from '@/stores/form-submission'
 import { useSecurityQuestionState } from '../../_stores/security-question'
 

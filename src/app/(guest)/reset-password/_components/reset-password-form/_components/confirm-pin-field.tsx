@@ -1,5 +1,5 @@
 // vendors
-import { FormEvent } from 'react'
+import type { FormEvent } from 'react'
 import { Input } from '@heroui/input'
 // icons
 import { Eye, EyeOff } from 'lucide-react'

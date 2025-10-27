@@ -1,5 +1,5 @@
 // vendors
-import type { UUID } from 'crypto'
+import type { UUID } from 'node:crypto'
 // globals
 import type { File } from '@/@types/file'
 import type { ISODate } from '@/@types/iso-date'

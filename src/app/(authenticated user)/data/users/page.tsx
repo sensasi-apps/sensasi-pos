@@ -60,12 +60,11 @@ export default function Page() {
                   aria-label="Status"
                   onClick={() => {
                     setUserActiveStatus(user.uuid, !!user.inactivated_at)
-                      .then(
-                        () =>
-                          (user.inactivated_at = !user.inactivated_at
-                            ? new Date().toISOString()
-                            : undefined),
-                      )
+                      .then(() => {
+                        user.inactivated_at = !user.inactivated_at
+                          ? new Date().toISOString()
+                          : undefined
+                      })
                       .catch(err => {
                         throw err
                       })

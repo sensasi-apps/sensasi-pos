@@ -1,5 +1,5 @@
 import toastVendor from 'react-hot-toast'
-import { Alert, AlertProps } from '@heroui/alert'
+import { Alert, type AlertProps } from '@heroui/alert'
 
 export function toast(message: React.ReactNode, color?: AlertProps['color']) {
   return toastVendor.custom(

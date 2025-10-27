@@ -1,13 +1,13 @@
 import { Button } from '@heroui/button'
-import { FormProvider, SubmitHandler, useForm } from 'react-hook-form'
-import type { UUID } from 'crypto'
+import { FormProvider, type SubmitHandler, useForm } from 'react-hook-form'
+import type { UUID } from 'node:crypto'
 
 import { generateOrderedUuid } from '@/functions/generate-ordered-uuid'
 import { toast } from '@/functions/toast'
 
 import db from '@/models/db'
-import { Product } from '@/models/table-types/product'
-import { ProductMovement } from '@/models/table-types/product-movement'
+import type { Product } from '@/models/table-types/product'
+import type { ProductMovement } from '@/models/table-types/product-movement'
 import useAuth from '@/hooks/use-auth'
 
 import TextInput from '@/components/input-controllers/text-input'

@@ -44,7 +44,7 @@ export function Hero() {
         maxOpacity={0.1}
         duration={1}
         className={
-          'inset-0 skew-y-12 [mask-image:radial-gradient(500px_circle_at_center,white,transparent)]'
+          'inset-0 skew-y-12 mask-[radial-gradient(500px_circle_at_center,white,transparent)]'
         }
       />
       <div className={'container gap-10'}>
@@ -68,8 +68,8 @@ export function Hero() {
           </Button> */}
 
           <div className="mx-auto mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {FEATURES.map((feature, i) => (
-              <FeatureItem key={i} data={feature} />
+            {FEATURES.map(feature => (
+              <FeatureItem key={feature.title} data={feature} />
             ))}
           </div>
         </div>

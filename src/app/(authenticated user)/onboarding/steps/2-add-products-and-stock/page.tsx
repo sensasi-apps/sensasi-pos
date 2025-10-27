@@ -59,31 +59,30 @@ export default function AddProductsPage() {
               </Button>
             </div>
             <div className="mt-4 flex flex-col justify-between gap-3">
-              <>
-                <Button onPress={onOpen}>Lihat Produk</Button>
-                <Drawer isOpen={isOpen} onOpenChange={onOpenChange}>
-                  <DrawerContent>
-                    {onClose => (
-                      <>
-                        <DrawerHeader className="flex flex-col gap-1">
-                          Produk yang sudah ditambahkan:
-                        </DrawerHeader>
-                        <DrawerBody>
-                          <ProductList />
-                        </DrawerBody>
-                        <DrawerFooter>
-                          <Button
-                            color="danger"
-                            variant="light"
-                            onPress={onClose}>
-                            Close
-                          </Button>
-                        </DrawerFooter>
-                      </>
-                    )}
-                  </DrawerContent>
-                </Drawer>
-              </>
+              <Button onPress={onOpen}>Lihat Produk</Button>
+              <Drawer isOpen={isOpen} onOpenChange={onOpenChange}>
+                <DrawerContent>
+                  {onClose => (
+                    <>
+                      <DrawerHeader className="flex flex-col gap-1">
+                        Produk yang sudah ditambahkan:
+                      </DrawerHeader>
+                      <DrawerBody>
+                        <ProductList />
+                      </DrawerBody>
+                      <DrawerFooter>
+                        <Button
+                          color="danger"
+                          variant="light"
+                          onPress={onClose}>
+                          Close
+                        </Button>
+                      </DrawerFooter>
+                    </>
+                  )}
+                </DrawerContent>
+              </Drawer>
+
               <Button
                 variant="ghost"
                 onPress={() => router.push(PageUrlEnum.ONBOARDING_STEP_FINISH)}>

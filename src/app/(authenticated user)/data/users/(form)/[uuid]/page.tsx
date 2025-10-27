@@ -1,6 +1,6 @@
 'use client'
 
-import { UUID } from 'crypto'
+import type { UUID } from 'node:crypto'
 import { UserForm } from '../_components/form'
 import { useHook } from './hook'
 import { useParams } from 'next/navigation'
