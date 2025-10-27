@@ -9,6 +9,7 @@ import { usePageHook } from './page-hook'
 import { EditIcon, TrashIcon } from 'lucide-react'
 import { ConfirmationModal } from '@/components/confirmation-modal'
 import mergeClass from '@/functions/merge-class'
+import { Link } from '@heroui/link'
 
 export default function PurchaseListPage() {
   const {
@@ -21,6 +22,7 @@ export default function PurchaseListPage() {
   return (
     <>
       <Button
+        as={Link}
         href={PageUrlEnum.PURCHASE_CREATE}
         className="mb-4"
         color="primary">
@@ -41,6 +43,7 @@ export default function PurchaseListPage() {
               variant="flat"
               color="primary"
               size="sm"
+              as={Link}
               href={PageUrlEnum.PURCHASE_EDIT.replace(':uuid', movement.uuid)}>
               <EditIcon />
             </Button>

@@ -68,6 +68,7 @@ export default function ProductListPage() {
             variant="flat"
             color="success"
             startContent={<PlusCircle />}
+            as={Link}
             href={PageUrlEnum.PRODUCT_CREATE}>
             Tambah Produk
           </Button>

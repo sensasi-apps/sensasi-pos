@@ -17,6 +17,7 @@ import PageUrlEnum from '@/enums/page-url'
 import { FeedbackFormModal } from '../feedback-form-modal'
 import { SettingDropdownButton } from './components/settings-dropdown-button'
 import useAuth from '@/hooks/use-auth'
+import { Link } from '@heroui/link'
 
 /**
  * Navbar items for authenticated users
@@ -33,6 +34,7 @@ export function AuthNavbarItems() {
             <Button
               className="max-sm:hidden"
               isIconOnly
+              as={Link}
               href={PageUrlEnum.SALE_LIST}
               variant="light"
               color="primary">
@@ -45,6 +47,7 @@ export function AuthNavbarItems() {
           {hasAnyPermissions([Permission.READ_PURCHASE]) && (
             <Button
               isIconOnly
+              as={Link}
               href={PageUrlEnum.PURCHASE_LIST}
               variant="light"
               color="primary">
@@ -63,6 +66,7 @@ export function AuthNavbarItems() {
       {hasAnyPermissions([Permission.READ_DASHBOARD]) && (
         <NavbarItem className="max-sm:hidden">
           <Button
+            as={Link}
             href={PageUrlEnum.REPORT_LIST}
             startContent={<FileSpreadsheetIcon size="1rem" />}
             variant="flat"

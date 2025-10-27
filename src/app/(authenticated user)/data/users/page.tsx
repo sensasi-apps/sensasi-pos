@@ -17,13 +17,14 @@ import { EditIcon } from 'lucide-react'
 //
 import { useHook } from './hook'
 import PageUrlEnum from '@/enums/page-url'
+import { Link } from '@heroui/link'
 
 export default function Page() {
   const { users, setUserActiveStatus } = useHook()
 
   return (
     <div>
-      <Button href={PageUrlEnum.USER_CREATE} color="primary">
+      <Button as={Link} href={PageUrlEnum.USER_CREATE} color="primary">
         Tambah data pengguna
       </Button>
 
@@ -74,6 +75,7 @@ export default function Page() {
               <TableCell className="flex gap-3">
                 <Button
                   isIconOnly
+                  as={Link}
                   href={PageUrlEnum.USER_EDIT.replace(':uuid', user.uuid)}>
                   <EditIcon />
                 </Button>
