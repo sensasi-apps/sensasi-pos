@@ -75,8 +75,8 @@ export function ProductForm({
       updated_at: now,
       additional_info: {
         received_at: now,
-        paid_at: now,
       },
+      note: '[STOK AWAL]',
     }
 
     try {
