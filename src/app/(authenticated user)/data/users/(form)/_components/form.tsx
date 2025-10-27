@@ -8,8 +8,8 @@ import { Input } from '@heroui/input'
 //
 import { Role } from '@/enums/role'
 import { PERMISSION_TEMPLATES } from '@/data/permission-templates'
-import { useHook as useCreateHook } from '../create/hook'
-import { useHook as useUpdateHook } from '../[uuid]/hook'
+import type { useHook as useCreateHook } from '../create/hook'
+import type { useHook as useUpdateHook } from '../[uuid]/hook'
 
 /**
  * @bug autoComplete="off" tidak berfungsi pada chrome

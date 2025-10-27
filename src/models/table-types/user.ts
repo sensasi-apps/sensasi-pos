@@ -1,7 +1,7 @@
 import type { ISODate } from '@/@types/iso-date'
 import type { Permission } from '@/enums/permission'
 import type { Role } from '@/enums/role'
-import type { UUID } from 'crypto'
+import type { UUID } from 'node:crypto'
 
 /**
  * Represents a user in the system.

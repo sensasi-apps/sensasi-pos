@@ -15,7 +15,7 @@ import ImageInput from '@/components/image-input/image-input'
 // sub components
 import { IconButtonInputContent } from './icon-button-input-content'
 import { useHook } from './hook'
-import { ProductFormProps } from './props'
+import type { ProductFormProps } from './props'
 
 export function ProductForm({ id: formId, data, onSubmit }: ProductFormProps) {
   const {

@@ -6,7 +6,7 @@ import {
   ModalContent,
   ModalFooter,
   ModalHeader,
-  ModalProps,
+  type ModalProps,
 } from '@heroui/modal'
 //
 import mergeClass from '@/functions/merge-class'

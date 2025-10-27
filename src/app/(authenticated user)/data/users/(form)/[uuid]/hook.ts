@@ -1,6 +1,6 @@
 // types
 import type { FormValues } from '../_types/form-values'
-import type { UUID } from 'crypto'
+import type { UUID } from 'node:crypto'
 // vendors
 import { useForm } from 'react-hook-form'
 import { useLiveQuery } from 'dexie-react-hooks'

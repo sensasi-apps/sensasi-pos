@@ -1,6 +1,6 @@
 // vendors
 import { Button } from '@heroui/button'
-import { FormEvent, useState } from 'react'
+import { type FormEvent, useState } from 'react'
 import { Input } from '@heroui/input'
 //
 import { useFormSubmissionState } from '@/stores/form-submission'

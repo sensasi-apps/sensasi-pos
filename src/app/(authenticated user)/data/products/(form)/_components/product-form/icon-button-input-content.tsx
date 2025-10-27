@@ -2,7 +2,7 @@
 import type { ForwardRefExoticComponent, RefAttributes } from 'react'
 import type { LucideProps } from 'lucide-react'
 // vendors
-import { Button, ButtonProps } from '@heroui/button'
+import { Button, type ButtonProps } from '@heroui/button'
 import { Tooltip } from '@heroui/tooltip'
 
 export function IconButtonInputContent({

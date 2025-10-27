@@ -107,7 +107,7 @@ export default function GridPattern({
         resizeObserver.unobserve(current)
       }
     }
-  }, [containerRef])
+  }, [])
 
   return (
     <svg
@@ -134,7 +134,12 @@ export default function GridPattern({
         </pattern>
       </defs>
       <rect width="100%" height="100%" fill={`url(#${id})`} />
-      <svg x={x} y={y} className="overflow-visible">
+      <svg
+        x={x}
+        y={y}
+        className="overflow-visible"
+        role="img"
+        aria-label="grid">
         {squares.map(({ pos: [x, y], id }, index) => (
           <motion.rect
             initial={{ opacity: 0 }}
@@ -148,6 +153,7 @@ export default function GridPattern({
             onAnimationComplete={() => {
               updateSquarePosition(id)
             }}
+            // biome-ignore lint: required to be unique
             key={`${x}-${y}-${index}`}
             width={width - 1}
             height={height - 1}

@@ -1,6 +1,6 @@
 // vendors
 import { Button } from '@heroui/button'
-import { FormEvent } from 'react'
+import type { FormEvent } from 'react'
 // subcomponents
 import ConfirmPasswordField from './_components/confirm-password-field'
 import ConfirmPinField from './_components/confirm-pin-field'

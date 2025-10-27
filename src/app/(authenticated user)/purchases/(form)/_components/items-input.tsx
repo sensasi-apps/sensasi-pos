@@ -59,11 +59,11 @@ export function ItemsInput() {
         </div>
       )}
 
-      {fields.map((_, i) => {
+      {fields.map((field, i) => {
         const selectedProduct = watch(`items.${i}.product_state`)
 
         return (
-          <div key={i} className="flex items-center gap-3">
+          <div key={field.id} className="flex items-center gap-3">
             <Controller
               control={control}
               name={`items.${i}.product_state`}

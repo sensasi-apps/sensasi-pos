@@ -1,6 +1,6 @@
-import type { UUID } from 'crypto'
-import { v6 as uuidv6 } from 'uuid'
+import type { UUID } from 'node:crypto'
+import { v7 as generateUuid } from 'uuid'
 
 export function generateOrderedUuid(): UUID {
-  return uuidv6() as UUID
+  return generateUuid() as UUID
 }

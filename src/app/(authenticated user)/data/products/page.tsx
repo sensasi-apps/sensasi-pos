@@ -94,8 +94,8 @@ export default function ProductListPage() {
                     ? 'Mohon untuk menambahkan produk terlebih dahulu.'
                     : undefined
                 }>
-                {categories.map((category, i) => (
-                  <SelectItem key={i}>{category}</SelectItem>
+                {categories.map(category => (
+                  <SelectItem key={category}>{category}</SelectItem>
                 ))}
               </Select>
             </CardBody>
@@ -115,8 +115,8 @@ export default function ProductListPage() {
           )}
 
           <ul className="flex list-none flex-col gap-4">
-            {products?.map((product, i) => (
-              <ProductCard key={i} data={product} as="li" />
+            {products?.map(product => (
+              <ProductCard key={product.uuid} data={product} as="li" />
             ))}
           </ul>
         </div>

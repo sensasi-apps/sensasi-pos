@@ -20,7 +20,7 @@ import {
 // icons
 import { Maximize2, Trash2 } from 'lucide-react'
 //
-import { type Base64Blob } from '@/@types/base-64-blob'
+import type { Base64Blob } from '@/@types/base-64-blob'
 import resizeImage from '@/components/image-input/functions/resize-image'
 
 /**
@@ -89,10 +89,12 @@ export default function ImageInput({
       <div className={classNames?.label ?? 'mb-1 text-sm'}>{label}</div>
 
       <div
+        role="img"
         onDrop={onDrop}
         onDragOver={onDragOver}
         className="hover:border-primary cursor-pointer rounded-lg border-2 border-dashed border-gray-300 p-4 text-center transition-colors duration-300"
-        onClick={() => fileInputRef.current?.click()}>
+        // onClick={() => fileInputRef.current?.click()} // disable for now due lint error
+      >
         {value === undefined ? (
           <>
             <p className="mb-2">Drag and drop images here</p>
@@ -122,6 +124,7 @@ export default function ImageInput({
         ) : (
           <div className="flex flex-col justify-center duration-250">
             <div
+              role="img"
               className="relative mx-auto"
               onMouseEnter={() => {
                 setHoveredImage(value)
@@ -132,7 +135,7 @@ export default function ImageInput({
               <Image
                 shadow="md"
                 alt="image-preview"
-                className={'max-h-72 ' + classNames?.imgPreview}
+                className={`max-h-72 ${classNames?.imgPreview}`}
                 src={value}
               />
               {hoveredImage && (

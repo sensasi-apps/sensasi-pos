@@ -5,8 +5,8 @@ import { Button } from '@heroui/button'
 import { Card, CardBody, CardFooter, CardHeader } from '@heroui/card'
 // sub-components
 import { ProductForm } from '@/app/(authenticated user)/data/products/(form)/_components/product-form'
-import { useHook as updateUseHook } from '../[uuid]/_hook'
-import { useHook as createUseHook } from '../create/_hook'
+import type { useHook as updateUseHook } from '../[uuid]/_hook'
+import type { useHook as createUseHook } from '../create/_hook'
 
 export function ProductFormPageTemplate(
   props: ReturnType<typeof createUseHook> | ReturnType<typeof updateUseHook>,
