@@ -3,16 +3,10 @@
 import type { UUID } from 'node:crypto'
 import { UserForm } from '../_components/form'
 import { useHook } from './hook'
-import { useParams } from 'next/navigation'
+import { use } from 'react'
 
-interface PageProps {
-  params: {
-    uuid: UUID
-  }
-}
-
-export default function Page() {
-  const { uuid } = useParams<PageProps['params']>()
+export default function Page({ params }: { params: Promise<{ uuid: UUID }> }) {
+  const { uuid } = use(params)
   const hook = useHook(uuid)
 
   return (
