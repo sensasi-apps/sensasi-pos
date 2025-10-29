@@ -2,7 +2,7 @@
 import type { FormEventHandler } from 'react'
 import type { FormValues } from '../_types/form-values'
 // vendors
-import { parseZonedDateTime } from '@internationalized/date'
+import { parseDate } from '@internationalized/date'
 import { DatePicker } from '@heroui/date-picker'
 import { Input, Textarea } from '@heroui/input'
 import { Controller, useFormContext } from 'react-hook-form'
@@ -41,7 +41,7 @@ export function ProductPurchaseForm({
           <DatePicker
             isRequired
             label="Tanggal"
-            value={value ? parseZonedDateTime(value) : null}
+            value={value ? parseDate(value.split('T')[0]) : null}
             isInvalid={!!error}
             errorMessage={error?.message}
             onChange={value => {
@@ -76,7 +76,7 @@ export function ProductPurchaseForm({
         }) => (
           <DatePicker
             label="Tanggal Bayar"
-            value={value ? parseZonedDateTime(value) : null}
+            value={value ? parseDate(value.split('T')[0]) : null}
             onChange={value => {
               onChange(value?.toString())
             }}
@@ -96,7 +96,7 @@ export function ProductPurchaseForm({
         }) => (
           <DatePicker
             label="Tanggal Terima Barang"
-            value={value ? parseZonedDateTime(value) : null}
+            value={value ? parseDate(value.split('T')[0]) : null}
             onChange={value => {
               onChange(value?.toString())
             }}
@@ -116,7 +116,7 @@ export function ProductPurchaseForm({
         }) => (
           <DatePicker
             label="Tanggal Jatuh Tempo"
-            value={value ? parseZonedDateTime(value) : null}
+            value={value ? parseDate(value.split('T')[0]) : null}
             onChange={value => {
               onChange(value?.toString())
             }}
