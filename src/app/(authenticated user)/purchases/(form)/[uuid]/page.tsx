@@ -5,14 +5,16 @@ import { Button } from '@heroui/button'
 import { Card, CardBody, CardFooter, CardHeader } from '@heroui/card'
 //
 import { usePageHook } from './page-hook'
+import { use } from 'react'
 
 const FORM_ID = 'purchase-update-form'
 
 export default function PurchaseFormPage({
-  params: { uuid },
+  params,
 }: {
-  params: { uuid: string }
+  params: Promise<{ uuid: string }>
 }) {
+  const { uuid } = use(params)
   const { handleSubmit, handleCancel, formValues } = usePageHook(uuid)
 
   return (
