@@ -4,37 +4,56 @@ import type { ProductMovement } from '@/models/table-types/product-movement'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { useState } from 'react'
 
-export function usePageHook() {
+export function usePageHook({
+  page,
+  rowsPerPage,
+}: {
+  page: number
+  rowsPerPage: number
+}) {
   const [toBeDeletedProductMovement, setToBeDeletedProductMovement] =
     useState<ProductMovement>()
 
-  return {
-    productMovements: useLiveQuery(() =>
+  const productMovements = useLiveQuery(
+    () =>
       db.productMovements
         .orderBy('created_at')
         .reverse()
         .filter(movement => movement.type === 'purchase')
+        .offset((page - 1) * rowsPerPage)
+        .limit(rowsPerPage)
         .toArray(),
-    ),
+    [page, rowsPerPage],
+  )
 
-    handleDeleteProductMovement: () => {
-      if (!toBeDeletedProductMovement) return
+  const totalProductMovements = useLiveQuery(() =>
+    db.productMovements
+      .filter(movement => movement.type === 'purchase')
+      .count(),
+  )
 
-      db.productMovements
-        .update(toBeDeletedProductMovement.uuid, {
-          deleted_at: new Date().toISOString(),
-          // deleted_by_user_state: getAuthUser(),
-        })
-        .then(() => {
-          setToBeDeletedProductMovement(undefined)
-          toast('Data pembelian berhasil dihapus', 'warning')
-        })
-        .catch((err: Error) => {
-          throw err
-        })
-    },
+  const handleDeleteProductMovement = () => {
+    if (!toBeDeletedProductMovement) return
 
-    setToBeDeletedProductMovement,
+    db.productMovements
+      .update(toBeDeletedProductMovement.uuid, {
+        deleted_at: new Date().toISOString(),
+        // deleted_by_user_state: getAuthUser(),
+      })
+      .then(() => {
+        setToBeDeletedProductMovement(undefined)
+        toast('Data pembelian berhasil dihapus', 'warning')
+      })
+      .catch((err: Error) => {
+        throw err
+      })
+  }
+
+  return {
+    productMovements,
+    totalProductMovements,
     toBeDeletedProductMovement,
+    setToBeDeletedProductMovement,
+    handleDeleteProductMovement,
   }
 }
