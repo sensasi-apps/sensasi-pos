@@ -30,6 +30,8 @@
     "@heroui/link": "^2.2.22",
     "@heroui/modal": "^2.2.23",
     "@heroui/navbar": "^2.2.24",
+    "@heroui/pagination": "^2.2.24",
+    "@heroui/popover": "^2.3.27",
     "@heroui/select": "^2.4.27",
     "@heroui/spinner": "^2.2.24",
     "@heroui/switch": "^2.2.23",
