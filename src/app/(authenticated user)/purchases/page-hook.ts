@@ -9,11 +9,11 @@ import { useDebounce } from '@/hooks/use-debounce'
 export function usePageHook({
   page,
   rowsPerPage,
-  ref,
+  q,
 }: {
   page: number
   rowsPerPage: number
-  ref: string
+  q: string
 }) {
   const [toBeDeletedProductMovement, setToBeDeletedProductMovement] =
     useState<ProductMovement>()
@@ -21,17 +21,17 @@ export function usePageHook({
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
-  const [search, setSearch] = useState(ref)
+  const [search, setSearch] = useState(q)
   const debouncedSearch = useDebounce(search, 300)
 
   useEffect(() => {
-    if (ref !== debouncedSearch) {
+    if (q !== debouncedSearch) {
       const params = new URLSearchParams(searchParams)
-      params.set('ref', debouncedSearch)
+      params.set('q', debouncedSearch)
       params.set('page', '1')
       router.push(`${pathname}?${params.toString()}`)
     }
-  }, [debouncedSearch, ref, searchParams, pathname, router])
+  }, [debouncedSearch, q, searchParams, pathname, router])
 
   const productMovements = useLiveQuery(() => {
     let query = db.productMovements
@@ -39,33 +39,51 @@ export function usePageHook({
       .reverse()
       .filter(movement => movement.type === 'purchase')
 
-    if (ref) {
-      query = query.and(
-        movement =>
-          movement.ref?.toLowerCase().includes(ref.toLowerCase()) || false,
-      )
+    if (q) {
+      const lowerCaseQuery = q.toLowerCase()
+      query = query.and(movement => {
+        const searchInRef =
+          movement.ref?.toLowerCase().includes(lowerCaseQuery) ?? false
+        const searchInNote =
+          movement.note?.toLowerCase().includes(lowerCaseQuery) ?? false
+        const searchInProducts =
+          movement.items?.some(item =>
+            item.product_state?.name?.toLowerCase().includes(lowerCaseQuery),
+          ) ?? false
+
+        return searchInRef || searchInNote || searchInProducts
+      })
     }
 
     return query
       .offset((page - 1) * rowsPerPage)
       .limit(rowsPerPage)
       .toArray()
-  }, [page, rowsPerPage, ref])
+  }, [page, rowsPerPage, q])
 
   const totalProductMovements = useLiveQuery(() => {
     let query = db.productMovements.filter(
       movement => movement.type === 'purchase',
     )
 
-    if (ref) {
-      query = query.and(
-        movement =>
-          movement.ref?.toLowerCase().includes(ref.toLowerCase()) || false,
-      )
+    if (q) {
+      const lowerCaseQuery = q.toLowerCase()
+      query = query.and(movement => {
+        const searchInRef =
+          movement.ref?.toLowerCase().includes(lowerCaseQuery) ?? false
+        const searchInNote =
+          movement.note?.toLowerCase().includes(lowerCaseQuery) ?? false
+        const searchInProducts =
+          movement.items?.some(item =>
+            item.product_state?.name?.toLowerCase().includes(lowerCaseQuery),
+          ) ?? false
+
+        return searchInRef || searchInNote || searchInProducts
+      })
     }
 
     return query.count()
-  }, [ref])
+  }, [q])
 
   const handleDeleteProductMovement = () => {
     if (!toBeDeletedProductMovement) return

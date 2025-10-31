@@ -34,7 +34,7 @@ function PurchaseListPageContent() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const page = Number(searchParams.get('page')) || 1
-  const ref = searchParams.get('ref') || ''
+  const q = searchParams.get('q') || ''
   const rowsPerPage = 5
 
   const {
@@ -45,7 +45,7 @@ function PurchaseListPageContent() {
     handleDeleteProductMovement,
     search,
     setSearch,
-  } = usePageHook({ page, rowsPerPage, ref })
+  } = usePageHook({ page, rowsPerPage, q })
 
   const pages = Math.ceil((totalProductMovements || 0) / rowsPerPage)
 
@@ -144,8 +144,8 @@ function PurchaseListPageContent() {
 
   return (
     <>
-      <div className="w-full flex items-center justify-between mb-4">
-        <div className="w-[340px]">
+      <div className="w-full flex flex-col items-start space-y-4 md:space-y-0 md:flex-row md:items-center justify-between mb-4">
+        <div className="w-full max-w-[340px]">
           <Input
             isClearable
             classNames={{
