@@ -13,7 +13,7 @@ import {
   TableCell,
 } from '@heroui/table'
 import { Link } from '@heroui/link'
-import { EditIcon, Eye, TrashIcon } from 'lucide-react'
+import { EditIcon, Eye, Search, TrashIcon } from 'lucide-react'
 import { Pagination } from '@heroui/pagination'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { Popover, PopoverTrigger, PopoverContent } from '@heroui/popover'
@@ -27,13 +27,15 @@ import formatNumber from '@/functions/format-number'
 import { usePageHook } from './page-hook'
 import { ConfirmationModal } from '@/components/confirmation-modal'
 import type { ProductMovement } from '@/models/table-types/product-movement'
+import { Input } from '@heroui/input'
 
 function PurchaseListPageContent() {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const page = Number(searchParams.get('page')) || 1
-  const rowsPerPage = 3
+  const ref = searchParams.get('ref') || ''
+  const rowsPerPage = 5
 
   const {
     productMovements,
@@ -41,7 +43,9 @@ function PurchaseListPageContent() {
     toBeDeletedProductMovement,
     setToBeDeletedProductMovement,
     handleDeleteProductMovement,
-  } = usePageHook({ page, rowsPerPage })
+    search,
+    setSearch,
+  } = usePageHook({ page, rowsPerPage, ref })
 
   const pages = Math.ceil((totalProductMovements || 0) / rowsPerPage)
 
@@ -140,13 +144,42 @@ function PurchaseListPageContent() {
 
   return (
     <>
-      <Button
-        as={Link}
-        href={PageUrlEnum.PURCHASE_CREATE}
-        className="mb-4"
-        color="primary">
-        Masukkan data pembelian
-      </Button>
+      <div className="w-full flex items-center justify-between mb-4">
+        <div className="w-[340px]">
+          <Input
+            isClearable
+            classNames={{
+              label: 'text-black/50 dark:text-white/90',
+              input: [
+                'bg-transparent',
+                'text-black/90 dark:text-white/90',
+                'placeholder:text-default-700/50 dark:placeholder:text-white/60',
+              ],
+              innerWrapper: 'bg-transparent',
+              inputWrapper: [
+                'shadow-sm',
+                'bg-default-200/50',
+                'dark:bg-default/60',
+                'backdrop-blur-xl',
+                'backdrop-saturate-200',
+                'hover:bg-default-200/70',
+                'dark:hover:bg-default/70',
+                'group-data-[focus=true]:bg-default-200/50',
+                'dark:group-data-[focus=true]:bg-default/60',
+                'cursor-text!',
+              ],
+            }}
+            placeholder="Ketik untuk mencari..."
+            radius="lg"
+            startContent={<Search size={20} />}
+            value={search}
+            onValueChange={setSearch}
+          />
+        </div>
+        <Button as={Link} href={PageUrlEnum.PURCHASE_CREATE} color="primary">
+          Masukkan data pembelian
+        </Button>
+      </div>
 
       <div className="overflow-x-auto">
         <Table aria-label="Tabel Pembelian" className="min-w-full">
