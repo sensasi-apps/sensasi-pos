@@ -37,14 +37,14 @@ export function usePageHook({
 
   const productMovements = useLiveQuery(
     () =>
-      createQuery()
+      createQuery(q)
         .offset((page - 1) * rowsPerPage)
         .limit(rowsPerPage)
         .toArray(),
     [page, rowsPerPage, q],
   )
 
-  const totalProductMovements = useLiveQuery(() => createQuery().count(), [q])
+  const totalProductMovements = useLiveQuery(() => createQuery(q).count(), [q])
 
   const handleDeleteProductMovement = () => {
     if (!toBeDeletedProductMovement) return
@@ -74,7 +74,7 @@ export function usePageHook({
   }
 }
 
-function createQuery(q?: string) {
+function createQuery(q: string) {
   const query = db.productMovements
     .orderBy('created_at')
     .reverse()
