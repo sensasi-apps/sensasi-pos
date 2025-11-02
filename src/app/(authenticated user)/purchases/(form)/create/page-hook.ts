@@ -10,6 +10,7 @@ import { generateOrderedUuid } from '@/functions/generate-ordered-uuid'
 import { toast } from '@/functions/toast'
 // locals
 import { updateStocksOnReceived } from '../_functions/update-stocks-on-received'
+import useAuth from '@/hooks/use-auth'
 
 /**
  * Custom hook for handling the page logic in the purchase form.
@@ -17,6 +18,7 @@ import { updateStocksOnReceived } from '../_functions/update-stocks-on-received'
 export function usePageHook() {
   const formContextValue = useForm<FormValues>()
   const router = useRouter()
+  const { user } = useAuth()
 
   return {
     /**
@@ -33,15 +35,13 @@ export function usePageHook() {
 
     /**
      * Handler function to submit the form data.
-     *
-     * @todo Rekam pengguna yang mengentri data pengadaan.
      */
     handleSubmit: formContextValue.handleSubmit(async formValues => {
       const productMovement = {
         ...formValues,
         type: 'purchase',
         uuid: generateOrderedUuid(),
-        // by_user_state: getUser(),
+        by_user_state: user,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
       } as ProductMovement // TODO: Should have other mechanism to determine the type of the product movement instead casting it like this
