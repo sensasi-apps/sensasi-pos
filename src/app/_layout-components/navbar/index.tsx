@@ -10,7 +10,7 @@ import { ComputerIcon } from 'lucide-react'
 // globals
 import PageUrlEnum from '@/enums/page-url'
 // components
-import NavbarItems from './navbar-items'
+import NavbarItemsNoSSR from './navbar-items-no-ssr'
 
 export default function Navbar() {
   return (
@@ -26,7 +26,7 @@ export default function Navbar() {
       </NextLink>
 
       <NavbarContent justify="end">
-        <NavbarItems />
+        <NavbarItemsNoSSR />
       </NavbarContent>
     </VendorNavbar>
   )
