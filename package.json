@@ -1,7 +1,7 @@
 {
   "name": "sensasi-pos",
   "version": "0.0.1",
-  "versionDate": "2024-12-07",
+  "versionDate": "2025-11-04",
   "private": true,
   "scripts": {
     "build": "next build",
@@ -49,8 +49,8 @@
     "dexie": "^4.0.11",
     "dexie-react-hooks": "^1.1.7",
     "framer-motion": "^12.23.22",
-    "lucide-react": "^0.546.0",
-    "next": "^16.0.0",
+    "lucide-react": "^0.552.0",
+    "next": "^16.0.1",
     "next-nprogress-bar": "^2.4.5",
     "next-themes": "^0.4.4",
     "react-barcode-reader": "^0.0.2",
@@ -67,8 +67,8 @@
     "zustand": "^5.0.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.1",
-    "@next/bundle-analyzer": "^16.0.0",
+    "@biomejs/biome": "^2.3.3",
+    "@next/bundle-analyzer": "^16.0.1",
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^22.18.8",
     "@types/react": "^19.2.2",
