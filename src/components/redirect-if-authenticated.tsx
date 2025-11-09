@@ -3,9 +3,9 @@
 import PageUrlEnum from '@/enums/page-url'
 import useAuth from '@/hooks/use-auth'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
 
-export default function RedirectIfAuthenticated() {
+function RedirectIfAuthenticatedContent() {
   const { user } = useAuth()
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -23,4 +23,12 @@ export default function RedirectIfAuthenticated() {
   }, [user, searchParams, router])
 
   return null
+}
+
+export default function RedirectIfAuthenticated() {
+  return (
+    <Suspense fallback={null}>
+      <RedirectIfAuthenticatedContent />
+    </Suspense>
+  )
 }
