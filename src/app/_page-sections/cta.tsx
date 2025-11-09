@@ -1,10 +1,12 @@
+'use client'
+
 import PageUrlEnum from '@/enums/page-url'
 import { Button } from '@heroui/button'
 import { Link } from '@heroui/link'
+import useIsAppAlreadyInitialized from '@/hooks/use-is-app-already-initialized'
 
 export function Cta() {
-  // TODO: Buat fungsi untuk mengecek apakah aplikasi sudah diinisialisasi
-  const appIsAlreadyInitialized = false
+  const appIsAlreadyInitialized = useIsAppAlreadyInitialized()
 
   return (
     <section className="container">
