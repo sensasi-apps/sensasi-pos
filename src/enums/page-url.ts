@@ -48,10 +48,9 @@ enum PageUrlEnum {
   SALE_DELETE = '/sales/:uuid/delete',
 
   // DATABASE
-  DATABASE_ACTION_LIST = '/database',
-  EXPORT_DATABASE = '/database/export',
-  SYNC_DATABASE = '/database/sync',
-  WIPE_DATABASE = '/database/wipe',
+  EXPORT_DATABASE = '/settings/database/export',
+  SYNC_DATABASE = '/settings/database/sync',
+  WIPE_DATABASE = '/settings/database/wipe',
 }
 
 export default PageUrlEnum

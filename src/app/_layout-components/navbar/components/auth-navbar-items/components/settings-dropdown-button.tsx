@@ -11,7 +11,6 @@ import { useTheme } from 'next-themes'
 // icons
 import {
   ChevronDown,
-  DatabaseBackupIcon,
   MessageSquareTextIcon,
   PackageIcon,
   PowerCircleIcon,
@@ -117,13 +116,7 @@ export function SettingDropdownButton({
           title="Data Induk"
           showDivider
           className={
-            hasAnyPermissions([
-              Permission.READ_PRODUCT,
-              Permission.READ_USER,
-              Permission.EXPORT_DB,
-              Permission.WIPE_DB,
-              Permission.SYNC_DB,
-            ])
+            hasAnyPermissions([Permission.READ_PRODUCT, Permission.READ_USER])
               ? ''
               : 'hidden'
           }>
@@ -143,23 +136,6 @@ export function SettingDropdownButton({
             key="user"
             startContent={<UserCogIcon className="mr-1" />}>
             Pengguna
-          </DropdownItem>
-
-          <DropdownItem
-            className={
-              hasAnyPermissions([
-                Permission.EXPORT_DB,
-                Permission.WIPE_DB,
-                Permission.SYNC_DB,
-              ])
-                ? ''
-                : 'hidden'
-            }
-            as={Link}
-            href={PageUrlEnum.DATABASE_ACTION_LIST}
-            key="backup"
-            startContent={<DatabaseBackupIcon className="mr-1" />}>
-            Pencadangan
           </DropdownItem>
         </DropdownSection>
 
