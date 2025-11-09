@@ -20,6 +20,7 @@ import { PERMISSION_TEMPLATES } from '@/data/permission-templates'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { Alert } from '@heroui/alert'
 import { Link } from '@heroui/link'
+import useAuth from '@/hooks/use-auth'
 
 interface FormValues {
   name: string
@@ -31,6 +32,7 @@ interface FormValues {
 export default function ManagerUserForm() {
   const methods = useForm<FormValues>()
   const router = useRouter()
+  const { setLoggedInUser } = useAuth()
 
   const isManagerUserExists =
     useLiveQuery(() => db.users.where('roles').equals(Role.MANAGER).count()) ??
@@ -60,11 +62,12 @@ export default function ManagerUserForm() {
     db.users
       .add(newUser)
       .then(() => {
-        toast('Data pengguna berhasil disimpan')
+        toast('Data pengguna berhasil disimpan', 'success')
+        setLoggedInUser(newUser)
         router.push(PageUrlEnum.ONBOARDING_STEP_2)
       })
       .catch(() => {
-        toast('Data pengguna gagal disimpan')
+        toast('Data pengguna gagal disimpan', 'danger')
       })
   }
 
