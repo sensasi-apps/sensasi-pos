@@ -2,17 +2,20 @@
 
 import PageUrlEnum from '@/enums/page-url'
 import useAuth from '@/hooks/use-auth'
-import { redirect } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
 export default function RedirectIfUnauthenticated() {
   const { user } = useAuth()
+  const pathname = usePathname()
+  const router = useRouter()
 
   useEffect(() => {
     if (!user) {
-      redirect(PageUrlEnum.LOGIN)
+      const redirectUrl = `${PageUrlEnum.LOGIN}?redirect=${encodeURIComponent(pathname)}`
+      router.push(redirectUrl)
     }
-  }, [user])
+  }, [user, pathname, router])
 
   return null
 }

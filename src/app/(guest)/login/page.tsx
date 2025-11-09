@@ -9,6 +9,7 @@ import { type FormEvent, useRef, useState } from 'react'
 import { Input } from '@heroui/input'
 import { useLiveQuery } from 'dexie-react-hooks'
 import Link from 'next/link'
+import { useRouter, useSearchParams } from 'next/navigation'
 // icons
 import { Eye, EyeOff, UserRound } from 'lucide-react'
 //
@@ -26,6 +27,8 @@ export default function Page() {
   const [selectedUser, setSelectedUser] = useState<User>()
   const [isLoading, setIsLoading] = useState(false)
   const { setLoggedInUser } = useAuth()
+  const router = useRouter()
+  const searchParams = useSearchParams()
   const formEl = useRef(null)
 
   const toggleVisibility = () => setIsVisible(!isVisible)
@@ -55,6 +58,20 @@ export default function Page() {
 
     toast('Berhasil masuk', 'success')
     setLoggedInUser(selectedUser)
+
+    // Redirect to the original page or dashboard
+    const redirectUrl = searchParams.get('redirect')
+    // Only allow relative paths to prevent open redirect
+    if (
+      redirectUrl &&
+      typeof redirectUrl === 'string' &&
+      redirectUrl.startsWith('/') &&
+      !redirectUrl.startsWith('//')
+    ) {
+      router.push(redirectUrl)
+    } else {
+      router.push(PageUrlEnum.DASHBOARD)
+    }
   }
 
   return (
