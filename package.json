@@ -11,7 +11,7 @@
     "lint": "biome check && tsc --noEmit",
     "lint:fix": "tsc --noEmit && biome check --write",
     "start": "next start",
-    "test": ""
+    "test": "biome check"
   },
   "dependencies": {
     "@heroui/accordion": "^2.2.24",
